@@ -1,0 +1,1481 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0083)https://fileadmin.cs.lth.se/cs/Education/edaf75/hHuFThN4a6CHrNO6cDO2n/notes-05.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lecture 5 – notes</title>
+<meta name="generator" content="Org Mode">
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" href="./Lecture 5 – notes_files/style.css">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Lecture 5 – notes</h1>
+<p>
+This is a short description of what we did during lecture 5.
+I spent most of the time going through examples which I hope can be of help to you when you're about to solve lab 3 and the project – the slides are <a href="https://fileadmin.cs.lth.se/cs/Education/edaf75/hHuFThN4a6CHrNO6cDO2n/s05-oh.pdf">here</a>.
+</p>
+
+<p>
+The Java code below is written in Java 21 – if you have an old Java version on your computer, you may have to rewrite some things.
+</p>
+<div id="outline-container-about-dbmss-and-sqlite" class="outline-2">
+<h2 id="about-dbmss-and-sqlite">About DBMS's and SQLite</h2>
+<div class="outline-text-2" id="text-about-dbmss-and-sqlite">
+<p>
+The main topic of the lecture was <code>JDBC</code>, the software layer which lets us connect to an SQL database from Java code (or, for that matter, any language running on the JVM). We looked a drawing illustrating how we can use a database server:
+</p>
+
+
+<div id="org2e918ea" class="figure">
+<p><img src="./Lecture 5 – notes_files/f05-db-overview.png" alt="f05-db-overview.png">
+</p>
+</div>
+
+<p>
+I said that a <a href="https://en.wikipedia.org/wiki/Database">DBMS</a> normally runs as a server, and we talked about different ways of communicating with our database server:
+</p>
+
+<ul class="org-ul">
+<li>Using some kind of dedicated graphical client (a GUI), such as <a href="https://sqlitebrowser.org/">sqlitebrowser</a> – I showed it to you briefly</li>
+
+<li>Using a notebook (such as Jupyter notebooks)</li>
+
+<li>Using a command line SQL-client, such as <code>psql</code> for <a href="https://en.wikipedia.org/wiki/PostgreSQL">PostgreSQL</a>, or <code>sqlite3</code> for <a href="https://en.wikipedia.org/wiki/SQLite">SQLite</a> (SQLite doesn't really run as a server, but when we run the command line client, it looks like it).</li>
+
+<li>Using a program written in a traditional language, such as Java, or Python.</li>
+
+<li>Using some kind of microservice (typically REST) – this is just an example of the previous category, but it's very common, and they're typically used as backends for various web frontends.</li>
+</ul>
+</div>
+<div id="outline-container-using-sqlites-command-line-client" class="outline-3">
+<h3 id="using-sqlites-command-line-client">Using SQLite's command line client</h3>
+<div class="outline-text-3" id="text-using-sqlites-command-line-client">
+<p>
+I started the SQLite 'client' by issuing the command <code>sqlite3</code> – first I did it without giving any filename:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">$ sqlite3
+SQLite version 3.44.2 2023-11-24 11:41:44
+Enter <span style="color: #f06a3f;">".help"</span> for usage hints.
+Connected to a transient in-memory database.
+Use <span style="color: #f06a3f;">".open FILENAME"</span> to reopen on a persistent database.
+sqlite&gt;
+</pre>
+</div>
+
+<p>
+Changes we do here will just be saved to an in-memory database, and we
+would lose all our data when we exited (unless we explicitly save it,
+see below). To use a specific file to save our database, we just enter
+it as we start <code>sqlite3</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">$ sqlite3 lect01.sqlite
+SQLite version 3.44.2 2023-11-24 11:41:44
+Enter <span style="color: #f06a3f;">".help"</span> for usage hints.
+sqlite&gt;
+</pre>
+</div>
+
+<p>
+Here we can do two things:
+</p>
+
+<ul class="org-ul">
+<li>Enter SQL commands – these are the common suspects, <code>SELECT</code>, <code>CREATE</code>, etc.</li>
+
+<li><p>
+Enter SQLite commands – these are commands for reading from files, saving to files, etc, they're all prefixed by a <code>.</code>, so to read a database from the file <code>db.sqlite</code>, we write (<code>sqlite&gt;</code> is just the prompt):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql">sqlite&gt; .<span style="color: #c48702;">open</span> db.sqlite
+</pre>
+</div></li>
+</ul>
+
+<p>
+During lectures 2 and 3, we looked at an example with college applications. The definition of the tables for that example is given in the file <code>college-schema.sql</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #c48702;">DROP</span> <span style="color: #c48702;">TABLE</span> <span style="color: #3dbbb0;">IF</span> <span style="color: #c48702;">EXISTS</span> colleges;
+<span style="color: #c48702;">CREATE</span> <span style="color: #c48702;">TABLE</span> <span style="color: #3dbbb0;">colleges</span> (
+  c_name       TEXT,
+  <span style="color: #c48702;">state</span>        TEXT,
+  enrollment   <span style="color: #2fa526;">INT</span>,
+  <span style="color: #c48702;">PRIMARY</span> <span style="color: #c48702;">KEY</span>  (c_name, <span style="color: #c48702;">state</span>)
+);
+
+<span style="color: #c48702;">DROP</span> <span style="color: #c48702;">TABLE</span> <span style="color: #3dbbb0;">IF</span> <span style="color: #c48702;">EXISTS</span> students;
+<span style="color: #c48702;">CREATE</span> <span style="color: #c48702;">TABLE</span> <span style="color: #3dbbb0;">students</span> (
+  s_id         <span style="color: #2fa526;">INT</span>,
+  s_name       TEXT,
+  gpa          <span style="color: #2fa526;">REAL</span>,
+  size_hs      <span style="color: #2fa526;">INT</span>,
+  <span style="color: #c48702;">PRIMARY</span> <span style="color: #c48702;">KEY</span>  (s_id)
+);
+
+<span style="color: #c48702;">DROP</span> <span style="color: #c48702;">TABLE</span> <span style="color: #3dbbb0;">IF</span> <span style="color: #c48702;">EXISTS</span> applications;
+<span style="color: #c48702;">CREATE</span> <span style="color: #c48702;">TABLE</span> <span style="color: #3dbbb0;">applications</span> (
+  s_id         <span style="color: #2fa526;">INT</span>,
+  c_name       TEXT,
+  major        TEXT,
+  decision     TEXT,
+  <span style="color: #c48702;">PRIMARY</span> <span style="color: #c48702;">KEY</span>  (s_id, c_name, major),
+  <span style="color: #c48702;">FOREIGN</span> <span style="color: #c48702;">KEY</span>  (s_id) <span style="color: #c48702;">REFERENCES</span> students(s_id),
+  <span style="color: #c48702;">FOREIGN</span> <span style="color: #c48702;">KEY</span>  (c_name) <span style="color: #c48702;">REFERENCES</span> colleges(c_name)
+);
+</pre>
+</div>
+
+<p>
+The data we used is in the file <code>college-data.sql</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #c48702;">DELETE</span> <span style="color: #c48702;">FROM</span> students;
+<span style="color: #c48702;">DELETE</span> <span style="color: #c48702;">FROM</span> colleges;
+<span style="color: #c48702;">DELETE</span> <span style="color: #c48702;">FROM</span> applications;
+
+<span style="color: #c48702;">INSERT</span>
+<span style="color: #c48702;">INTO</span>   students(s_id, s_name, gpa, size_hs)
+<span style="color: #c48702;">VALUES</span> (123, <span style="color: #f06a3f;">'Amy'</span>, 3.9, 1000),
+       (234, <span style="color: #f06a3f;">'Bob'</span>, 3.6, 1500),
+       (345, <span style="color: #f06a3f;">'Craig'</span>, 3.5, 500),
+       (456, <span style="color: #f06a3f;">'Doris'</span>, 3.9, 1000),
+       (567, <span style="color: #f06a3f;">'Edward'</span>, 2.9, 2000),
+       (678, <span style="color: #f06a3f;">'Fay'</span>, 3.8, 200),
+       (789, <span style="color: #f06a3f;">'Gary'</span>, 3.4, 800),
+       (987, <span style="color: #f06a3f;">'Helen'</span>, 3.7, 800),
+       (876, <span style="color: #f06a3f;">'Irene'</span>, 3.9, 400),
+       (765, <span style="color: #f06a3f;">'Jay'</span>, 2.9, 1500),
+       (654, <span style="color: #f06a3f;">'Amy'</span>, 3.9, 1000),
+       (543, <span style="color: #f06a3f;">'Craig'</span>, 3.4, 2000);
+
+<span style="color: #c48702;">INSERT</span>
+<span style="color: #c48702;">INTO</span>   colleges(c_name, <span style="color: #c48702;">state</span>, enrollment)
+<span style="color: #c48702;">VALUES</span> (<span style="color: #f06a3f;">'Stanford'</span>, <span style="color: #f06a3f;">'CA'</span>, 15000),
+       (<span style="color: #f06a3f;">'Berkeley'</span>, <span style="color: #f06a3f;">'CA'</span>, 36000),
+       (<span style="color: #f06a3f;">'MIT'</span>, <span style="color: #f06a3f;">'MA'</span>, 10000),
+       (<span style="color: #f06a3f;">'Cornell'</span>, <span style="color: #f06a3f;">'NY'</span>, 21000);
+
+<span style="color: #c48702;">INSERT</span>
+<span style="color: #c48702;">INTO</span>   applications(s_id, c_name, major, decision)
+<span style="color: #c48702;">VALUES</span> (123, <span style="color: #f06a3f;">'Stanford'</span>, <span style="color: #f06a3f;">'CS'</span>, <span style="color: #f06a3f;">'Y'</span>),
+       (123, <span style="color: #f06a3f;">'Stanford'</span>, <span style="color: #f06a3f;">'EE'</span>, <span style="color: #f06a3f;">'N'</span>),
+       (123, <span style="color: #f06a3f;">'Berkeley'</span>, <span style="color: #f06a3f;">'CS'</span>, <span style="color: #f06a3f;">'Y'</span>),
+       (123, <span style="color: #f06a3f;">'Cornell'</span>, <span style="color: #f06a3f;">'EE'</span>, <span style="color: #f06a3f;">'Y'</span>),
+       (234, <span style="color: #f06a3f;">'Berkeley'</span>, <span style="color: #f06a3f;">'biology'</span>, <span style="color: #f06a3f;">'N'</span>),
+       (345, <span style="color: #f06a3f;">'MIT'</span>, <span style="color: #f06a3f;">'bioengineering'</span>, <span style="color: #f06a3f;">'Y'</span>),
+       (345, <span style="color: #f06a3f;">'Cornell'</span>, <span style="color: #f06a3f;">'bioengineering'</span>, <span style="color: #f06a3f;">'N'</span>),
+       (345, <span style="color: #f06a3f;">'Cornell'</span>, <span style="color: #f06a3f;">'CS'</span>, <span style="color: #f06a3f;">'Y'</span>),
+       (345, <span style="color: #f06a3f;">'Cornell'</span>, <span style="color: #f06a3f;">'EE'</span>, <span style="color: #f06a3f;">'N'</span>),
+       (678, <span style="color: #f06a3f;">'Stanford'</span>, <span style="color: #f06a3f;">'history'</span>, <span style="color: #f06a3f;">'Y'</span>),
+       (987, <span style="color: #f06a3f;">'Stanford'</span>, <span style="color: #f06a3f;">'CS'</span>, <span style="color: #f06a3f;">'Y'</span>),
+       (987, <span style="color: #f06a3f;">'Berkeley'</span>, <span style="color: #f06a3f;">'CS'</span>, <span style="color: #f06a3f;">'Y'</span>),
+       (876, <span style="color: #f06a3f;">'Stanford'</span>, <span style="color: #f06a3f;">'CS'</span>, <span style="color: #f06a3f;">'N'</span>),
+       (876, <span style="color: #f06a3f;">'MIT'</span>, <span style="color: #f06a3f;">'biology'</span>, <span style="color: #f06a3f;">'Y'</span>),
+       (876, <span style="color: #f06a3f;">'MIT'</span>, <span style="color: #f06a3f;">'marine biology'</span>, <span style="color: #f06a3f;">'N'</span>),
+       (765, <span style="color: #f06a3f;">'Stanford'</span>, <span style="color: #f06a3f;">'history'</span>, <span style="color: #f06a3f;">'Y'</span>),
+       (765, <span style="color: #f06a3f;">'Cornell'</span>, <span style="color: #f06a3f;">'history'</span>, <span style="color: #f06a3f;">'N'</span>),
+       (765, <span style="color: #f06a3f;">'Cornell'</span>, <span style="color: #f06a3f;">'psychology'</span>, <span style="color: #f06a3f;">'Y'</span>),
+       (543, <span style="color: #f06a3f;">'MIT'</span>, <span style="color: #f06a3f;">'CS'</span>, <span style="color: #f06a3f;">'N'</span>),
+       (321, <span style="color: #f06a3f;">'MIT'</span>, <span style="color: #f06a3f;">'history'</span>, <span style="color: #f06a3f;">'N'</span>),
+       (321, <span style="color: #f06a3f;">'MIT'</span>, <span style="color: #f06a3f;">'psychology'</span>, <span style="color: #f06a3f;">'N'</span>);
+</pre>
+</div>
+
+<p>
+We can get this into a SQLite database in various ways, for example:
+</p>
+
+<ul class="org-ul">
+<li><p>
+We can start SQLite, and do it from inside:
+</p>
+
+<pre class="example" id="orgade6216">$ sqlite3
+...
+sqlite&gt; .tables
+sqlite&gt; .read college-schema.sql
+sqlite&gt; .tables
+applications  colleges      students
+sqlite&gt; .schema students
+CREATE TABLE students (
+  s_id         INT,
+  s_name       TEXT,
+  gpa          REAL,
+  size_hs      INT,
+  PRIMARY KEY  (s_id)
+);
+sqlite&gt; .read college-data.sql
+sqlite&gt; SELECT count() FROM students;
+12
+sqlite&gt; .save colleges.sqlite
+sqlite&gt; ...
+</pre></li>
+
+<li><p>
+We can call SQLite using a filename and redirect input to make it read from our .sql-files:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">$ sqlite3 colleges.sqlite &lt; college-schema.sql
+$ sqlite3 colleges.sqlite &lt; college-data.sql
+</pre>
+</div>
+
+<p>
+This is the way I prefer (since it's easier to script), but YMMV.
+</p></li>
+</ul>
+
+<p>
+We then wrote a script which showed the names and grades for all
+students who had applied for Computer Science at Stanford.
+</p>
+
+<p>
+Initially I had intended to use this example to reiterate an important point about inner joins, but I was a bit worried to get short of time, so I decided to postpone the issue to these notes.
+</p>
+</div>
+<div id="outline-container-orgbf70c9c" class="outline-4">
+<h4 id="orgbf70c9c">A short diversion</h4>
+<div class="outline-text-4" id="text-orgbf70c9c">
+<p>
+So here we go (if you feel confident that you understand inner joins, you can skip this diversion).
+</p>
+
+<p>
+There are several ways to express our query, the two most natural choices would be:
+</p>
+
+<ul class="org-ul">
+<li>using an inner join, and</li>
+<li>using a subquery.</li>
+</ul>
+
+<p>
+Normally I'd write this query using an inner join:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #c48702;">SELECT</span>  s_id, s_name, gpa
+<span style="color: #c48702;">FROM</span>    students
+        <span style="color: #c48702;">JOIN</span> applications <span style="color: #c48702;">USING</span> (s_id)
+<span style="color: #c48702;">WHERE</span>   c_name = <span style="color: #f06a3f;">'Stanford'</span>
+        <span style="color: #c48702;">AND</span> major = <span style="color: #f06a3f;">'CS'</span>;
+</pre>
+</div>
+
+<p>
+but one should be aware that there is a subtlety here.
+</p>
+
+<p>
+For a student there could be more than one row in <code>applications</code> which matches on the join predicate (all her applications will match), and that means we could end up with several rows in the output if we're not careful. It is not going to happen here, since we're selecting only those lines also matching on <code>c_name</code> and <code>major</code>, and <code>s_id</code>, <code>c_name</code> and <code>major</code> together form the primary <i>key</i> in <code>applications</code>.
+</p>
+
+<p>
+So using this inner join can't produce any repeated lines (of course we could have used <code>SELECT DISTINCT</code> to make sure of this, but that would just be sloppy…).
+</p>
+
+<p>
+Using a subquery here, like we did, is another way to ensure that we have no duplicates:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #c48702;">SELECT</span>    s_id, s_name, gpa
+<span style="color: #c48702;">FROM</span>      students
+<span style="color: #c48702;">WHERE</span>     s_id <span style="color: #c48702;">IN</span> (
+  <span style="color: #c48702;">SELECT</span> <span style="color: #c48702;">DISTINCT</span> s_id
+  <span style="color: #c48702;">FROM</span>   applications
+  <span style="color: #c48702;">WHERE</span>  c_name = <span style="color: #f06a3f;">'Stanford'</span> <span style="color: #c48702;">AND</span> major = <span style="color: #f06a3f;">'CS'</span>
+)
+</pre>
+</div>
+
+<p>
+but I'd say that the inner join above is more idiomatic.
+</p>
+
+<p>
+BTW, it's not the <code>DISTINCT</code> inside the subquery which makes the rows of the outer query unique, we could have skipped <code>DISTINCT</code> altogether (if 'b' is in the set {'a', 'b', 'c'}, it's also in the set {'a', 'b', 'c', 'b'}).
+</p>
+</div>
+</div>
+<div id="outline-container-org6c18d7e" class="outline-4">
+<h4 id="org6c18d7e">Back to SQL scripts…</h4>
+<div class="outline-text-4" id="text-org6c18d7e">
+<p>
+So, we'll use the most idiomatic solution from the previous section:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #c48702;">SELECT</span>  s_id, s_name, gpa
+<span style="color: #c48702;">FROM</span>    students
+        <span style="color: #c48702;">JOIN</span> applications <span style="color: #c48702;">USING</span> (s_id)
+<span style="color: #c48702;">WHERE</span>   c_name = <span style="color: #f06a3f;">'Stanford'</span>
+        <span style="color: #c48702;">AND</span> major = <span style="color: #f06a3f;">'CS'</span>;
+</pre>
+</div>
+
+<p>
+We can save this in a file <code>code.sql</code>, and run it:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">$ sqlite3 colleges.sqlite &lt; code.sql
+Amy|3.9
+Irene|3.9
+Helen|3.7
+</pre>
+</div>
+
+<p>
+If we wanted a fancier output, we can use SQLite's <code>.mode</code> command:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql">.mode tabs
+
+<span style="color: #c48702;">SELECT</span>  s_id, s_name, gpa
+<span style="color: #c48702;">FROM</span>    students
+        <span style="color: #c48702;">JOIN</span> applications <span style="color: #c48702;">USING</span> (s_id)
+<span style="color: #c48702;">WHERE</span>   c_name = <span style="color: #f06a3f;">'Stanford'</span>
+        <span style="color: #c48702;">AND</span> major = <span style="color: #f06a3f;">'CS'</span>;
+</pre>
+</div>
+
+<p>
+The result will be:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">$ sqlite3 colleges.sqlite &lt; code.sql
+Amy         3.9
+Irene       3.9
+Helen       3.7
+</pre>
+</div>
+
+<p>
+We could even have SQLite generate html-output:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql">.mode html
+
+<span style="color: #c48702;">SELECT</span>  s_id, s_name, gpa
+<span style="color: #c48702;">FROM</span>    students
+        <span style="color: #c48702;">JOIN</span> applications <span style="color: #c48702;">USING</span> (s_id)
+<span style="color: #c48702;">WHERE</span>   c_name = <span style="color: #f06a3f;">'Stanford'</span>
+        <span style="color: #c48702;">AND</span> major = <span style="color: #f06a3f;">'CS'</span>;
+</pre>
+</div>
+
+<p>
+which would have given us:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #3dbbb0;">TR</span>&gt;&lt;<span style="color: #3dbbb0;">TD</span>&gt;Amy&lt;/<span style="color: #3dbbb0;">TD</span>&gt;
+&lt;<span style="color: #3dbbb0;">TD</span>&gt;3.9&lt;/<span style="color: #3dbbb0;">TD</span>&gt;
+&lt;/<span style="color: #3dbbb0;">TR</span>&gt;
+&lt;<span style="color: #3dbbb0;">TR</span>&gt;&lt;<span style="color: #3dbbb0;">TD</span>&gt;Irene&lt;/<span style="color: #3dbbb0;">TD</span>&gt;
+&lt;<span style="color: #3dbbb0;">TD</span>&gt;3.9&lt;/<span style="color: #3dbbb0;">TD</span>&gt;
+&lt;/<span style="color: #3dbbb0;">TR</span>&gt;
+&lt;<span style="color: #3dbbb0;">TR</span>&gt;&lt;<span style="color: #3dbbb0;">TD</span>&gt;Helen&lt;/<span style="color: #3dbbb0;">TD</span>&gt;
+&lt;<span style="color: #3dbbb0;">TD</span>&gt;3.7&lt;/<span style="color: #3dbbb0;">TD</span>&gt;
+&lt;/<span style="color: #3dbbb0;">TR</span>&gt;
+</pre>
+</div>
+
+<p>
+When inserted in a web page, it would render as:
+</p>
+
+<table>
+<tbody><tr><td>Amy</td>
+<td>3.9</td>
+</tr>
+<tr><td>Irene</td>
+<td>3.9</td>
+</tr>
+<tr><td>Helen</td>
+<td>3.7</td>
+</tr>
+</tbody></table>
+
+<p>
+Unfortunately, SQLite didn't enforce foreign keys in earlier versions, and because of the truly <i>massive</i> amount of legacy code using older verions of SQLite, foreign key checking is still turned off by default. To make sure it is turned on when I start the SQLite command line client, I have defined an alias (this works in Linux and, I think, MacOS – there is a similar feature in Windows):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #ff7a7f;">alias</span> <span style="color: #6fafff;">sqlite</span>=<span style="color: #f06a3f;">"sqlite3 -cmd 'PRAGMA foreign_keys = ON;'"</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-jdbc-by-example" class="outline-3">
+<h3 id="jdbc-by-example">JDBC by example</h3>
+<div class="outline-text-3" id="text-jdbc-by-example">
+<p>
+We then started looking at how to call SQL from Java, and looked at some slides describing JDBC – we saw that some of the most important interfaces/classes are:
+</p>
+
+<ul class="org-ul">
+<li><a href="https://docs.oracle.com/en/java/javase/15/docs/api/java.sql/java/sql/Connection.html"><code>Connection</code></a>: keeps track of a <i>session</i> to our database (typically we enter a user id and a password, for SQLite it's much easier than that).</li>
+
+<li><p>
+<a href="https://docs.oracle.com/en/java/javase/15/docs/api/java.sql/java/sql/Statement.html"><code>Statement</code></a>: a simple class which lets us send SQL commands to our database – we create it with the call:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #2fa526;">Statement</span> <span style="color: #6fafff;">s</span> = conn.createStatement();
+</pre>
+</div>
+
+<p>
+or, using Java's syntax for local variables with type inference:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #2fa526;">var</span> <span style="color: #6fafff;">s</span> = conn.createStatement();
+</pre>
+</div></li>
+
+<li><p>
+<a href="https://docs.oracle.com/en/java/javase/15/docs/api/java.sql/java/sql/PreparedStatement.html"><code>PreparedStatement</code></a>: a safer and more performant version of <code>Statement</code>, we create it with:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #2fa526;">var</span> <span style="color: #6fafff;">ps</span> = conn.prepareStatement(sql);
+</pre>
+</div>
+
+<p>
+where <code>sql</code> is a <code>String</code> with the statement or query we want to execute.
+</p></li>
+
+<li><a href="https://docs.oracle.com/en/java/javase/15/docs/api/java.sql/java/sql/ResultSet.html"><code>ResultSet</code></a>: an object which keeps track of the result of a query. Logically it's a kind of iterator (although it doesn't implement any iterator interface), we step through its rows using calls of <code>next()</code> – when there are no more rows to see, <code>next()</code> returns <code>false</code>, but until then, we can use various getters to fetch columns based either on their name, or on their position (see below).</li>
+</ul>
+
+<p>
+A simple way to keep everything database related in one place is to write a class <code>Database</code> like this (this is the <a href="https://fileadmin.cs.lth.se/cs/Education/edaf75/hHuFThN4a6CHrNO6cDO2n/Database.java">file</a> I put into my project after I had set it up – see below):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #c48702;">package</span> <span style="color: #64aa0f;">demo</span>;
+
+<span style="color: #c48702;">import</span> <span style="color: #64aa0f;">java</span>.<span style="color: #64aa0f;">sql</span>.*;
+<span style="color: #c48702;">import</span> <span style="color: #64aa0f;">java</span>.<span style="color: #64aa0f;">util</span>.*;
+
+<span style="color: #5f9f6f; font-style: italic;">/**</span>
+<span style="color: #5f9f6f; font-style: italic;"> * Database is an interface to the college application database, it</span>
+<span style="color: #5f9f6f; font-style: italic;"> * uses JDBC to connect to a SQLite3 file.</span>
+<span style="color: #5f9f6f; font-style: italic;"> */</span>
+<span style="color: #c48702;">public</span> <span style="color: #c48702;">class</span> <span style="color: #2fa526;">Database</span> {
+
+    <span style="color: #5f9f6f; font-style: italic;">/**</span>
+<span style="color: #5f9f6f; font-style: italic;">     * The database connection.</span>
+<span style="color: #5f9f6f; font-style: italic;">     */</span>
+    <span style="color: #c48702;">private</span> <span style="color: #2fa526;">Connection</span> <span style="color: #6fafff;">conn</span>;
+
+    <span style="color: #5f9f6f; font-style: italic;">/**</span>
+<span style="color: #5f9f6f; font-style: italic;">     * Creates the database interface object. Connection to the</span>
+<span style="color: #5f9f6f; font-style: italic;">     * database is performed later.</span>
+<span style="color: #5f9f6f; font-style: italic;">     */</span>
+    <span style="color: #c48702;">public</span> Database() {
+        conn = <span style="color: #64aa0f;">null</span>;
+    }
+
+    <span style="color: #5f9f6f; font-style: italic;">/**</span>
+<span style="color: #5f9f6f; font-style: italic;">     * Opens a connection to the database, using the specified</span>
+<span style="color: #5f9f6f; font-style: italic;">     * filename (if we'd used a traditional DBMS, such as PostgreSQL</span>
+<span style="color: #5f9f6f; font-style: italic;">     * or MariaDB, we would have specified username and password</span>
+<span style="color: #5f9f6f; font-style: italic;">     * instead).</span>
+<span style="color: #5f9f6f; font-style: italic;">     */</span>
+    <span style="color: #c48702;">public</span> <span style="color: #2fa526;">boolean</span> <span style="color: #3dbbb0;">openConnection</span>(<span style="color: #2fa526;">String</span> <span style="color: #6fafff;">filename</span>) {
+        <span style="color: #c48702;">try</span> {
+            conn = DriverManager.getConnection(<span style="color: #f06a3f;">"jdbc:sqlite:"</span> + filename);
+        } <span style="color: #c48702;">catch</span> (SQLException e) {
+            e.printStackTrace();
+            <span style="color: #c48702;">return</span> <span style="color: #64aa0f;">false</span>;
+        } <span style="color: #c48702;">catch</span> (ClassNotFoundException e) {
+            e.printStackTrace();
+            <span style="color: #c48702;">return</span> <span style="color: #64aa0f;">false</span>;
+        }
+        <span style="color: #c48702;">return</span> <span style="color: #64aa0f;">true</span>;
+    }
+
+    <span style="color: #5f9f6f; font-style: italic;">/**</span>
+<span style="color: #5f9f6f; font-style: italic;">     * Closes the connection to the database.</span>
+<span style="color: #5f9f6f; font-style: italic;">     */</span>
+    <span style="color: #c48702;">public</span> <span style="color: #2fa526;">void</span> <span style="color: #3dbbb0;">closeConnection</span>() {
+        <span style="color: #c48702;">try</span> {
+            <span style="color: #c48702;">if</span> (conn != <span style="color: #64aa0f;">null</span>) {
+                conn.close();
+            }
+        } <span style="color: #c48702;">catch</span> (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    <span style="color: #5f9f6f; font-style: italic;">/**</span>
+<span style="color: #5f9f6f; font-style: italic;">     * Checks if the connection to the database has been established</span>
+<span style="color: #5f9f6f; font-style: italic;">     *</span>
+<span style="color: #5f9f6f; font-style: italic;">     * </span><span style="color: #caa6df; font-style: italic;">@return</span><span style="color: #5f9f6f; font-style: italic;"> true if the connection has been established</span>
+<span style="color: #5f9f6f; font-style: italic;">     */</span>
+    <span style="color: #c48702;">public</span> <span style="color: #2fa526;">boolean</span> <span style="color: #3dbbb0;">isConnected</span>() {
+        <span style="color: #c48702;">return</span> conn != <span style="color: #64aa0f;">null</span>;
+    }
+
+    <span style="color: #7f7f7f; font-style: italic;">/* </span><span style="color: #cf9f7f; font-style: italic;">==================================</span><span style="color: #7f7f7f; font-style: italic;"> */</span>
+    <span style="color: #7f7f7f; font-style: italic;">/* </span><span style="color: #cf9f7f; font-style: italic;">--- insert your own code below ---</span><span style="color: #7f7f7f; font-style: italic;"> */</span>
+    <span style="color: #7f7f7f; font-style: italic;">/* </span><span style="color: #cf9f7f; font-style: italic;">===============================*==</span><span style="color: #7f7f7f; font-style: italic;"> */</span>
+
+}
+</pre>
+</div>
+
+<p>
+The code above sets up a connection to an SQLite file, if we were to connect to, lets say, a PostgreSQL database, we would have to send our user id and password as parameters to <code>openConnection</code>.
+</p>
+
+<p>
+I created a new <a href="https://gradle.org/">gradle</a> project in the terminal window:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ gradle init
+
+Select type of project to generate:
+  1: basic
+  2: application
+  3: library
+  4: Gradle plugin
+Enter selection (default: basic) [1..4] 2
+
+Select implementation language:
+  1: C++
+  2: Groovy
+  3: Java
+  4: Kotlin
+  5: Scala
+  6: Swift
+Enter selection (default: Java) [1..6] 6
+
+Select build script DSL:
+  1: Kotlin
+  2: Groovy
+Enter selection (default: Kotlin) [1..2] 1
+
+Project name (default: java-demo): demo
+Generate build using new APIs and behavior (some features may
+change<span style="color: #c48702;"> in</span> the next minor release)? (default: no) [yes,no] no
+
+&gt; Task :init
+To learn more about Gradle by exploring our Samples at https://docs.gradle.org/8.5/samples/sample_building_swift_applications.html
+
+BUILD SUCCESSFUL<span style="color: #c48702;"> in</span> 26s
+2 actionable tasks: 2 executed
+</pre>
+</div>
+
+<p>
+The created directory structure can be seen here (using the <code>tree</code> command):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ tree
+.
+├── app
+│  ├── build.gradle
+│  └── src
+│     ├── main
+│     │  ├── java
+│     │  │  └── demo
+│     │  │     └── App.java
+│     │  └── resources
+│     └── test
+│        ├── java
+│        │  └── demo
+│        │     └── AppTest.java
+│        └── resources
+├── gradle
+│  └── wrapper
+│     ├── gradle-wrapper.jar
+│     └── gradle-wrapper.properties
+├── gradlew
+├── gradlew.bat
+└── settings.gradle
+$
+</pre>
+</div>
+
+<p>
+We made some simple changes to the main program (which is in <code>app/src/main/java/demo/App.java</code>), and got:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #c48702;">package</span> <span style="color: #64aa0f;">demo</span>;
+
+<span style="color: #c48702;">public</span> <span style="color: #c48702;">class</span> <span style="color: #2fa526;">App</span> {
+
+    <span style="color: #c48702;">public</span> <span style="color: #c48702;">static</span> <span style="color: #2fa526;">void</span> <span style="color: #3dbbb0;">main</span>(<span style="color: #2fa526;">String</span>[] <span style="color: #6fafff;">args</span>) {
+        <span style="color: #c48702;">new</span> <span style="color: #2fa526;">App</span>().run();
+    }
+
+    <span style="color: #2fa526;">void</span> <span style="color: #3dbbb0;">run</span>() {
+        System.out.println(<span style="color: #f06a3f;">"hello, world!"</span>);
+    }
+}
+</pre>
+</div>
+
+<p>
+The <code>new App().run()</code>-thingy is a quirk of mine, it just feels better
+to have an object to work with – the rules for static methods in Java
+are sometimes surprising.
+</p>
+
+<p>
+Wee also moved the file <code>Database.java</code> (see above) into the <code>app/src/main/java/demo/</code> directory, and tried to use in our program, but <code>gradle</code> let us know that we need the <code>sqlite-jdbc</code> library, so we looked for it in the <a href="https://central.sonatype.com/">maven central repository</a>, and found that we need to add:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text">implementation group: 'org.xerial', name: 'sqlite-jdbc', version: '3.45.0.0'
+</pre>
+</div>
+
+<p>
+into the <code>dependencies</code> section of the <code>app/build.gradle</code> file:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text">/*
+ * This file was generated by the Gradle 'init' task.
+ *
+ * This generated file contains a sample Java application project to get you started.
+ * For more details on building Java &amp; JVM projects, please refer to https://docs.gradle.org/8.5/userguide/building_java_projects.html in the Gradle documentation.
+ */
+
+plugins {
+    // Apply the application plugin to add support for building a CLI application in Java.
+    id 'application'
+}
+
+repositories {
+    // Use Maven Central for resolving dependencies.
+    mavenCentral()
+}
+
+dependencies {
+    // Use JUnit Jupiter for testing.
+    testImplementation libs.junit.jupiter
+
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    implementation group: 'org.xerial', name: 'sqlite-jdbc', version: '3.45.0.0'
+
+    // This dependency is used by the application.
+    implementation libs.guava
+}
+
+// Apply a specific Java toolchain to ease working on different environments.
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+application {
+    // Define the main class for the application.
+    mainClass = 'demo.App'
+}
+
+tasks.named('test') {
+    // Use JUnit Platform for unit tests.
+    useJUnitPlatform()
+}
+</pre>
+</div>
+
+<p>
+For our first JDBC example, we wanted to see all students who had applied for CS at Stanford (i.e., the same problem we solved with a pure SQL-script above) – we started with the following main program:
+</p>
+
+<p>
+First we used some 'wishful thinking', and added some code to <code>run()</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #c48702;">package</span> <span style="color: #64aa0f;">demo</span>;
+
+<span style="color: #c48702;">public</span> <span style="color: #c48702;">class</span> <span style="color: #2fa526;">App</span> {
+
+    <span style="color: #c48702;">public</span> <span style="color: #c48702;">static</span> <span style="color: #2fa526;">void</span> <span style="color: #3dbbb0;">main</span>(<span style="color: #2fa526;">String</span>[] <span style="color: #6fafff;">args</span>) {
+        <span style="color: #c48702;">new</span> <span style="color: #2fa526;">App</span>().run();
+    }
+
+    <span style="color: #c48702;">public</span> <span style="color: #2fa526;">void</span> <span style="color: #3dbbb0;">run</span>() {
+        <span style="color: #2fa526;">var</span> <span style="color: #6fafff;">db</span> = <span style="color: #c48702;">new</span> <span style="color: #2fa526;">Database</span>();
+        db.openConnection(<span style="color: #f06a3f;">"colleges.sqlite"</span>);
+        <span style="color: #2fa526;">var</span> <span style="color: #6fafff;">applicants</span> = db.findApplicants(<span style="color: #f06a3f;">"Stanford"</span>, <span style="color: #f06a3f;">"CS"</span>);
+        <span style="color: #c48702;">for</span> (<span style="color: #2fa526;">var</span> <span style="color: #6fafff;">a</span> : applicants) {
+            System.out.printf(<span style="color: #f06a3f;">"%6d: %-20s (%.1f)\n"</span>,
+                              a.id,
+                              a.name,
+                              a.gpa);
+        }
+    }
+}
+</pre>
+</div>
+
+<p>
+To get the data from the database we can use the same query we had
+above – here I've :
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #c48702;">SELECT</span>  s_name, gpa
+<span style="color: #c48702;">FROM</span>    students
+        <span style="color: #c48702;">JOIN</span> applications <span style="color: #c48702;">USING</span> (s_id)
+<span style="color: #c48702;">WHERE</span>   c_name = <span style="color: #f06a3f;">'Stanford'</span>
+        <span style="color: #c48702;">AND</span> major = <span style="color: #f06a3f;">'CS'</span>;
+</pre>
+</div>
+
+<p>
+but to run it from Java code, we need to create a statement, run the
+query through it, and then collect the data from the returned
+<code>ResultSet</code>.
+</p>
+
+<p>
+The general outline of a JDBC query is (using a <code>PreparedStatement</code>, if
+we have no parameters, we can use a <code>Statement</code> instead):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #2fa526;">var</span> <span style="color: #6fafff;">found</span> = <span style="color: #c48702;">new</span> <span style="color: #2fa526;">ArrayList</span>&lt;...&gt;();
+<span style="color: #2fa526;">var</span> <span style="color: #6fafff;">query</span> =
+    <span style="color: #f06a3f;">""</span><span style="color: #c48702;">"</span>
+    SELECT ...
+    <span style="color: #f06a3f;">""</span><span style="color: #c48702;">"</span><span style="color: #f06a3f;">;</span>
+<span style="color: #c48702;">try</span> (<span style="color: #2fa526;">var</span> <span style="color: #6fafff;">ps</span> = conn.prepareStatement(query)) {
+    ps.setString(1, ...);          <span style="color: #7f7f7f; font-style: italic;">// </span><span style="color: #cf9f7f; font-style: italic;">set parameters...</span>
+    <span style="color: #2fa526;">var</span> <span style="color: #6fafff;">resultSet</span> = ps.executeQuery();
+    <span style="color: #c48702;">while</span> (resultSet.next()) {
+        <span style="color: #7f7f7f; font-style: italic;">// </span><span style="color: #cf9f7f; font-style: italic;">extract the values in rs into an object,</span>
+        <span style="color: #7f7f7f; font-style: italic;">// </span><span style="color: #cf9f7f; font-style: italic;">and then add the object to our list of</span>
+        <span style="color: #7f7f7f; font-style: italic;">// </span><span style="color: #cf9f7f; font-style: italic;">found values</span>
+        found.add(...(resultSet));
+    }
+} <span style="color: #c48702;">catch</span> (SQLException e) {
+    e.printStackTrace();
+}
+<span style="color: #c48702;">return</span> found;
+</pre>
+</div>
+
+<p>
+There are many ways of extracting data from our <code>ResultSet</code>, the way I personally prefer is to use a simple <a href="https://en.wikipedia.org/wiki/Plain_old_Java_object"><i>POJO</i></a> (short for <i>Plain Old Java Object</i>), and unpack the columns of a row in the <code>ResultSet</code> into corresponding final attributes in the class.
+This is what is sometimes called a 'data class' (or 'record'), and we find nice support for them in Java-related languages such Scala and Kotlin, but
+only recently has Java embraced them, and since I realize that some of you may not use the most recent Java (which by now is 21), I'll continue just using simple classes.
+</p>
+
+<p>
+A simple POJO for our query is the following:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #c48702;">class</span> <span style="color: #2fa526;">Applicant</span> {
+
+    <span style="color: #c48702;">public</span> <span style="color: #c48702;">final</span> <span style="color: #2fa526;">int</span> <span style="color: #6fafff;">id</span>;
+    <span style="color: #c48702;">public</span> <span style="color: #c48702;">final</span> <span style="color: #2fa526;">String</span> <span style="color: #6fafff;">name</span>;
+    <span style="color: #c48702;">public</span> <span style="color: #c48702;">final</span> <span style="color: #2fa526;">double</span> <span style="color: #6fafff;">gpa</span>;
+
+    <span style="color: #c48702;">private</span> Applicant  (<span style="color: #2fa526;">int</span> <span style="color: #6fafff;">id</span>, <span style="color: #2fa526;">String</span> <span style="color: #6fafff;">name</span>, <span style="color: #2fa526;">double</span> <span style="color: #6fafff;">gpa</span>) {
+        <span style="color: #c48702;">this</span>.id = id;
+        <span style="color: #c48702;">this</span>.name = name;
+        <span style="color: #c48702;">this</span>.gpa = gpa;
+    }
+
+    <span style="color: #c48702;">public</span> <span style="color: #c48702;">static</span> <span style="color: #2fa526;">Applicant</span> <span style="color: #3dbbb0;">fromRS</span>(<span style="color: #2fa526;">ResultSet</span> <span style="color: #6fafff;">rs</span>) <span style="color: #c48702;">throws</span> <span style="color: #2fa526;">SQLException</span> {
+        <span style="color: #c48702;">return</span> <span style="color: #c48702;">new</span> <span style="color: #2fa526;">Applicant</span>(rs.getInt(<span style="color: #f06a3f;">"s_id"</span>),
+                             rs.getString(<span style="color: #f06a3f;">"s_name"</span>),
+                             rs.getDouble(<span style="color: #f06a3f;">"gpa"</span>));
+    }
+}
+</pre>
+</div>
+
+<p>
+I've written a simple tool, <a href="https://fileadmin.cs.lth.se/cs/Education/edaf75/hHuFThN4a6CHrNO6cDO2n/db-pojo"><code>db-pojo</code></a>, which lets me define the class in the following way:
+</p>
+
+<pre class="example" id="org4874fc0">Applicant
+s_id -&gt; id : int
+s_name -&gt; name : String
+gpa : double
+</pre>
+
+<p>
+The first line gives the name of the POJO class, then there is one line per column in the output of the <code>SELECT</code> statement, each column corresponds to an attribute in our generated POJO class. For column names which will be useful attribute names, I only define their type – for column names I don't want as attribute names, I use an arrow to give a better attribute name (of course I could also have used an alias in the <code>SELECT</code> statement to do the same thing).
+</p>
+
+<p>
+Since I run Linux, I started <code>db-pojo</code> like this (<code>&lt;CTRL-D&gt;</code> means that
+I pressed Control-D – the program then printed the generated class):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">$ db-pojo -j
+Applicant
+s_id -&gt; id : int
+s_name -&gt; name : String
+gpa : double
+&lt;CTRL-D&gt;
+class Applicant {
+
+    public final String id;
+    public final String name;
+    public final double gpa;
+
+    private Applicant  (String id, String name, double gpa) {
+        this.id = id;
+        this.name = name;
+        this.gpa = gpa;
+    }
+
+    public static Applicant fromRS(ResultSet rs) throws SQLException {
+        <span style="color: #c48702;">return</span> new Applicant(rs.getString(<span style="color: #f06a3f;">"s_id"</span>), rs.getString(<span style="color: #f06a3f;">"s_name"</span>), rs.getDouble(<span style="color: #f06a3f;">"gpa"</span>));
+    }
+}
+</pre>
+</div>
+
+<p>
+This should work for Macs as well, for Windows you might have to start
+the command as:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">$ python db-pojo -j
+</pre>
+</div>
+
+<p>
+The program generates the class above (the <code>-j</code> flag tells the program to generate the <code>fromRS</code>-method, there is also a <code>-g</code> flag to generate <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> converters – I'll talk more about that in lecture 6) – you can download my little script <a href="https://fileadmin.cs.lth.se/cs/Education/edaf75/hHuFThN4a6CHrNO6cDO2n/db-pojo">here</a> (it's just a quick hack, so please don't read anything into the code – it requires that your computer has Python 3.6+ installed, and by now you should be at 3.10 or 3.11).
+</p>
+
+<p>
+Using this 'data class', our query can be implemented as a method in
+<code>Database</code> like this (we made the college and the major parameters of
+the method):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #7f7f7f; font-style: italic;">/* </span><span style="color: #cf9f7f; font-style: italic;">==================================</span><span style="color: #7f7f7f; font-style: italic;"> */</span>
+<span style="color: #7f7f7f; font-style: italic;">/* </span><span style="color: #cf9f7f; font-style: italic;">--- insert your own code below ---</span><span style="color: #7f7f7f; font-style: italic;"> */</span>
+<span style="color: #7f7f7f; font-style: italic;">/* </span><span style="color: #cf9f7f; font-style: italic;">===============================*==</span><span style="color: #7f7f7f; font-style: italic;"> */</span>
+
+<span style="color: #c48702;">public</span> <span style="color: #2fa526;">List</span>&lt;<span style="color: #2fa526;">Applicant</span>&gt; <span style="color: #3dbbb0;">findApplicants</span>(<span style="color: #2fa526;">String</span> <span style="color: #6fafff;">college</span>, <span style="color: #2fa526;">String</span> <span style="color: #6fafff;">major</span>) {
+    <span style="color: #2fa526;">var</span> <span style="color: #6fafff;">found</span> = <span style="color: #c48702;">new</span> <span style="color: #2fa526;">ArrayList</span>&lt;<span style="color: #2fa526;">Applicant</span>&gt;();
+    <span style="color: #2fa526;">var</span> <span style="color: #6fafff;">query</span> =
+        <span style="color: #f06a3f;">""</span><span style="color: #c48702;">"</span>
+        SELECT  s_id, <span style="color: #6fafff;">s_name</span>, <span style="color: #6fafff;">gpa</span>
+        FROM    applications
+                JOIN students USING (s_id)
+        WHERE   c_name = ? AND major = ?
+        <span style="color: #f06a3f;">""</span><span style="color: #c48702;">"</span><span style="color: #f06a3f;">;</span>
+    <span style="color: #c48702;">try</span> (<span style="color: #2fa526;">var</span> <span style="color: #6fafff;">ps</span> = conn.prepareStatement(query)) {
+        ps.setString(1, college);
+        ps.setString(2, major);
+        <span style="color: #2fa526;">var</span> <span style="color: #6fafff;">resultSet</span> = ps.executeQuery();
+        <span style="color: #c48702;">while</span> (resultSet.next()) {
+            found.add(Applicant.fromRS(resultSet));
+        }
+    } <span style="color: #c48702;">catch</span> (SQLException e) {
+        e.printStackTrace();
+    }
+    <span style="color: #c48702;">return</span> found;
+}
+</pre>
+</div>
+
+<p>
+As we saw above, this method can be called from <code>App</code> as:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #2fa526;">void</span> <span style="color: #3dbbb0;">run</span>() {
+    <span style="color: #2fa526;">var</span> <span style="color: #6fafff;">db</span> = <span style="color: #c48702;">new</span> <span style="color: #2fa526;">Database</span>();
+    db.openConnection(<span style="color: #f06a3f;">"colleges.sqlite"</span>);
+    <span style="color: #2fa526;">var</span> <span style="color: #6fafff;">applicants</span> = db.findApplicants(<span style="color: #f06a3f;">"Stanford"</span>, <span style="color: #f06a3f;">"CS"</span>);
+    <span style="color: #c48702;">for</span> (<span style="color: #2fa526;">var</span> <span style="color: #6fafff;">a</span> : applicants) {
+        System.out.printf(<span style="color: #f06a3f;">"%3d: %20s %.1f\n"</span>,
+                          a.id,
+                          a.name,
+                          a.gpa);
+    }
+}
+</pre>
+</div>
+
+<p>
+The method returns a list of POJO's (<code>Applicant</code>), and we can easily fetch their attributes.
+</p>
+
+<p>
+We ran the program using gradle, and since I use Linux, i wrote:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">$ ./gradlew run
+
+&gt; Task :app:run
+123:                  Amy 3.9
+876:                Irene 3.9
+987:                Helen 3.7
+
+BUILD SUCCESSFUL<span style="color: #c48702;"> in</span> 795ms
+2 actionable tasks: 1 executed, 1 up-to-date
+</pre>
+</div>
+
+<p>
+This should work on a Mac as well, on Windows you can run a
+gradle project with the command:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">$ gradlew run
+</pre>
+</div>
+
+<p>
+<b>Exercise:</b> Write code to show which major at which college was most popular – a solution can be found at the bottom of this page.
+</p>
+
+<p>
+I've been asked the (very good) question why we don't just return the <code>ResultSet</code> objects themselves from the query functions in <code>Database</code>, and the answer is that it could work, but it would be against the <i>Single Responsibility Principle</i>, which states that a package or class ideally should have the responsibility for one thing, <i>and handle everything which has to do with that thing</i> (the latter part is often forgotten – you'll learn more about it in EDAF60).
+Breaking the principle would mean that the <code>Database</code> class and the calling class (<code>App</code> in this case) would be very tightly coupled, since the calling class would have to know exactly how the query was stated (i.e., what we called the returned values in our query) – a small change in one class could easily affect the other class, and it would make the code brittle.
+One might argue that the same holds for <code>Database</code> and <code>Applicant</code>, but at least they would be part of the same package.
+</p>
+
+<p>
+Next we wanted to try an SQL <code>UPDATE</code>, and I intended to write a method which inflates the grades for all students who had applied for a given major – since we were running low on time, I skipped to talking about Python instead, but promised to show how to inflate grades in Java in these notes, so here we go:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #c48702;">public</span> <span style="color: #2fa526;">void</span> <span style="color: #3dbbb0;">inflateGrades</span>(<span style="color: #2fa526;">String</span> <span style="color: #6fafff;">college</span>, <span style="color: #2fa526;">double</span> <span style="color: #6fafff;">percentage</span>) {
+    <span style="color: #2fa526;">var</span> <span style="color: #6fafff;">factor</span> = 1.0 + percentage / 100.0;
+    <span style="color: #2fa526;">var</span> <span style="color: #6fafff;">statement</span> =
+        <span style="color: #f06a3f;">""</span><span style="color: #c48702;">"</span>
+        UPDATE   students
+        SET      gpa = min(4.0, gpa * ?)
+        WHERE    s_id IN (
+                    SELECT DISTINCT s_id
+                    FROM   applications
+                    <span style="color: #2fa526;">WHERE</span>  <span style="color: #6fafff;">c_name</span> = ?
+        )
+        <span style="color: #f06a3f;">""</span><span style="color: #c48702;">"</span><span style="color: #f06a3f;">;</span>
+    <span style="color: #c48702;">try</span> (<span style="color: #2fa526;">var</span> <span style="color: #6fafff;">ps</span> = conn.prepareStatement(statement)) {
+        ps.setDouble(1, factor);
+        ps.setString(2, college);
+        ps.execute();
+    } <span style="color: #c48702;">catch</span> (SQLException e) {
+        e.printStackTrace();
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-the-same-thing-in-python" class="outline-3">
+<h3 id="the-same-thing-in-python">The same thing in Python</h3>
+<div class="outline-text-3" id="text-the-same-thing-in-python">
+<p>
+In <a href="https://www.python.org/">Python</a>, everything we did above becomes much less verbose – we wrote a program which solves the same problem as the Java program above (using the <a href="https://docs.python.org/3/library/sqlite3.html?highlight=pysqlite#"><code>sqlite3</code></a> library):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #c48702;">import</span> sqlite3
+
+
+<span style="color: #6fafff;">db</span> = sqlite3.connect(<span style="color: #f06a3f;">"colleges.sqlite"</span>)
+
+
+<span style="color: #c48702;">def</span> <span style="color: #3dbbb0;">find_applicants</span>(college, major):
+    <span style="color: #6fafff;">c</span> = db.cursor()
+    c.execute(
+        <span style="color: #f06a3f;">"""</span>
+<span style="color: #f06a3f;">        SELECT  s_id, s_name, gpa</span>
+<span style="color: #f06a3f;">        FROM    applications</span>
+<span style="color: #f06a3f;">                JOIN students USING (s_id)</span>
+<span style="color: #f06a3f;">        WHERE   c_name = ? AND major = ?</span>
+<span style="color: #f06a3f;">        """</span>,
+        [college, major]
+    )
+    <span style="color: #c48702;">return</span> <span style="color: #ff7a7f;">list</span>(c)
+
+
+<span style="color: #c48702;">def</span> <span style="color: #3dbbb0;">main</span>():
+    <span style="color: #6fafff;">applicants</span> = find_applicants(<span style="color: #f06a3f;">"Stanford"</span>, <span style="color: #f06a3f;">"CS"</span>)
+    <span style="color: #c48702;">for</span> <span style="color: #ff7a7f;">id</span>, name, gpa <span style="color: #c48702;">in</span> applicants:
+        <span style="color: #ff7a7f;">print</span>(f<span style="color: #f06a3f;">"</span>{<span style="color: #ff7a7f;">id</span>:3d}<span style="color: #f06a3f;">: </span>{name:&gt;20}<span style="color: #f06a3f;"> (</span>{gpa}<span style="color: #f06a3f;">)"</span>)
+
+
+main()
+</pre>
+</div>
+
+<p>
+At least I think it's hard to imagine a simpler way to call SQL code from another language!
+</p>
+
+<p>
+When we ran the program, we got:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">$ python app.py
+123:                  Amy (3.9)
+876:                Irene (3.9)
+987:                Helen (3.7)
+</pre>
+</div>
+
+<p>
+We then tried to inflate grades, and came up with:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #c48702;">import</span> sqlite3
+
+
+<span style="color: #6fafff;">db</span> = sqlite3.connect(<span style="color: #f06a3f;">"colleges.sqlite"</span>)
+
+
+<span style="color: #c48702;">def</span> <span style="color: #3dbbb0;">find_applicants</span>(college, major):
+    <span style="color: #6fafff;">c</span> = db.cursor()
+    c.execute(
+        <span style="color: #f06a3f;">"""</span>
+<span style="color: #f06a3f;">        SELECT  s_id, s_name, gpa</span>
+<span style="color: #f06a3f;">        FROM    applications</span>
+<span style="color: #f06a3f;">                JOIN students USING (s_id)</span>
+<span style="color: #f06a3f;">        WHERE   c_name = ? AND major = ?</span>
+<span style="color: #f06a3f;">        """</span>,
+        [college, major]
+    )
+    <span style="color: #c48702;">return</span> <span style="color: #ff7a7f;">list</span>(c)
+
+
+<span style="color: #c48702;">def</span> <span style="color: #3dbbb0;">inflate_grades</span>(college, percentage):
+    <span style="color: #6fafff;">c</span> = db.cursor()
+    c.execute(
+        <span style="color: #f06a3f;">"""</span>
+<span style="color: #f06a3f;">        UPDATE students</span>
+<span style="color: #f06a3f;">        SET    gpa = min(4.0, gpa * ?)</span>
+<span style="color: #f06a3f;">        WHERE  s_id IN (</span>
+<span style="color: #f06a3f;">            SELECT DISTINCT s_id</span>
+<span style="color: #f06a3f;">            FROM   applications</span>
+<span style="color: #f06a3f;">            WHERE  c_name = ?</span>
+<span style="color: #f06a3f;">        )</span>
+<span style="color: #f06a3f;">        """</span>,
+        [1.0 + percentage/100.0, college]
+    )
+    db.commit()
+
+
+<span style="color: #c48702;">def</span> <span style="color: #3dbbb0;">main</span>():
+    <span style="color: #6fafff;">applicants</span> = find_applicants(<span style="color: #f06a3f;">"Stanford"</span>, <span style="color: #f06a3f;">"CS"</span>)
+    <span style="color: #c48702;">for</span> <span style="color: #ff7a7f;">id</span>, name, gpa <span style="color: #c48702;">in</span> applicants:
+        <span style="color: #ff7a7f;">print</span>(f<span style="color: #f06a3f;">"</span>{<span style="color: #ff7a7f;">id</span>:3d}<span style="color: #f06a3f;">: </span>{name:&gt;20}<span style="color: #f06a3f;"> (</span>{gpa:.1f}<span style="color: #f06a3f;">)"</span>)
+    inflate_grades(<span style="color: #f06a3f;">"Stanford"</span>, 2);
+    <span style="color: #6fafff;">applicants</span> = find_applicants(<span style="color: #f06a3f;">"Stanford"</span>, <span style="color: #f06a3f;">"CS"</span>)
+    <span style="color: #c48702;">for</span> <span style="color: #ff7a7f;">id</span>, name, gpa <span style="color: #c48702;">in</span> applicants:
+        <span style="color: #ff7a7f;">print</span>(f<span style="color: #f06a3f;">"</span>{<span style="color: #ff7a7f;">id</span>:3d}<span style="color: #f06a3f;">: </span>{name:&gt;20}<span style="color: #f06a3f;"> (</span>{gpa:.1f}<span style="color: #f06a3f;">)"</span>)
+
+
+main()
+</pre>
+</div>
+
+<p>
+Here we must be careful to call <code>db.commit()</code> after we've updated the database – we'll talk more about this in week 5.
+</p>
+
+<p>
+When we ran the program, we got:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ python app.py
+123:                  Amy (3.9)
+876:                Irene (3.9)
+987:                Helen (3.7)
+123:                  Amy (4.0)
+876:                Irene (4.0)
+987:                Helen (3.8)
+</pre>
+</div>
+
+<p>
+So, yes, it seems to work!
+</p>
+
+<p>
+You don't have to learn Python for this course, but it undeniably makes some things much easier, and it's worth looking into when you get the time – I'd be happy to try to help you during the QA-sessions.
+</p>
+</div>
+</div>
+<div id="outline-container-answer-to-exercise-finding-the-most-popular-majors" class="outline-3">
+<h3 id="answer-to-exercise-finding-the-most-popular-majors">Answer to exercise: Finding the most popular majors</h3>
+<div class="outline-text-3" id="text-answer-to-exercise-finding-the-most-popular-majors">
+</div>
+<div id="outline-container-java-solution" class="outline-4">
+<h4 id="java-solution">Java solution</h4>
+<div class="outline-text-4" id="text-java-solution">
+<p>
+We need to add some code in our main program (<code>run</code>):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #2fa526;">var</span> <span style="color: #6fafff;">applicationStats</span> = db.findApplicationStatistics();
+System.out.println(<span style="color: #f06a3f;">"Most popular colleges/majors"</span>);
+<span style="color: #c48702;">for</span> (<span style="color: #2fa526;">var</span> <span style="color: #6fafff;">appStat</span> : applicationStats) {
+    System.out.printf(<span style="color: #f06a3f;">"%4d: %s@%s\n"</span>, appStat.count, appStat.major, appStat.college);
+}
+</pre>
+</div>
+
+<p>
+For this to work, we need a POJO <code>ApplicationStats</code>, we can use <code>db-pojo</code> to create it (or write it ourselves…):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">$ python db-pojo -j
+ApplicationStats
+major: String
+c_name -&gt; college : String
+cnt -&gt; count : int
+class ApplicationStats {
+
+    public final String major;
+    public final String college;
+    public final int count;
+
+    private ApplicationStats  (String major, String college, int count) {
+        this.major = major;
+        this.college = college;
+        this.count = count;
+    }
+
+    public static ApplicationStats fromRS(ResultSet rs) throws SQLException {
+        <span style="color: #c48702;">return</span> new ApplicationStats(rs.getString(<span style="color: #f06a3f;">"major"</span>), rs.getString(<span style="color: #f06a3f;">"c_name"</span>), rs.getInt(<span style="color: #f06a3f;">"cnt"</span>));
+    }
+}
+</pre>
+</div>
+
+<p>
+and we put the <code>ApplicationStats</code> class in our <code>Database</code> file.
+</p>
+
+<p>
+Now it's relatively straight-forward to implement our
+<code>findApplicationStatistics()</code>-method:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #c48702;">public</span> <span style="color: #2fa526;">List</span>&lt;<span style="color: #2fa526;">ApplicationStats</span>&gt; <span style="color: #3dbbb0;">findApplicationStatistics</span>() {
+    <span style="color: #2fa526;">var</span> <span style="color: #6fafff;">found</span> = <span style="color: #c48702;">new</span> <span style="color: #2fa526;">ArrayList</span>&lt;<span style="color: #2fa526;">ApplicationStats</span>&gt;();
+    <span style="color: #2fa526;">var</span> <span style="color: #6fafff;">query</span> =
+        <span style="color: #f06a3f;">""</span><span style="color: #c48702;">"</span>
+        SELECT    major, <span style="color: #6fafff;">c_name</span>, <span style="color: #3dbbb0;">count</span>() AS cnt
+        FROM      applications
+                  JOIN colleges USING (c_name)
+        GROUP BY  c_name, <span style="color: #6fafff;">major</span>
+        ORDER BY  cnt DESC
+        LIMIT     3
+        <span style="color: #f06a3f;">""</span><span style="color: #c48702;">"</span><span style="color: #f06a3f;">;</span>
+    <span style="color: #c48702;">try</span> (<span style="color: #2fa526;">var</span> <span style="color: #6fafff;">ps</span> = conn.prepareStatement(query)) {
+        var rs = ps.executeQuery();
+        <span style="color: #c48702;">while</span> (rs.next()) {
+            found.add(ApplicationStats.fromRS(rs));
+        }
+    } <span style="color: #c48702;">catch</span> (SQLException e) {
+        e.printStackTrace();
+    }
+    <span style="color: #c48702;">return</span> found;
+}
+</pre>
+</div>
+
+<p>
+When we run this program we get:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">$ ./gradlew run
+Most popular colleges/majors
+   3: CS@Stanford
+   2: CS@Berkeley
+   2: EE@Cornell
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-python-solution" class="outline-4">
+<h4 id="python-solution">Python solution</h4>
+<div class="outline-text-4" id="text-python-solution">
+<p>
+As usual, the Python version is a bit shorter than the corresponding Java version:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #c48702;">import</span> sqlite3
+
+<span style="color: #6fafff;">db</span> = sqlite3.connect(<span style="color: #f06a3f;">"colleges.sqlite"</span>)
+
+
+<span style="color: #c48702;">def</span> <span style="color: #3dbbb0;">application_stats</span>():
+    <span style="color: #6fafff;">c</span> = db.cursor()
+    c.execute(
+        <span style="color: #f06a3f;">"""</span>
+<span style="color: #f06a3f;">        SELECT    major, c_name, count() AS cnt</span>
+<span style="color: #f06a3f;">        FROM      applications</span>
+<span style="color: #f06a3f;">                  JOIN colleges USING (c_name)</span>
+<span style="color: #f06a3f;">        GROUP BY  c_name, major</span>
+<span style="color: #f06a3f;">        ORDER BY  cnt DESC</span>
+<span style="color: #f06a3f;">        LIMIT     3</span>
+<span style="color: #f06a3f;">        """</span>)
+    <span style="color: #c48702;">return</span> <span style="color: #ff7a7f;">list</span>(c)
+
+
+<span style="color: #c48702;">def</span> <span style="color: #3dbbb0;">main</span>():
+    <span style="color: #c48702;">for</span> major, college, count <span style="color: #c48702;">in</span> application_stats():
+        <span style="color: #ff7a7f;">print</span>(f<span style="color: #f06a3f;">"</span>{count:4}<span style="color: #f06a3f;">: </span>{major}<span style="color: #f06a3f;">@</span>{college}<span style="color: #f06a3f;">"</span>)
+
+
+main()
+</pre>
+</div>
+
+<p>
+That's all we need, and when we run it, we get:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">$ python colleges.py
+   3: CS@Stanford
+   2: CS@Berkeley
+   2: EE@Cornell
+</pre>
+</div>
+
+<p>
+If you have any questions, please come to the QA session on Wednesday (you can sign up in Moodle – see the course webpage).
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>

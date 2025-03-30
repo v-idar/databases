@@ -1,0 +1,1908 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0083)https://fileadmin.cs.lth.se/cs/Education/edaf75/hHuFThN4a6CHrNO6cDO2n/notes-06.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EDAF75: Database technology</title>
+<meta name="generator" content="Org Mode">
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" href="./Lecture 6 - notes_files/style.css">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">EDAF75: Database technology</h1>
+<div id="outline-container-org899c9e1" class="outline-2">
+<h2 id="org899c9e1">Session 6 – notes</h2>
+<div class="outline-text-2" id="text-org899c9e1">
+<p>
+Here are some resources for lecture 6 (the Thursday lecture in course week 3).
+I spent most of the time going through the slides and implementing parts of a simple REST server in Python – you can see the slides <a href="https://fileadmin.cs.lth.se/cs/Education/edaf75/hHuFThN4a6CHrNO6cDO2n/s06-oh.pdf">here</a>.
+</p>
+
+<p>
+During the course you'll have to implement two REST services of your own, one for lab 3, and one for the project – in both cases you can use either Python/Bottle or Java/SparkJava.
+</p>
+
+<p>
+The text below describes:
+</p>
+
+<ul class="org-ul">
+<li>a Python file, which implements a server using the Bottle library.</li>
+
+<li>a <code>gradle</code> project with a server written in Java, using the SparkJava library, and</li>
+</ul>
+
+<p>
+Knowing the basics of <a href="https://en.wikipedia.org/wiki/Java_Database_Connectivity"><code>JDBC</code></a>, i.e., the Java standard classes used for communicating with an SQL database (such as <code>Connection</code>, <code>Statement</code>, <code>PreparedStatement</code>, <code>ResultSet</code>, etc.) is part of the course, but the details of writing a REST service in Java using JavaSpark is not.
+</p>
+
+<p>
+So, if you decide to use Python for lab 3 and the project, you can skip the rather lengthy description of the Java server below. And similarily, if you chose to write lab 3 and the project in Java, you don't need to read about the Python server shown below.
+</p>
+</div>
+<div id="outline-container-more-about-rest" class="outline-3">
+<h3 id="more-about-rest">More about REST</h3>
+<div class="outline-text-3" id="text-more-about-rest">
+<p>
+You don't need to learn how to design REST apis in this course, but there's a good website describing <a href="https://phauer.com/2015/restful-api-design-best-practices/">principles for designing a REST API</a> – it's way beyond the scope of this course, but may give you some perspective.
+</p>
+</div>
+</div>
+<div id="outline-container-pythonbottle-version-not-required" class="outline-3">
+<h3 id="pythonbottle-version-not-required">Python/Bottle version (not required, but highly recommended!)</h3>
+<div class="outline-text-3" id="text-pythonbottle-version-not-required">
+<p>
+Those of you who know Python, or want to learn it so you can use it in this course, can use a great library called <a href="https://bottlepy.org/docs/dev/">Bottle</a> (there are many others, some of them quite a bit more advanced, but for the purpose of this course, Bottle will do nicely).
+So I started to implement some endpoints of a REST service in Python.
+</p>
+
+<p>
+There are several different ways to install Bottle on your own computer, among them:
+</p>
+
+<ul class="org-ul">
+<li>use <code>pip install Bottle</code> globally</li>
+<li>create a virtual environment (you can google it, or see below)</li>
+<li>use a package manager such as <a href="https://python-poetry.org/">poetry</a></li>
+</ul>
+
+<p>
+I'll leave it to you how to handle the installation.
+</p>
+
+<p>
+Once Bottle is installed, all that's needed is that we add two files in this directory:
+</p>
+
+<ul class="org-ul">
+<li>a file with our database (<code>colleges.sqlite</code>), and</li>
+<li>the source code below (we can call the program <code>app.py</code>)</li>
+</ul>
+
+<p>
+You can download a zip file with the database and the source code below <a href="https://fileadmin.cs.lth.se/cs/Education/edaf75/hHuFThN4a6CHrNO6cDO2n/lect06-python-rest-demo.zip">here</a>.
+</p>
+</div>
+<div id="outline-container-orgd3ef5f0" class="outline-4">
+<h4 id="orgd3ef5f0">Looking for a specific student resource</h4>
+<div class="outline-text-4" id="text-orgd3ef5f0">
+<p>
+During the lecture, I started by implementing the <code>"/students"</code>-endpoint, using the function <code>get_students</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #c48702;">from</span> bottle <span style="color: #c48702;">import</span> get, post, run, request, response
+<span style="color: #c48702;">import</span> sqlite3
+
+
+<span style="color: #6fafff;">PORT</span> = 4567
+<span style="color: #6fafff;">db</span> = sqlite3.connect(<span style="color: #f06a3f;">'colleges.sqlite'</span>)
+
+
+<span style="color: #2fa526;">@get</span>(<span style="color: #f06a3f;">'/students'</span>)
+<span style="color: #c48702;">def</span> <span style="color: #3dbbb0;">get_students</span>():
+    <span style="color: #6fafff;">c</span> = db.cursor()
+    c.execute(
+        <span style="color: #f06a3f;">"""</span>
+<span style="color: #f06a3f;">        SELECT   s_id, s_name, gpa</span>
+<span style="color: #f06a3f;">        FROM     students</span>
+<span style="color: #f06a3f;">        """</span>
+    )
+    response.<span style="color: #6fafff;">status</span> = 200
+    <span style="color: #6fafff;">found</span> = [{<span style="color: #f06a3f;">"id"</span>: <span style="color: #ff7a7f;">id</span>,
+              <span style="color: #f06a3f;">"name"</span>: name,
+              <span style="color: #f06a3f;">"gpa"</span>: grade} <span style="color: #c48702;">for</span> <span style="color: #ff7a7f;">id</span>, name, grade <span style="color: #c48702;">in</span> c]
+    <span style="color: #c48702;">return</span> {<span style="color: #f06a3f;">"data"</span>: found}
+
+
+run(host=<span style="color: #f06a3f;">'localhost'</span>, port=PORT)
+</pre>
+</div>
+
+<p>
+I promised to explain how the <i>list comprehension</i> where we picked values from our query result works, there is an attempt at an explanation <a href="https://fileadmin.cs.lth.se/cs/Education/edaf75/hHuFThN4a6CHrNO6cDO2n/notes-06.html#org3ac3fae">near the bottom of this page</a>.
+</p>
+
+<p>
+The <code>@get('/students')</code> thingy just before the definition of <code>get_students</code> is a <i>decorator</i>, which Bottle uses to tie <code>GET</code> requests for the endpoint <code>"/students"</code> to the function <code>get_students</code> – it also ensures that Bottle transforms the return value of the function into something appropriate, typically a JSON object.
+</p>
+
+<p>
+One thing which is a bit surprising is that Bottle doesn't handle lists as return values, but REST services (or JSON over HTTP) typically wrap their results inside an object with the field <code>"data"</code>, so that's what the <code>return</code> statement does.
+</p>
+
+<p>
+If we had been dead set on returning just a JSON list, we could have done so using Python's standard JSON package (<code>import json</code> and then <code>json.dumps(found)</code>), but the wrapped return value above is the prefered way to do it.
+</p>
+</div>
+</div>
+<div id="outline-container-orga685056" class="outline-4">
+<h4 id="orga685056">Looking for a specific student resource</h4>
+<div class="outline-text-4" id="text-orga685056">
+<p>
+Looking for a specific student using their <code>s_id</code>, we add the id to the endpoint URL (I showed you this during the lecture), and Bottle will extract id it into an argument to the decorated function:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #2fa526;">@get</span>(<span style="color: #f06a3f;">'/students/&lt;s_id&gt;'</span>)
+<span style="color: #c48702;">def</span> <span style="color: #3dbbb0;">get_student</span>(s_id):
+    <span style="color: #6fafff;">c</span> = db.cursor()
+    c.execute(
+        <span style="color: #f06a3f;">"""</span>
+<span style="color: #f06a3f;">        SELECT   s_id, s_name, gpa</span>
+<span style="color: #f06a3f;">        FROM     students</span>
+<span style="color: #f06a3f;">        WHERE    s_id = ?</span>
+<span style="color: #f06a3f;">        """</span>,
+        [s_id]
+    )
+    <span style="color: #6fafff;">found</span> = [{<span style="color: #f06a3f;">"id"</span>: <span style="color: #ff7a7f;">id</span>,
+              <span style="color: #f06a3f;">"name"</span>: name,
+              <span style="color: #f06a3f;">"gpa"</span>: grade} <span style="color: #c48702;">for</span> <span style="color: #ff7a7f;">id</span>, name, grade <span style="color: #c48702;">in</span> c]
+    <span style="color: #c48702;">if</span> <span style="color: #ff7a7f;">len</span>(found) == 0:
+        response.<span style="color: #6fafff;">status</span> = 404
+        <span style="color: #c48702;">return</span> <span style="color: #f06a3f;">"Didn't find student"</span>
+    <span style="color: #c48702;">return</span> {<span style="color: #f06a3f;">"data"</span>: found}
+</pre>
+</div>
+
+<p>
+We can now find information about just one student, but we return a list (which is nice, since we only need to return an empty list in case there is no student with the given id).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ curl -X GET http://localhost:4567/students/123
+{<span style="color: #f06a3f;">"data"</span>: [{<span style="color: #f06a3f;">"id"</span>: 123, <span style="color: #f06a3f;">"name"</span>: <span style="color: #f06a3f;">"Amy"</span>, <span style="color: #f06a3f;">"gpa"</span>: 3.9, <span style="color: #f06a3f;">"sizeHS"</span>: 1000}]}%
+$ curl -X GET http://localhost:4567/students/628
+{<span style="color: #f06a3f;">"data"</span>: []}%
+</pre>
+</div>
+
+<p>
+We also tried this endpoint inside a tool called <a href="https://insomnia.rest/products/insomnia">"insomnia"</a> (the version I used is free), but there are many alternatives.
+</p>
+</div>
+</div>
+<div id="outline-container-using_query_strings" class="outline-4">
+<h4 id="using_query_strings">Using query strings to find specific values</h4>
+<div class="outline-text-4" id="text-using_query_strings">
+<p>
+Sometimes we want to have a way to filter out specific values, if we want just all student with the name "Amy", we want to be able to use the call:
+</p>
+
+<pre class="example" id="org4306e02">$ curl -X GET http://localhost:4567/students?name=Amy
+{
+  "data": [
+    {
+      "id": 123,
+      "name": "Amy",
+      "gpa": 3.9,
+    },
+    {
+      "id": 654,
+      "name": "Amy",
+      "gpa": 3.9,
+    }
+  ]
+}
+</pre>
+
+<p>
+The exact format of the query string depends on where we write it, when I write the call above in my terminal window (<a href="https://alacritty.org/">Alacritty</a> running on <a href="https://archlinux.org/">Arch Linux</a>), it adds a backslash before the question mark, and before the equal sign, so it looks like:
+</p>
+
+<pre class="example" id="orgdcbfd84">$ curl -X GET http://localhost:4567/students\?name\=Amy
+</pre>
+
+<p>
+but YMMV (depending on what operating system you're on, and what command line client or tool you use).
+</p>
+
+<p>
+BTW, the output of the command was actually much 'messier' (everything on one line), but I piped it through the program <a href="https://jqlang.github.io/jq/"><code>jq</code></a>, which makes it look much nicer (as above).
+</p>
+
+<p>
+As an example we can also add a way to find only student with a minimum gpa (now I've copied the call verbatim from my terminal window):
+</p>
+
+<pre class="example" id="org8745bab">$ curl -X GET http://localhost:4567/students\?minGpa\=3.9 | jq
+{
+  "data": [
+    {
+      "id": 123,
+      "name": "Amy",
+      "gpa": 3.9,
+    },
+    {
+      "id": 456,
+      "name": "Doris",
+      "gpa": 3.9,
+    },
+    {
+      "id": 654,
+      "name": "Amy",
+      "gpa": 3.9,
+    },
+    {
+      "id": 876,
+      "name": "Irene",
+      "gpa": 3.9,
+    }
+  ]
+}
+</pre>
+
+<p>
+We can also combine the two queries:
+</p>
+
+<pre class="example" id="org1b591f5">$ curl -X GET http://localhost:4567/students\?minGpa\=3.9\&amp;name\=Amy | jq
+{
+  "data": [
+    {
+      "id": 123,
+      "name": "Amy",
+      "gpa": 3.9,
+    },
+    {
+      "id": 654,
+      "name": "Amy",
+      "gpa": 3.9,
+    }
+  ]
+}
+</pre>
+
+<p>
+The query parameters are sent as a part of the <a href="https://en.wikipedia.org/wiki/URL">URL</a>, and many of the symbols we might want to use in our queries, such as spaces, commas and periods, aren't allowed in a URL.
+Fortunately we can use <a href="https://en.wikipedia.org/wiki/Percent-encoding"><i>URL encoding</i></a> (also known as <i>Percent-encoding</i>), which is a standardized way of translating a string with 'illegal' characters into a safe string, and back again. As an example, using URL encoding we can translate the string
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text">to be, or not to be
+</pre>
+</div>
+
+<p>
+into
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text">to%20be%2C%20or%20not%20to%20be
+</pre>
+</div>
+
+<p>
+In Python we can import the <code>quote</code> and <code>unquote</code> functions from <a href="https://docs.python.org/3/library/urllib.parse.html"><code>urllib.parse</code></a>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java">from urllib.<span style="color: #2fa526;">parse</span> <span style="color: #c48702;">import</span> <span style="color: #2fa526;">quote</span>, <span style="color: #2fa526;">unquote</span>
+</pre>
+</div>
+
+<p>
+which gives us <code>quote</code> to translate from regular text into 'safe' strings, and <code>unquote</code> to translate back to regular text again (I had some serious problems writing 'unquote', it's one of the very, very few words which are actually more difficult to write using the Dvorak layout than using QWERTY).
+</p>
+
+<p>
+To add query parameters to our requests, we write an updated version of the <code>getStudents</code> method we saw above – now we have to check which query parameters are in <code>request</code> (for requests without parameters, it's going to work as before). One way to do this is to first create a query which is amenable to the addition of zero or more extra conditions.
+</p>
+
+<p>
+So instead of
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #c48702;">SELECT</span>   s_id, s_name, gpa, size_hs
+<span style="color: #c48702;">FROM</span>     students
+</pre>
+</div>
+
+<p>
+I added the seemingly nonsensical <code>WHERE TRUE</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #c48702;">SELECT</span>   s_id, s_name, gpa, size_hs
+<span style="color: #c48702;">FROM</span>     students
+<span style="color: #c48702;">WHERE</span>    <span style="color: #c48702;">TRUE</span>
+</pre>
+</div>
+
+<p>
+This is a very pragmatic trick, and the point of it is that we now can add zero or more lines with additional conditions:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #c48702;">SELECT</span>   s_id, s_name, gpa, size_hs
+<span style="color: #c48702;">FROM</span>     students
+<span style="color: #c48702;">WHERE</span>    <span style="color: #c48702;">TRUE</span>
+         <span style="color: #c48702;">AND</span> s_name = ?
+         <span style="color: #c48702;">AND</span> gpa &gt; ?
+</pre>
+</div>
+
+<p>
+We can ask <code>request</code> for potential query parameters by just testing if they're defined – the expression
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">request.query.name
+</pre>
+</div>
+
+<p>
+contains the value of the query parameter <code>name</code>, if it's set, or <code>None</code> if it's not set.
+</p>
+
+<p>
+This is what we ended up with:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #2fa526;">@get</span>(<span style="color: #f06a3f;">'/students'</span>)
+<span style="color: #c48702;">def</span> <span style="color: #3dbbb0;">get_students</span>():
+    <span style="color: #6fafff;">query</span> = <span style="color: #f06a3f;">"""</span>
+<span style="color: #f06a3f;">        SELECT   s_id, s_name, gpa</span>
+<span style="color: #f06a3f;">        FROM     students</span>
+<span style="color: #f06a3f;">        WHERE    TRUE</span>
+<span style="color: #f06a3f;">        """</span>
+    <span style="color: #6fafff;">params</span> = []
+
+    <span style="color: #c48702;">if</span> request.query.name:
+        <span style="color: #6fafff;">query</span> += <span style="color: #f06a3f;">"AND s_name = ?"</span>
+        params.append(unquote(request.query.name))
+    <span style="color: #c48702;">if</span> request.query.minGpa:
+        <span style="color: #6fafff;">query</span> += <span style="color: #f06a3f;">"AND gpa &gt;= ?"</span>
+        params.append(request.query.minGpa)
+    <span style="color: #6fafff;">c</span> = db.cursor()
+    c.execute(
+        query,
+        params
+    )
+    response.<span style="color: #6fafff;">status</span> = 200
+    <span style="color: #6fafff;">found</span> = [{<span style="color: #f06a3f;">"id"</span>: <span style="color: #ff7a7f;">id</span>,
+              <span style="color: #f06a3f;">"name"</span>: name,
+              <span style="color: #f06a3f;">"gpa"</span>: grade} <span style="color: #c48702;">for</span> <span style="color: #ff7a7f;">id</span>, name, grade <span style="color: #c48702;">in</span> c]
+    <span style="color: #c48702;">return</span> {<span style="color: #f06a3f;">"data"</span>: found}
+</pre>
+</div>
+
+<p>
+To use this, the caller must URL-encode her query parameters – for simple strings as above, it will make no difference:
+</p>
+
+<pre class="example" id="org5877496">$ curl -X GET http://localhost:4567/students\?minGpa\=3.9\&amp;name\=Amy
+</pre>
+
+<p>
+but to look for "Anna Karin", the encoding looks a bit different:
+</p>
+
+<pre class="example" id="org1a8ba1e">$ curl -X GET http://localhost:4567/students\?minGpa\=3.9\&amp;name\=Anna%20Karin
+</pre>
+
+<p>
+When I try this (and pipe though <code>jq</code>, a JSON formatter), I get:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">curl -X GET http://localhost:4567/students<span style="color: #f06a3f;">\?</span>name<span style="color: #f06a3f;">\=</span>Amy | jq
+{
+  <span style="color: #f06a3f;">"data"</span>: [
+    {
+      <span style="color: #f06a3f;">"id"</span>: 123,
+      <span style="color: #f06a3f;">"name"</span>: <span style="color: #f06a3f;">"Amy"</span>,
+      <span style="color: #f06a3f;">"gpa"</span>: 3.9,
+      <span style="color: #f06a3f;">"sizeHS"</span>: 1000
+    },
+    {
+      <span style="color: #f06a3f;">"id"</span>: 654,
+      <span style="color: #f06a3f;">"name"</span>: <span style="color: #f06a3f;">"Amy"</span>,
+      <span style="color: #f06a3f;">"gpa"</span>: 3.9,
+      <span style="color: #f06a3f;">"sizeHS"</span>: 1000
+    },
+    {
+      <span style="color: #f06a3f;">"id"</span>: 988,
+      <span style="color: #f06a3f;">"name"</span>: <span style="color: #f06a3f;">"Amy"</span>,
+      <span style="color: #f06a3f;">"gpa"</span>: 3.2,
+      <span style="color: #f06a3f;">"sizeHS"</span>: 400
+    }
+  ]
+}
+</pre>
+</div>
+
+<p>
+If we try with two query strings at the same time, we get:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ curl -X GET http://localhost:4567/students<span style="color: #f06a3f;">\?</span>name<span style="color: #f06a3f;">\=</span>Amy<span style="color: #f06a3f;">\&amp;</span>minGpa<span style="color: #f06a3f;">\=</span>3.6 | jq
+{
+  <span style="color: #f06a3f;">"data"</span>: [
+    {
+      <span style="color: #f06a3f;">"id"</span>: 123,
+      <span style="color: #f06a3f;">"name"</span>: <span style="color: #f06a3f;">"Amy"</span>,
+      <span style="color: #f06a3f;">"gpa"</span>: 3.9,
+      <span style="color: #f06a3f;">"sizeHS"</span>: 1000
+    },
+    {
+      <span style="color: #f06a3f;">"id"</span>: 654,
+      <span style="color: #f06a3f;">"name"</span>: <span style="color: #f06a3f;">"Amy"</span>,
+      <span style="color: #f06a3f;">"gpa"</span>: 3.9,
+      <span style="color: #f06a3f;">"sizeHS"</span>: 1000
+    }
+  ]
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge8f1b7d" class="outline-4">
+<h4 id="orge8f1b7d">Posting data to the REST service</h4>
+<div class="outline-text-4" id="text-orge8f1b7d">
+<p>
+One of the many nice features of Bottle is that it provides a value <code>request.json</code>, which contains any JSON object in the request body, and serves it as a dictionary.
+</p>
+
+<p>
+This makes it remarkably easy to implement <code>POST</code> to our endpoints, this is all it takes to add a new student:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #2fa526;">@post</span>(<span style="color: #f06a3f;">'/students'</span>)
+<span style="color: #c48702;">def</span> <span style="color: #3dbbb0;">post_student</span>():
+    <span style="color: #6fafff;">student</span> = request.json
+    <span style="color: #6fafff;">c</span> = db.cursor()
+    <span style="color: #c48702;">try</span>:
+        c.execute(
+            <span style="color: #f06a3f;">"""</span>
+<span style="color: #f06a3f;">            INSERT</span>
+<span style="color: #f06a3f;">            INTO   students(s_id, s_name, gpa)</span>
+<span style="color: #f06a3f;">            VALUES (?,?,?)</span>
+<span style="color: #f06a3f;">            RETURNING  s_id</span>
+<span style="color: #f06a3f;">            """</span>,
+            [student[<span style="color: #f06a3f;">'id'</span>], student[<span style="color: #f06a3f;">'name'</span>], student[<span style="color: #f06a3f;">'gpa'</span>]]
+        )
+        <span style="color: #6fafff;">found</span> = c.fetchone()
+        <span style="color: #c48702;">if</span> <span style="color: #c48702;">not</span> found:
+            response.<span style="color: #6fafff;">status</span> = 400
+            <span style="color: #c48702;">return</span> <span style="color: #f06a3f;">"Illegal..."</span>
+        <span style="color: #c48702;">else</span>:
+            db.commit()
+            response.<span style="color: #6fafff;">status</span> = 201
+            <span style="color: #6fafff;">s_id</span>, = found
+            <span style="color: #c48702;">return</span> f<span style="color: #f06a3f;">"http://localhost:</span>{PORT}<span style="color: #f06a3f;">/</span>{s_id}<span style="color: #f06a3f;">"</span>
+    <span style="color: #c48702;">except</span> sqlite3.IntegrityError:
+        response.<span style="color: #6fafff;">status</span> = 409
+        <span style="color: #c48702;">return</span> <span style="color: #f06a3f;">"Student id already in use"</span>
+</pre>
+</div>
+
+<p>
+Observe that we have to call <code>db.commit()</code> after we have updated our table – it has to do with <i>transactions</i>, which we'll talk about in a couple of weeks.
+</p>
+
+<p>
+Here we use a relatively new SQLite construct:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #c48702;">INSERT</span>
+<span style="color: #c48702;">INTO</span>       students(s_name, gpa, size_hs)
+<span style="color: #c48702;">VALUES</span>     (?, ?, ?)
+RETURNING  s_id
+</pre>
+</div>
+
+<p>
+This only works if our table has an auto generated primary key, so I've changed the table definition to:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #c48702;">DROP</span> <span style="color: #c48702;">TABLE</span> <span style="color: #3dbbb0;">IF</span> <span style="color: #c48702;">EXISTS</span> students;
+<span style="color: #c48702;">CREATE</span> <span style="color: #c48702;">TABLE</span> <span style="color: #3dbbb0;">students</span> (
+  s_id         <span style="color: #2fa526;">INTEGER</span>,
+  s_name       TEXT,
+  gpa          <span style="color: #2fa526;">REAL</span>,
+  <span style="color: #c48702;">PRIMARY</span> <span style="color: #c48702;">KEY</span>  (s_id)
+);
+</pre>
+</div>
+
+<p>
+A primary key which is declared as an <code>INTEGER</code> will get start values automatically (normally just an increasing sequence).
+</p>
+
+<p>
+Another way to generate random keys is:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #c48702;">DROP</span> <span style="color: #c48702;">TABLE</span> <span style="color: #3dbbb0;">IF</span> <span style="color: #c48702;">EXISTS</span> students;
+<span style="color: #c48702;">CREATE</span> <span style="color: #c48702;">TABLE</span> <span style="color: #3dbbb0;">students</span> (
+  s_id      TEXT <span style="color: #c48702;">DEFAULT</span> (<span style="color: #ff7a7f;">lower</span>(hex(randomblob(16)))),
+  s_name    TEXT,
+  gpa       <span style="color: #2fa526;">REAL</span>,
+  size_hs   <span style="color: #2fa526;">INT</span>,
+  <span style="color: #c48702;">PRIMARY</span> <span style="color: #c48702;">KEY</span> (s_id)
+);
+</pre>
+</div>
+
+<p>
+These keys can also be returned using an <code>INSERT</code>-<code>RETURNING</code> statement.
+</p>
+</div>
+</div>
+<div id="outline-container-org644fecc" class="outline-4">
+<h4 id="org644fecc">Adding hirerarchical endpoints</h4>
+<div class="outline-text-4" id="text-org644fecc">
+<p>
+We can also provide 'sub-endpoints', such as <code>/students/&lt;s_id&gt;/applications</code>, which gives all applications for a given student:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #2fa526;">@get</span>(<span style="color: #f06a3f;">'/students/&lt;s_id&gt;/applications'</span>)
+<span style="color: #c48702;">def</span> <span style="color: #3dbbb0;">get_student_applications</span>(s_id):
+    <span style="color: #6fafff;">c</span> = db.cursor()
+    c.execute(
+        <span style="color: #f06a3f;">"""</span>
+<span style="color: #f06a3f;">        SELECT  s_id, c_name, major, decision</span>
+<span style="color: #f06a3f;">        FROM    applications</span>
+<span style="color: #f06a3f;">        JOIN    students</span>
+<span style="color: #f06a3f;">        USING   (s_id)</span>
+<span style="color: #f06a3f;">        WHERE   s_id = ?</span>
+<span style="color: #f06a3f;">        """</span>,
+        [s_id]
+    )
+    <span style="color: #6fafff;">found</span> = [{<span style="color: #f06a3f;">"id"</span>: s_id,
+              <span style="color: #f06a3f;">"college"</span>: c_name,
+              <span style="color: #f06a3f;">"major"</span>: major,
+              <span style="color: #f06a3f;">"decision"</span>: decision}
+             <span style="color: #c48702;">for</span> s_id, c_name, major, decision <span style="color: #c48702;">in</span> c]
+    response.<span style="color: #6fafff;">status</span> = 200
+    <span style="color: #c48702;">return</span> {<span style="color: #f06a3f;">"data"</span>: found}
+</pre>
+</div>
+
+<p>
+There isn't really anything new in this endpoint.
+</p>
+
+<p>
+We have to make sure we have a proper database file (<code>colleges.sqlite</code>), and then start the server with:
+</p>
+
+<pre class="example" id="org296b8f7">$ python app.py
+</pre>
+
+<p>
+If there's anything in this program you don't understand, feel free to come to the QA sessions and ask!
+</p>
+
+<p>
+In case you get interested in doing some more work with REST services in Python on your own, you should have a look at <a href="https://fastapi.tiangolo.com/">FastAPI</a>, which is insanely good. It may take some work to get it up and running (you should probably use <code>poetry</code>), and some students who used it for lab3 and the project in previous years had problems with it which weren't database related, so we'll not use it in the course this year.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-a-java-server" class="outline-3">
+<h3 id="a-java-server">A Java server</h3>
+<div class="outline-text-3" id="text-a-java-server">
+<p>
+If you decide to use Python for lab 3 and the project, you don't have to read this section.
+</p>
+
+<p>
+You can download a <a href="https://gradle.org/">gradle</a> project with the code below <a href="https://fileadmin.cs.lth.se/cs/Education/edaf75/hHuFThN4a6CHrNO6cDO2n/lect06-java-rest-demo.zip">here</a>.
+</p>
+
+<p>
+To run the this server, you must first unpack the archive, step into the unpacked directory, make sure there's a database (<code>colleges.sqlite</code>) in the <code>app</code> directory, and then start the server with the command:
+</p>
+
+<pre class="example" id="org6160dc1">$ ./gradlew run
+</pre>
+
+<p>
+or, if you run Windows:
+</p>
+
+<pre class="example" id="org0f60ac0">$ gradlew run
+</pre>
+
+<p>
+When we start our server, we'll get the message:
+</p>
+
+<pre class="example" id="orgb57292a">SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder"
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+</pre>
+
+<p>
+This is nothing to worry about – line two says that we'll not get any specially configured logging, but the program will still run (and given all the recent fuzz about log4j, we may be better of not having it loaded :-)).
+</p>
+
+<p>
+Once the program (i.e., the REST server) is up and running, we can send requests to it – we'll see how to do that below.
+</p>
+
+<p>
+The Java server we wrote is based on the SparkJava framework (developed by an LTH alumnus!) – you can find its official web site <a href="http://sparkjava.com/">here</a> and javadoc documentation <a href="https://javadoc.io/doc/com.sparkjava/spark-core/latest/index.html">here</a>.
+</p>
+
+<p>
+SparkJava uses 4567 as its default port number, but we can use any port number from 1024 up to 65535 (lower port numbers are reserved for other services) – we chose 4567.
+</p>
+
+<p>
+I've created the distributed project with:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ gradle init
+</pre>
+</div>
+
+<p>
+and added the same <code>Database</code> template we used for the previous lecture in our <code>app/src/main/java/demo</code> folder. We also updated the generated <code>App</code> class to:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #c48702;">package</span> <span style="color: #64aa0f;">demo</span>;
+
+<span style="color: #c48702;">import</span> <span style="color: #c48702;">static</span> <span style="color: #64aa0f;">spark</span>.<span style="color: #64aa0f;">Spark</span>.*;
+
+
+<span style="color: #c48702;">public</span> <span style="color: #c48702;">class</span> <span style="color: #2fa526;">App</span> {
+
+    <span style="color: #c48702;">public</span> <span style="color: #c48702;">static</span> <span style="color: #2fa526;">void</span> <span style="color: #3dbbb0;">main</span>(<span style="color: #2fa526;">String</span>[] <span style="color: #6fafff;">args</span>) {
+        <span style="color: #c48702;">new</span> <span style="color: #2fa526;">App</span>().run();
+    }
+
+    <span style="color: #2fa526;">void</span> <span style="color: #3dbbb0;">run</span>() {
+        port(4567);
+        get(<span style="color: #f06a3f;">"/hello"</span>, (req, res) -&gt; <span style="color: #f06a3f;">"hello, world!"</span>);
+    }
+}
+</pre>
+</div>
+
+<p>
+To compile and run this, <code>gradle</code> needs to know where it can find  <code>sparkjava</code>, so we added a dependency in <code>app/build.gradle</code> (unfortunately, the docs for <code>sparkjava</code> says we should use this a <code>compile</code> dependency, but it really should be an <code>implementation</code> dependency):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text">...
+
+dependencies {
+    ... as before ...
+
+    implementation "com.sparkjava:spark-core:2.9.4"
+
+    ... as before ...
+}
+
+...
+</pre>
+</div>
+
+<p>
+The <code>Spark</code> part of <code>run()</code> above is
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java">port(4567);
+</pre>
+</div>
+
+<p>
+which tells Spark to listen to port 4567, and
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java">get(<span style="color: #f06a3f;">"/hello"</span>, (req, res) -&gt; <span style="color: #f06a3f;">"hello, world!"</span>);
+</pre>
+</div>
+
+<p>
+which tells <code>Spark</code> that <code>GET</code> requests to the resource <code>/hello</code> should be handled by the lambda expression:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java">(req, res) -&gt; <span style="color: #f06a3f;">"hello, world!"</span>
+</pre>
+</div>
+
+<p>
+which, obviously, just returns the string <code>"hello, world!"</code>.
+</p>
+</div>
+<div id="outline-container-getting-all-students-version-1" class="outline-4">
+<h4 id="getting-all-students-version-1">Getting all students, version 1</h4>
+<div class="outline-text-4" id="text-getting-all-students-version-1">
+<p>
+Just as we did last time, we'll put all database related code in our <code>Database</code> class, and the first thing we'll try is to add <code>GET</code> on <code>/students</code> (which should return all students) – we can do it by adding this line in the <code>run()</code> method in <code>App</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java">get(<span style="color: #f06a3f;">"/students"</span>, (req, res) -&gt; db.getStudents(req, res));
+</pre>
+</div>
+
+<p>
+This means we have to implement the following method in our <code>Database</code> class:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #c48702;">class</span> <span style="color: #2fa526;">Database</span> {
+
+    <span style="color: #7f7f7f; font-style: italic;">// </span><span style="color: #cf9f7f; font-style: italic;">... as in the previous lecture ...</span>
+
+    <span style="color: #c48702;">public</span> <span style="color: #2fa526;">String</span> <span style="color: #3dbbb0;">getStudents</span>(<span style="color: #2fa526;">Request</span> <span style="color: #6fafff;">req</span>, <span style="color: #2fa526;">Response</span> <span style="color: #6fafff;">res</span>) {
+        <span style="color: #7f7f7f; font-style: italic;">// </span><span style="color: #cf9f7f; font-style: italic;">...</span>
+    }
+}
+</pre>
+</div>
+
+<p>
+The return value of this method is a <code>String</code> with a JSON representation of our list of students – we'll use <a href="https://github.com/google/gson/blob/master/UserGuide.md"><code>gson</code></a>, Google's JSON library, to do the conversion (in the class <code>Database</code>, we have a <code>Gson</code> attribute <code>gson</code>), so we need to add another dependency in <code>app/build.gradle</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text">...
+
+dependencies {
+    // ... as before ...
+
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.10.1'
+    implementation group: 'org.xerial', name: 'sqlite-jdbc', version: '3.45.0.0'
+    implementation "com.sparkjava:spark-core:2.9.4"
+
+    // ... as before ...
+}
+
+...
+</pre>
+</div>
+
+<p>
+and also add some lines to our <code>Database</code> file (the <code>import</code> statements for <code>spark</code> and <code>gson</code>, and the creation of the <code>Gson</code> attribute <code>gson</code>):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #c48702;">package</span> <span style="color: #64aa0f;">demo</span>;
+<span style="color: #c48702;">import</span> <span style="color: #64aa0f;">java</span>.<span style="color: #64aa0f;">sql</span>.*;
+<span style="color: #c48702;">import</span> <span style="color: #64aa0f;">java</span>.<span style="color: #64aa0f;">util</span>.*;
+
+<span style="color: #c48702;">import</span> <span style="color: #64aa0f;">spark</span>.<span style="color: #2fa526;">Request</span>;
+<span style="color: #c48702;">import</span> <span style="color: #64aa0f;">spark</span>.<span style="color: #2fa526;">Response</span>;
+
+<span style="color: #c48702;">import</span> <span style="color: #64aa0f;">com</span>.<span style="color: #64aa0f;">google</span>.<span style="color: #64aa0f;">gson</span>.*;
+
+<span style="color: #5f9f6f; font-style: italic;">/**</span>
+<span style="color: #5f9f6f; font-style: italic;"> * Database is an interface to the college application database, it</span>
+<span style="color: #5f9f6f; font-style: italic;"> * uses JDBC to connect to a SQLite3 file.</span>
+<span style="color: #5f9f6f; font-style: italic;"> */</span>
+<span style="color: #c48702;">public</span> <span style="color: #c48702;">class</span> <span style="color: #2fa526;">Database</span> {
+
+    <span style="color: #5f9f6f; font-style: italic;">/**</span>
+<span style="color: #5f9f6f; font-style: italic;">     * The database connection.</span>
+<span style="color: #5f9f6f; font-style: italic;">     */</span>
+    <span style="color: #c48702;">private</span> <span style="color: #2fa526;">Connection</span> <span style="color: #6fafff;">conn</span>;
+    <span style="color: #c48702;">private</span> <span style="color: #2fa526;">Gson</span> <span style="color: #6fafff;">gson</span> = <span style="color: #c48702;">new</span> <span style="color: #2fa526;">Gson</span>();
+
+    ... as before ...
+
+}
+</pre>
+</div>
+
+<p>
+We first generate a <code>Student</code> 'POJO', this time with support for both <code>ResultSet</code> and <code>Gson</code> (observe that we translate snake-case to CamelCase, since that's the JSON 'standard'):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ db-pojo -j -g
+Student
+s_id -&gt; id : int
+s_name -&gt; name : String
+gpa : double
+</pre>
+</div>
+
+<p>
+and get:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #c48702;">class</span> <span style="color: #2fa526;">Student</span> {
+
+    <span style="color: #c48702;">public</span> <span style="color: #c48702;">final</span> <span style="color: #2fa526;">int</span> <span style="color: #6fafff;">id</span>;
+    <span style="color: #c48702;">public</span> <span style="color: #c48702;">final</span> <span style="color: #2fa526;">String</span> <span style="color: #6fafff;">name</span>;
+    <span style="color: #c48702;">public</span> <span style="color: #c48702;">final</span> <span style="color: #2fa526;">double</span> <span style="color: #6fafff;">gpa</span>;
+
+    <span style="color: #c48702;">private</span> Student  (<span style="color: #2fa526;">int</span> <span style="color: #6fafff;">id</span>, <span style="color: #2fa526;">String</span> <span style="color: #6fafff;">name</span>, <span style="color: #2fa526;">double</span> <span style="color: #6fafff;">gpa</span>) {
+        <span style="color: #c48702;">this</span>.id = id;
+        <span style="color: #c48702;">this</span>.name = name;
+        <span style="color: #c48702;">this</span>.gpa = gpa;
+    }
+
+    <span style="color: #c48702;">public</span> <span style="color: #c48702;">static</span> <span style="color: #2fa526;">Student</span> <span style="color: #3dbbb0;">fromRS</span>(<span style="color: #2fa526;">ResultSet</span> <span style="color: #6fafff;">rs</span>) <span style="color: #c48702;">throws</span> <span style="color: #2fa526;">SQLException</span> {
+        <span style="color: #c48702;">return</span> <span style="color: #c48702;">new</span> <span style="color: #2fa526;">Student</span>(rs.getInt(<span style="color: #f06a3f;">"s_id"</span>),
+                           rs.getString(<span style="color: #f06a3f;">"s_name"</span>),
+                           rs.getDouble(<span style="color: #f06a3f;">"gpa"</span>));
+    }
+
+    <span style="color: #c48702;">public</span> <span style="color: #c48702;">static</span> <span style="color: #2fa526;">Student</span> <span style="color: #3dbbb0;">fromJson</span>(<span style="color: #2fa526;">Gson</span> <span style="color: #6fafff;">gson</span>, <span style="color: #2fa526;">String</span> <span style="color: #6fafff;">json</span>) {
+        <span style="color: #c48702;">return</span> gson.fromJson(json, Student.<span style="color: #c48702;">class</span>);
+    }
+
+    <span style="color: #c48702;">public</span> <span style="color: #2fa526;">String</span> <span style="color: #3dbbb0;">toJson</span>(<span style="color: #2fa526;">Gson</span> <span style="color: #6fafff;">gson</span>) {
+        <span style="color: #c48702;">return</span> gson.toJson(<span style="color: #c48702;">this</span>);
+    }
+}
+</pre>
+</div>
+
+<p>
+We then write the following method:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #c48702;">public</span> <span style="color: #2fa526;">String</span> <span style="color: #3dbbb0;">getStudents</span>(<span style="color: #2fa526;">Request</span> <span style="color: #6fafff;">req</span>, <span style="color: #2fa526;">Response</span> <span style="color: #6fafff;">res</span>) {
+    <span style="color: #2fa526;">var</span> <span style="color: #6fafff;">found</span> = <span style="color: #c48702;">new</span> <span style="color: #2fa526;">ArrayList</span>&lt;<span style="color: #2fa526;">Student</span>&gt;();
+    <span style="color: #2fa526;">var</span> <span style="color: #6fafff;">query</span> =
+        <span style="color: #f06a3f;">""</span><span style="color: #c48702;">"</span>
+        SELECT   s_id, <span style="color: #6fafff;">s_name</span>, <span style="color: #6fafff;">gpa</span>, <span style="color: #6fafff;">size_hs</span>
+        FROM     students
+        <span style="color: #f06a3f;">""</span><span style="color: #c48702;">"</span><span style="color: #f06a3f;">;</span>
+    <span style="color: #c48702;">try</span> (<span style="color: #2fa526;">var</span> <span style="color: #6fafff;">ps</span> = conn.prepareStatement(query)) {
+        var resultSet = ps.executeQuery();
+        <span style="color: #c48702;">while</span> (resultSet.next()) {
+            found.add(Student.fromRS(resultSet));
+        }
+    } <span style="color: #c48702;">catch</span> (SQLException e) {
+        e.printStackTrace();
+    }
+    res.status(200);
+    <span style="color: #c48702;">return</span> gson.toJson(found);
+}
+</pre>
+</div>
+
+<p>
+To run this, we run (just as showed above):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ ./gradlew run
+</pre>
+</div>
+
+<p>
+This compiles our program, runs it, and waits for it to finish.
+</p>
+
+<p>
+So to test our server, we can open another command line window, and run <code>curl</code> – our server runs on our own computer, which is called <code>localhost</code> (a.k.a. <code>127.0.0.1</code>), and it runs on port 4567, so we can call our method above to get all students using the <code>curl</code> command:
+</p>
+
+<pre class="example" id="orgfa450d3">$ curl -X GET http://localhost:4567/students
+[{"id":0,"gpa":4.0,"sizeHs":0},{"id":123,"name":"Amy","gpa":3.9,"sizeHs":1000},{"id":234,"name":"Bob","gpa":3.6,"sizeHs":1500},{"id":345,"name":"Craig","gpa":3.5,"sizeHs":500},{"id":448,"name":"Adam","gpa":4.0,"sizeHs":400},{"id":456,"name":"Doris","gpa":3.9,"sizeHs":1000},{"id":543,"name":"Craig","gpa":3.4,"sizeHs":2000},{"id":567,"name":"Edward","gpa":2.9,"sizeHs":2000},{"id":654,"name":"Amy","gpa":3.9,"sizeHs":1000},{"id":678,"name":"Fay","gpa":3.8,"sizeHs":200},{"id":765,"name":"Jay","gpa":2.9,"sizeHs":1500},{"id":789,"name":"Gary","gpa":3.4,"sizeHs":800},{"id":876,"name":"Irene","gpa":3.9,"sizeHs":400},{"id":987,"name":"Helen","gpa":3.7,"sizeHs":800}]%
+$
+</pre>
+
+<p>
+This is a <a href="https://en.wikipedia.org/wiki/Minification_(programming)">minified</a> version of the output, if we install a <a href="https://en.wikipedia.org/wiki/Prettyprint">prettyprinter</a>, such as <a href="https://stedolan.github.io/jq/manual/"><code>jq</code></a>, we can make the output more readable:
+</p>
+
+<pre class="example" id="org13f4489">$ curl -X GET http://localhost:4567/students | jq
+[
+  {
+    "id": 123,
+    "name": "Amy",
+    "gpa": 3.9,
+    "sizeHs": 1000
+  },
+  {
+    "id": 234,
+    "name": "Bob",
+    "gpa": 3.6,
+    "sizeHs": 1500
+  },
+  {
+    "id": 345,
+    "name": "Craig",
+    "gpa": 3.5,
+    "sizeHs": 500
+  },
+  ...
+  {
+    "id": 987,
+    "name": "Helen",
+    "gpa": 3.7,
+    "sizeHs": 800
+  }
+]
+</pre>
+
+<p>
+(Here I've removed some output). The JSON keys have the same name as the attributes in our POJO (<code>Gson</code> generated them).
+</p>
+
+<p>
+Normally one wants the JSON replies from a REST server to be encapsulated in some 'wrapper' object, with the return value in its <code>"data"</code> field, and it can easily be done with a wrapper class:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #c48702;">class</span> <span style="color: #2fa526;">DataWrapper</span> {
+    <span style="color: #c48702;">private</span> <span style="color: #2fa526;">Object</span> <span style="color: #6fafff;">data</span>;
+
+    <span style="color: #c48702;">public</span> DataWrapper  (Object data) {
+        <span style="color: #c48702;">this</span>.data = data;
+    }
+}
+</pre>
+</div>
+
+<p>
+We might as well add a method which takes an object, encapsulates it in a <code>DataWrapper</code>, and then returns the JSON version of it (we put it in our <code>Database</code> class):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #c48702;">private</span> <span style="color: #2fa526;">String</span> <span style="color: #3dbbb0;">asJsonData</span>(<span style="color: #2fa526;">Object</span> <span style="color: #6fafff;">object</span>) {
+    <span style="color: #c48702;">return</span> gson.toJson(<span style="color: #c48702;">new</span> <span style="color: #2fa526;">DataWrapper</span>(object));
+}
+</pre>
+</div>
+
+<p>
+Now we can write
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #c48702;">public</span> <span style="color: #2fa526;">String</span> <span style="color: #3dbbb0;">getStudents</span>(<span style="color: #2fa526;">Request</span> <span style="color: #6fafff;">req</span>, <span style="color: #2fa526;">Response</span> <span style="color: #6fafff;">res</span>) {
+    ... as above ...
+    res.status(200);
+    <span style="color: #c48702;">return</span> asJsonData(found);
+}
+</pre>
+</div>
+
+<p>
+to get (the same list as above, but now inside an object with a <code>"data"</code> field):
+</p>
+
+<pre class="example" id="org9fa85e5">$ curl -X GET http://localhost:4567/students | jq
+{
+  "data": [
+    {
+      "id": 0,
+      "gpa": 4,
+      "sizeHs": 0
+    },
+    {
+      "id": 123,
+      "name": "Amy",
+      "gpa": 3.9,
+      "sizeHs": 1000
+    },
+    {
+      "id": 234,
+      "name": "Bob",
+      "gpa": 3.6,
+      "sizeHs": 1500
+    },
+    ...
+    {
+      "id": 987,
+      "name": "Helen",
+      "gpa": 3.7,
+      "sizeHs": 800
+    }
+  ]
+}
+</pre>
+</div>
+</div>
+<div id="outline-container-getting-a-specific-student" class="outline-4">
+<h4 id="getting-a-specific-student">Getting a specific student</h4>
+<div class="outline-text-4" id="text-getting-a-specific-student">
+<p>
+As we saw in the slides, the endpoint <code>/students</code> gives all students, whereas <code>/students/&lt;id&gt;</code> gives us only the student with a given id (this is a typical pattern in REST services). To add this more specific endpoint we add the following line in <code>App</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #2fa526;">void</span> <span style="color: #3dbbb0;">run</span>() {
+    <span style="color: #7f7f7f; font-style: italic;">// </span><span style="color: #cf9f7f; font-style: italic;">...</span>
+    get(<span style="color: #f06a3f;">"/students/:sId"</span>,
+        (req, res) -&gt; db.getStudent(req, res, Integer.parseInt(req.params(<span style="color: #f06a3f;">":sId"</span>))));
+    <span style="color: #7f7f7f; font-style: italic;">// </span><span style="color: #cf9f7f; font-style: italic;">...</span>
+}
+</pre>
+</div>
+
+<p>
+Here Spark will pick out the id (<code>:sId</code>), and we can ask the <code>Request</code> for the value with the <code>params</code>-call above – since it is an integer, we can parse it before we call our method in <code>db</code> (we could also pick out the parameter in the <code>getStudent</code> method, but that would require that the method knew what name we gave the parameter in the call in <code>run</code>).
+</p>
+
+<p>
+The method <code>getStudent</code> which we call in the line above is pretty much the same as the method we saw above, only this time we insert the student id into the query:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #c48702;">public</span> <span style="color: #2fa526;">String</span> <span style="color: #3dbbb0;">getStudent</span>(<span style="color: #2fa526;">Request</span> <span style="color: #6fafff;">req</span>,
+                         <span style="color: #2fa526;">Response</span> <span style="color: #6fafff;">res</span>,
+                         <span style="color: #2fa526;">int</span> <span style="color: #6fafff;">studentId</span>) {
+    <span style="color: #2fa526;">var</span> <span style="color: #6fafff;">found</span> = <span style="color: #c48702;">new</span> <span style="color: #2fa526;">ArrayList</span>&lt;<span style="color: #2fa526;">Student</span>&gt;();
+    <span style="color: #2fa526;">var</span> <span style="color: #6fafff;">query</span> =
+        <span style="color: #f06a3f;">""</span><span style="color: #c48702;">"</span>
+        SELECT    s_id, <span style="color: #6fafff;">s_name</span>, <span style="color: #6fafff;">gpa</span>, <span style="color: #6fafff;">size_hs</span>
+        FROM      students
+        WHERE     s_id = ?
+        <span style="color: #f06a3f;">""</span><span style="color: #c48702;">"</span><span style="color: #f06a3f;">;</span>
+    <span style="color: #c48702;">try</span> (<span style="color: #2fa526;">var</span> <span style="color: #6fafff;">ps</span> = conn.prepareStatement(query)) {
+        ps.setInt(1, studentId);
+        <span style="color: #2fa526;">var</span> <span style="color: #6fafff;">rs</span> = ps.executeQuery();
+        <span style="color: #c48702;">while</span> (rs.next()) {
+            found.add(Student.fromRS(rs));
+        }
+    } <span style="color: #c48702;">catch</span> (SQLException e) {
+        e.printStackTrace();
+    }
+    res.status(200);
+    <span style="color: #c48702;">return</span> asJsonData(found);
+}
+</pre>
+</div>
+
+<p>
+If the student is found, it will be the only element in the list, and if there is no student with the given id, we return the empty list.
+</p>
+</div>
+</div>
+<div id="outline-container-using_query_strings" class="outline-4">
+<h4 id="using_query_strings">Using a query string</h4>
+<div class="outline-text-4" id="text-using_query_strings">
+<p>
+Sometimes we want to have a way to filter out specific values, if we want just all student with the name "Amy", we want to be able to use the call:
+</p>
+
+<pre class="example" id="org6154d2a">$ curl -X GET http://localhost:4567/students?name=Amy | jq
+{
+  "data": [
+    {
+      "id": 123,
+      "name": "Amy",
+      "gpa": 3.9,
+      "sizeHs": 1000
+    },
+    {
+      "id": 654,
+      "name": "Amy",
+      "gpa": 3.9,
+      "sizeHs": 1000
+    }
+  ]
+}
+</pre>
+
+<p>
+The exact format of the query string depends on where we write it, when I write the call above in my terminal window, it adds a backslash before the question mark, and before the equal sign, so it looks like:
+</p>
+
+<pre class="example" id="org68515eb">$ curl -X GET http://localhost:4567/students\?name\=Amy
+</pre>
+
+<p>
+but it depends on what operating system you're on, and what tools you use.
+</p>
+
+<p>
+As an example we can also add a way to find only student with a minimum gpa (now I've copied the call verbatim from my terminal window):
+</p>
+
+<pre class="example" id="orgc03d16b">$ curl -X GET http://localhost:4567/students\?minGpa\=3.9 | jq
+{
+  "data": [
+    {
+      "id": 123,
+      "name": "Amy",
+      "gpa": 3.9,
+      "sizeHs": 1000
+    },
+    {
+      "id": 456,
+      "name": "Doris",
+      "gpa": 3.9,
+      "sizeHs": 1000
+    },
+    {
+      "id": 654,
+      "name": "Amy",
+      "gpa": 3.9,
+      "sizeHs": 1000
+    },
+    {
+      "id": 876,
+      "name": "Irene",
+      "gpa": 3.9,
+      "sizeHs": 400
+    }
+  ]
+}
+</pre>
+
+<p>
+We can also combine the two queries:
+</p>
+
+<pre class="example" id="org2687f01">$ curl -X GET http://localhost:4567/students\?minGpa\=3.9\&amp;name\=Amy | jq
+{
+  "data": [
+    {
+      "id": 123,
+      "name": "Amy",
+      "gpa": 3.9,
+      "sizeHs": 1000
+    },
+    {
+      "id": 654,
+      "name": "Amy",
+      "gpa": 3.9,
+      "sizeHs": 1000
+    }
+  ]
+}
+</pre>
+
+<p>
+The query parameters are sent as a part of the <a href="https://en.wikipedia.org/wiki/URL">URL</a>, and many of the symbols we might want to use in our queries, such as spaces, commas and periods, aren't allowed in a URL. Fortunately we can use <a href="https://en.wikipedia.org/wiki/Percent-encoding"><i>URL encoding</i></a> (also known as <i>Percent-encoding</i>), which is a standardized way of translating a string with 'illegal' characters into a safe string, and back again. As an example, using URL encoding we can translate the string
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text">to be, or not to be
+</pre>
+</div>
+
+<p>
+into
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text">to%20be%2C%20or%20not%20to%20be
+</pre>
+</div>
+
+<p>
+In Java we can import
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #c48702;">import</span> <span style="color: #64aa0f;">java</span>.<span style="color: #64aa0f;">net</span>.<span style="color: #2fa526;">URLDecoder</span>;
+</pre>
+</div>
+
+<p>
+which gives us the method <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/net/URLDecoder.html"><code>URLDecoder.decode(s, "utf-8")</code></a> to decode a URL encoding string into UTF-8 (which is the charset we want to work with).
+</p>
+
+<p>
+To add query parameters to our requests, we write an updated version of the <code>getStudents</code> method we saw above – now we have to check which query parameters are in <code>req</code> (for requests without parameters, it's going to work as before). One way to do this is to first create a query which is amenable to the addition of zero or more extra conditions.
+</p>
+
+<p>
+So instead of
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #c48702;">SELECT</span>   s_id, s_name, gpa, size_hs
+<span style="color: #c48702;">FROM</span>     students
+</pre>
+</div>
+
+<p>
+I add the seemingly nonsensical <code>WHERE TRUE</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #c48702;">SELECT</span>   s_id, s_name, gpa, size_hs
+<span style="color: #c48702;">FROM</span>     students
+<span style="color: #c48702;">WHERE</span>    <span style="color: #c48702;">TRUE</span>
+</pre>
+</div>
+
+<p>
+This is a very pragmatic trick, and the point of it is that we now can add zero or more lines with additional conditions:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #c48702;">SELECT</span>   s_id, s_name, gpa, size_hs
+<span style="color: #c48702;">FROM</span>     students
+<span style="color: #c48702;">WHERE</span>    <span style="color: #c48702;">TRUE</span>
+         <span style="color: #c48702;">AND</span> s_name = ?
+         <span style="color: #c48702;">AND</span> gpa &gt; ?
+</pre>
+</div>
+
+<p>
+We can ask the <code>Request</code> (<code>req</code>) for potential query parameters using the <code>queryParams</code>-method – to avoid lots of code duplication I've introduced a small helper function (<code>checkParam</code>) below – in it I URL-decode every parameter, so we allow the users' queries to contain any sequence of characters.
+</p>
+
+<p>
+And once I've added placeholders for the parameters in the query, I look through the generated list of parameter values, and insert them into my query using <code>setString</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #c48702;">private</span> <span style="color: #2fa526;">String</span> <span style="color: #3dbbb0;">checkParam</span>(<span style="color: #2fa526;">Request</span> <span style="color: #6fafff;">req</span>,
+                          <span style="color: #2fa526;">String</span> <span style="color: #6fafff;">paramName</span>,
+                          <span style="color: #2fa526;">String</span> <span style="color: #6fafff;">condition</span>,
+                          <span style="color: #2fa526;">List</span>&lt;<span style="color: #2fa526;">String</span>&gt; <span style="color: #6fafff;">params</span>) {
+    <span style="color: #2fa526;">var</span> <span style="color: #6fafff;">param</span> = req.queryParams(paramName);
+    <span style="color: #c48702;">if</span> (param != <span style="color: #64aa0f;">null</span>) {
+        params.add(URLDecoder.decode(param, <span style="color: #f06a3f;">"utf-8"</span>));
+        <span style="color: #c48702;">return</span> <span style="color: #f06a3f;">'\n'</span> + condition;   <span style="color: #7f7f7f; font-style: italic;">// </span><span style="color: #cf9f7f; font-style: italic;">put each condition on its own line</span>
+    }
+    <span style="color: #c48702;">return</span> <span style="color: #f06a3f;">""</span>;   <span style="color: #7f7f7f; font-style: italic;">// </span><span style="color: #cf9f7f; font-style: italic;">nothing to add, since the parameter was absent</span>
+}
+
+<span style="color: #c48702;">public</span> <span style="color: #2fa526;">String</span> <span style="color: #3dbbb0;">getStudents</span>(<span style="color: #2fa526;">Request</span> <span style="color: #6fafff;">req</span>, <span style="color: #2fa526;">Response</span> <span style="color: #6fafff;">res</span>) {
+    <span style="color: #2fa526;">var</span> <span style="color: #6fafff;">found</span> = <span style="color: #c48702;">new</span> <span style="color: #2fa526;">ArrayList</span>&lt;<span style="color: #2fa526;">Student</span>&gt;();
+    <span style="color: #2fa526;">var</span> <span style="color: #6fafff;">query</span> =
+        <span style="color: #f06a3f;">""</span><span style="color: #c48702;">"</span>
+        SELECT    s_id, <span style="color: #6fafff;">s_name</span>, <span style="color: #6fafff;">gpa</span>, <span style="color: #6fafff;">size_hs</span>
+        FROM      students
+        WHERE     TRUE
+        <span style="color: #f06a3f;">""</span><span style="color: #c48702;">"</span><span style="color: #f06a3f;">;</span>
+    var params = <span style="color: #c48702;">new</span> <span style="color: #2fa526;">ArrayList</span>&lt;<span style="color: #2fa526;">String</span>&gt;();
+    query += checkParam(req, <span style="color: #f06a3f;">"name"</span>, <span style="color: #f06a3f;">"AND s_name = ?"</span>, params);
+    query += checkParam(req, <span style="color: #f06a3f;">"minGpa"</span>, <span style="color: #f06a3f;">"AND gpa &gt;= ?"</span>, params);
+    <span style="color: #c48702;">try</span> (<span style="color: #2fa526;">var</span> <span style="color: #6fafff;">ps</span> = conn.prepareStatement(query)) {
+        <span style="color: #2fa526;">var</span> <span style="color: #6fafff;">idx</span> = 0;
+        <span style="color: #c48702;">for</span> (<span style="color: #2fa526;">var</span> <span style="color: #6fafff;">param</span> : params) {
+            ps.setString(++idx, param);
+        }
+        <span style="color: #2fa526;">var</span> <span style="color: #6fafff;">rs</span> = ps.executeQuery();
+        <span style="color: #c48702;">while</span> (rs.next()) {
+            found.add(Student.fromRS(rs));
+        }
+    } <span style="color: #c48702;">catch</span> (SQLException e) {
+        e.printStackTrace();
+    }
+    res.status(200);
+    <span style="color: #c48702;">return</span> asJsonData(found);
+}
+</pre>
+</div>
+
+<p>
+To use this, the caller must URL-encode her query parameters – for simple strings as above, it will make no difference:
+</p>
+
+<pre class="example" id="orga4d7bdb">$ curl -X GET http://localhost:4567/students\?minGpa\=3.9\&amp;name\=Amy
+</pre>
+
+<p>
+but to look for "Anna Karin", the encoding looks a bit different:
+</p>
+
+<pre class="example" id="org1f137d1">$ curl -X GET http://localhost:4567/students\?minGpa\=3.9\&amp;name\=Anna%20Karin
+</pre>
+</div>
+</div>
+<div id="outline-container-posting-a-student" class="outline-4">
+<h4 id="posting-a-student">Posting a student</h4>
+<div class="outline-text-4" id="text-posting-a-student">
+<p>
+When the user posts a student, she must provide a JSON object describing the student in the body of the request.
+</p>
+
+<p>
+We tell Spark which method to call with:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java">    <span style="color: #2fa526;">void</span> <span style="color: #3dbbb0;">run</span>() {
+        <span style="color: #7f7f7f; font-style: italic;">// </span><span style="color: #cf9f7f; font-style: italic;">...</span>
+        post(<span style="color: #f06a3f;">"/students"</span>, (req, res) -&gt; db.postStudent(req, res));
+    }
+}
+</pre>
+</div>
+
+<p>
+and in the method, we use the <code>Gson</code> library in the reverse direction – we ask it to generate a POJO (<code>Student</code>) from the JSON string in the request body. We can do it in two steps, either using the <code>fromJson</code> method in our POJO:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #2fa526;">var</span> <span style="color: #6fafff;">body</span> = req.body();
+<span style="color: #2fa526;">var</span> <span style="color: #6fafff;">student</span> = Student.fromJson(gson, body);
+</pre>
+</div>
+
+<p>
+or calling <code>gson</code> directly:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #2fa526;">var</span> <span style="color: #6fafff;">body</span> = req.body();
+<span style="color: #2fa526;">var</span> <span style="color: #6fafff;">student</span> = gson.fromJson(body, Student.<span style="color: #c48702;">class</span>);
+</pre>
+</div>
+
+<p>
+The latter version works even if we generate our POJO without explicit Gson support.
+</p>
+
+<p>
+Once we have our <code>student</code>, its pretty straightforward to create an <code>INSERT</code> statement, we just extract each of the attributes from the POJO, and set the corresponding parameter in our statement.
+</p>
+
+<p>
+One problem is how to generate the student <code>s_id</code> – normally we'd like the database to come up with this key (it's an invented key), but doing so using JDBC is so cumbersome that we'll just skip it in this course, and instead generate the key outside the database (in Python it's easy to insert new values and get back keys generated by the database, see below).
+</p>
+
+<p>
+A common convention in REST apis is to return the url of a newly added resource – in this case we actually know what that url will be before we make the <code>POST</code> call (since we provide the resource id ourselves), so it's easy (see the last line):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #c48702;">public</span> <span style="color: #2fa526;">String</span> <span style="color: #3dbbb0;">postStudent</span>(<span style="color: #2fa526;">Request</span> <span style="color: #6fafff;">req</span>, <span style="color: #2fa526;">Response</span> <span style="color: #6fafff;">res</span>) {
+    <span style="color: #2fa526;">var</span> <span style="color: #6fafff;">body</span> = req.body();
+    <span style="color: #2fa526;">var</span> <span style="color: #6fafff;">student</span> = Student.fromJson(gson, body);
+    <span style="color: #2fa526;">var</span> <span style="color: #6fafff;">statement</span> =
+        <span style="color: #f06a3f;">""</span><span style="color: #c48702;">"</span>
+        INSERT
+        INTO    students(s_id, s_name, gpa, size_hs)
+        VALUES  (?,?,?,?)
+        <span style="color: #f06a3f;">""</span><span style="color: #c48702;">"</span><span style="color: #f06a3f;">;</span>
+    <span style="color: #c48702;">try</span> (<span style="color: #2fa526;">var</span> <span style="color: #6fafff;">ps</span> = conn.prepareStatement(statement)) {
+        ps.setInt(1, student.id);
+        ps.setString(2, student.name);
+        ps.setDouble(3, student.gpa);
+        ps.setInt(4, student.sizeHS);
+        ps.executeUpdate();
+        res.status(201);
+    } <span style="color: #c48702;">catch</span> (SQLException e) {
+        e.printStackTrace();
+        res.status(400);
+    }
+    res.status(201);
+    <span style="color: #c48702;">return</span> String.format(<span style="color: #f06a3f;">"http://localhost/students/%d"</span>, student.id);
+}
+</pre>
+</div>
+
+<p>
+This is a bit of a simplification, since one normally returns the URL of the new resource as a part of the response header, but returning it this way will do fine for this course.
+</p>
+
+<p>
+In the Python version below, I show how we can return a generated value in a simple way (this is also described in the problem text for lab 2).
+</p>
+
+<p>
+To use <code>curl</code> to post a student using this endpoint, we need to:
+</p>
+
+<ul class="org-ul">
+<li>tell the server that we're sending JSON data, hence the <code>-H</code> flag with the content type <code>application/json</code>, and</li>
+
+<li>provide the JSON object using the <code>-d</code> flag and a string (observe that we can choose between <code>'</code> and <code>"</code> for string delimiters in both JSON and the shell, so if we use <code>"</code> in our JSON object, we need to use <code>'</code> for our <code>-d</code> argument).</li>
+</ul>
+
+<p>
+As usual, the <code>$</code> sign below is just the prompt, it's not part of the command:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ curl -X POST http://localhost:4567/students -H <span style="color: #f06a3f;">'Content-Type: application/json'</span> -d <span style="color: #f06a3f;">'{"id": 297, "name": "Anna Karin", "gpa": 3.8, "sizeHS": 400}'</span>
+</pre>
+</div>
+
+<p>
+The reply should be <code>http://localhost/students/297</code>, and it is the URL of the new resource.
+</p>
+
+<p>
+Observe that we don't have to URL encode Anna Karin's name when we send it in the request body (it's not part of the URL), but we'll need to URL encode it if we want to search for it:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ curl -X GET http://localhost:4567/students<span style="color: #f06a3f;">\?</span>name<span style="color: #f06a3f;">\=</span>Anna+Karin
+{<span style="color: #f06a3f;">"data"</span>:[{<span style="color: #f06a3f;">"id"</span>:297,<span style="color: #f06a3f;">"name"</span>:<span style="color: #f06a3f;">"Anna Karin"</span>,<span style="color: #f06a3f;">"gpa"</span>:3.8,<span style="color: #f06a3f;">"sizeHS"</span>:400}]}%
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-getting-applications-from-a-specific-student" class="outline-4">
+<h4 id="getting-applications-from-a-specific-student">Getting applications from a specific student</h4>
+<div class="outline-text-4" id="text-getting-applications-from-a-specific-student">
+<p>
+We saw above that <code>/students/123</code> is a specific student (one of the Amys), and to get her applications we can write <code>/students/123/applications</code> – to implement this we first add the 'route':
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #2fa526;">void</span> <span style="color: #3dbbb0;">run</span>() {
+    <span style="color: #7f7f7f; font-style: italic;">// </span><span style="color: #cf9f7f; font-style: italic;">...</span>
+    get(<span style="color: #f06a3f;">"/students/:sId/applications"</span>,
+        (req, res) -&gt; db.getStudentApplications(req, res, Integer.parseInt(req.params(<span style="color: #f06a3f;">":sId"</span>))));
+    <span style="color: #7f7f7f; font-style: italic;">// </span><span style="color: #cf9f7f; font-style: italic;">...</span>
+}
+</pre>
+</div>
+
+<p>
+and then write the following method:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #c48702;">public</span> <span style="color: #2fa526;">String</span> <span style="color: #3dbbb0;">getStudentApplications</span>(<span style="color: #2fa526;">Request</span> <span style="color: #6fafff;">req</span>,
+                                     <span style="color: #2fa526;">Response</span> <span style="color: #6fafff;">res</span>,
+                                     <span style="color: #2fa526;">int</span> <span style="color: #6fafff;">studentId</span>) {
+    <span style="color: #2fa526;">var</span> <span style="color: #6fafff;">found</span> = <span style="color: #c48702;">new</span> <span style="color: #2fa526;">ArrayList</span>&lt;<span style="color: #2fa526;">Application</span>&gt;();
+    <span style="color: #2fa526;">var</span> <span style="color: #6fafff;">query</span> =
+        <span style="color: #f06a3f;">""</span><span style="color: #c48702;">"</span>
+        SELECT   s_id, <span style="color: #6fafff;">c_name</span>, <span style="color: #6fafff;">major</span>, <span style="color: #6fafff;">decision</span>
+        FROM     applications
+        JOIN     students
+        USING    (s_id)
+        WHERE    s_id = ?
+        <span style="color: #f06a3f;">""</span><span style="color: #c48702;">"</span><span style="color: #f06a3f;">;</span>
+    <span style="color: #c48702;">try</span> (<span style="color: #2fa526;">var</span> <span style="color: #6fafff;">ps</span> = conn.prepareStatement(query)) {
+        ps.setInt(1, studentId);
+        <span style="color: #2fa526;">var</span> <span style="color: #6fafff;">rs</span> = ps.executeQuery();
+        <span style="color: #c48702;">while</span> (rs.next()) {
+            found.add(Application.fromRS(rs));
+        }
+    } <span style="color: #c48702;">catch</span> (SQLException e) {
+        e.printStackTrace();
+    }
+    res.status(200);
+    <span style="color: #c48702;">return</span> asJsonData(found);
+}
+</pre>
+</div>
+
+<p>
+It requires a POJO (<code>Application</code>) to use, and it can be defined as:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #c48702;">class</span> <span style="color: #2fa526;">Application</span> {
+
+    <span style="color: #c48702;">public</span> <span style="color: #c48702;">final</span> <span style="color: #2fa526;">int</span> <span style="color: #6fafff;">id</span>;
+    <span style="color: #c48702;">public</span> <span style="color: #c48702;">final</span> <span style="color: #2fa526;">String</span> <span style="color: #6fafff;">college</span>;
+    <span style="color: #c48702;">public</span> <span style="color: #c48702;">final</span> <span style="color: #2fa526;">String</span> <span style="color: #6fafff;">major</span>;
+    <span style="color: #c48702;">public</span> <span style="color: #c48702;">final</span> <span style="color: #2fa526;">boolean</span> <span style="color: #6fafff;">decision</span>;
+
+    <span style="color: #c48702;">private</span> Application  (<span style="color: #2fa526;">int</span> <span style="color: #6fafff;">id</span>, <span style="color: #2fa526;">String</span> <span style="color: #6fafff;">college</span>, <span style="color: #2fa526;">String</span> <span style="color: #6fafff;">major</span>, <span style="color: #2fa526;">boolean</span> <span style="color: #6fafff;">decision</span>) {
+        <span style="color: #c48702;">this</span>.id = id;
+        <span style="color: #c48702;">this</span>.college = college;
+        <span style="color: #c48702;">this</span>.major = major;
+        <span style="color: #c48702;">this</span>.decision = decision;
+    }
+
+    <span style="color: #c48702;">public</span> <span style="color: #c48702;">static</span> <span style="color: #2fa526;">Application</span> <span style="color: #3dbbb0;">fromRS</span>(<span style="color: #2fa526;">ResultSet</span> <span style="color: #6fafff;">rs</span>) <span style="color: #c48702;">throws</span> <span style="color: #2fa526;">SQLException</span> {
+        <span style="color: #c48702;">return</span> <span style="color: #c48702;">new</span> <span style="color: #2fa526;">Application</span>(rs.getInt(<span style="color: #f06a3f;">"s_id"</span>),
+                               rs.getString(<span style="color: #f06a3f;">"c_name"</span>),
+                               rs.getString(<span style="color: #f06a3f;">"major"</span>),
+                               rs.getString(<span style="color: #f06a3f;">"decision"</span>).equals(<span style="color: #f06a3f;">"Y"</span>));
+    }
+}
+</pre>
+</div>
+
+
+<p>
+<a id="org3ac3fae"></a>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-how-to-extract-the-results-of-a-query-in-python" class="outline-3">
+<h3 id="how-to-extract-the-results-of-a-query-in-python">How to extract values from a query in Python</h3>
+<div class="outline-text-3" id="text-how-to-extract-the-results-of-a-query-in-python">
+<p>
+Python has several features which simplifies working with query results and JSON objects a lot, some of them are:
+</p>
+
+<ul class="org-ul">
+<li>lists,</li>
+<li>list comprehensions,</li>
+<li>tuples,</li>
+<li>dictionaries, and</li>
+<li>the <code>json</code> library.</li>
+</ul>
+
+<p>
+We can easily define a list with simple values, such as the smallest primes:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #6fafff;">small_primes</span> = [2, 3, 5, 7, 11, 13]
+</pre>
+</div>
+
+<p>
+If we wanted a list of the squares of these primes, we could write:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #6fafff;">squares_of_small_primes</span> = []
+<span style="color: #c48702;">for</span> p <span style="color: #c48702;">in</span> small_primes:
+    squares_of_small_primes.append(p*p)
+</pre>
+</div>
+
+<p>
+but this is verbose, and relies on mutable state.
+Python allows us to instead write this as:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #6fafff;">squares_of_small_primes</span> = [p*p <span style="color: #c48702;">for</span> p <span style="color: #c48702;">in</span> small_primes]
+</pre>
+</div>
+
+<p>
+It means that we run the loop inside the list, and generates values which will be returned in one fell swoop – it's called a <i>list comprehension</i> (Python also have some very useful cousins to list comprehensions, such as <i>set comprehensions</i>, <i>dictionary comprehensions</i>, and <i>generator comprehensions</i>).
+</p>
+
+<p>
+Another very useful feature is <a href="https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences">tuples</a>, which allows us to pack related values in very flexible containers – let's say we wanted to have a list of some countries and their capitals, we could define it as:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #6fafff;">geography</span> = [(<span style="color: #f06a3f;">"Sverige"</span>, <span style="color: #f06a3f;">"Stockholm"</span>),
+             (<span style="color: #f06a3f;">"Danmark"</span>, <span style="color: #f06a3f;">"Köpenhamn"</span>),
+             (<span style="color: #f06a3f;">"Norge"</span>, <span style="color: #f06a3f;">"Oslo"</span>)]
+</pre>
+</div>
+
+<p>
+We can iterate through this list using a simple loop:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #c48702;">for</span> (country, capital) <span style="color: #c48702;">in</span> geography:
+    <span style="color: #ff7a7f;">print</span>(f<span style="color: #f06a3f;">"</span>{country}<span style="color: #f06a3f;"> har huvudstaden </span>{capital}<span style="color: #f06a3f;">"</span>)
+</pre>
+</div>
+
+<p>
+We don't even need the parenthesis around the tuple in the loop header:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #c48702;">for</span> country, capital <span style="color: #c48702;">in</span> geography:
+    <span style="color: #ff7a7f;">print</span>(f<span style="color: #f06a3f;">"</span>{country}<span style="color: #f06a3f;"> har huvudstaden </span>{capital}<span style="color: #f06a3f;">"</span>)
+</pre>
+</div>
+
+<p>
+We also have <a href="https://docs.python.org/3/tutorial/datastructures.html#dictionaries"><i>dictionaries</i></a>, which are a very pragmatic version of the Maps we find in Java.
+We can define a dictionary with the names of the smallest integers
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #6fafff;">numbers</span> = {0: <span style="color: #f06a3f;">"zero"</span>, 1: <span style="color: #f06a3f;">"one"</span>, 2: <span style="color: #f06a3f;">"two"</span>, 3: <span style="color: #f06a3f;">"three"</span>}
+<span style="color: #c48702;">for</span> k <span style="color: #c48702;">in</span> <span style="color: #ff7a7f;">range</span>(0,5):
+    <span style="color: #ff7a7f;">print</span>(f<span style="color: #f06a3f;">"</span>{k}<span style="color: #f06a3f;"> is </span>{numbers.get(k, 'unknown')}<span style="color: #f06a3f;">"</span>)
+</pre>
+</div>
+
+<p>
+which gives the output
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text">0 is zero
+1 is one
+2 is two
+3 is three
+4 is unknown
+</pre>
+</div>
+
+<p>
+By combining lists, tuples, list comprehensions and dictionaries, we can generate a list with dictionaries:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #6fafff;">geography</span> = [(<span style="color: #f06a3f;">"Sverige"</span>, <span style="color: #f06a3f;">"Stockholm"</span>),
+             (<span style="color: #f06a3f;">"Danmark"</span>, <span style="color: #f06a3f;">"Köpenhamn"</span>),
+             (<span style="color: #f06a3f;">"Norge"</span>, <span style="color: #f06a3f;">"Oslo"</span>)]
+<span style="color: #6fafff;">nordic_capitals</span> = [{<span style="color: #f06a3f;">"country"</span>: country,
+                    <span style="color: #f06a3f;">"capital"</span>: capital} <span style="color: #c48702;">for</span> country, capital <span style="color: #c48702;">in</span> geography]
+<span style="color: #ff7a7f;">print</span>(nordic_capitals)
+</pre>
+</div>
+
+<p>
+which gives
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text">[{'country': 'Sverige', 'capital': 'Stockholm'}, {'country': 'Danmark', 'capital': 'Köpenhamn'}, {'country': 'Norge', 'capital': 'Oslo'}]
+</pre>
+</div>
+
+<p>
+and this is very close to the kind of JSON object we want to return from our REST calls.
+</p>
+
+<p>
+If we import the <code>json</code> library, and use the <code>json.dumps</code> function, we can turn this into a JSON object directly:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #c48702;">import</span> json
+
+<span style="color: #6fafff;">geography</span> = [(<span style="color: #f06a3f;">"Sverige"</span>, <span style="color: #f06a3f;">"Stockholm"</span>),
+             (<span style="color: #f06a3f;">"Danmark"</span>, <span style="color: #f06a3f;">"Köpenhamn"</span>),
+             (<span style="color: #f06a3f;">"Norge"</span>, <span style="color: #f06a3f;">"Oslo"</span>)]
+<span style="color: #6fafff;">nordic_capitals</span> = [{<span style="color: #f06a3f;">"country"</span>: country,
+                    <span style="color: #f06a3f;">"capital"</span>: capital} <span style="color: #c48702;">for</span> country, capital <span style="color: #c48702;">in</span> geography]
+<span style="color: #ff7a7f;">print</span>(json.dumps(nordic_capitals))
+</pre>
+</div>
+
+<p>
+We'll get:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text">[{"country": "Sverige", "capital": "Stockholm"}, {"country": "Danmark", "capital": "Köpenhamn"}, {"country": "Norge", "capital": "Oslo"}]
+</pre>
+</div>
+
+<p>
+We can use this technique to convert the result of a <code>sqlite3</code> query into a JSON object.
+Common <code>SELECT</code> statements will give us lists like the <code>geography</code> list above
+– let's say we use the query:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #6fafff;">c</span> = db.cursor()
+c.execute(
+    <span style="color: #f06a3f;">"""</span>
+<span style="color: #f06a3f;">    SELECT   s_id, s_name, gpa</span>
+<span style="color: #f06a3f;">    FROM     students</span>
+<span style="color: #f06a3f;">    """</span>
+)
+</pre>
+</div>
+
+<p>
+Our cursor would now contain a sequence of tuples, each containing three values (akin to the list of two-tuples we had above) – to generate a list of dictionaries with these values we could write:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #6fafff;">found</span> = [{<span style="color: #f06a3f;">"id"</span>: s_id,
+          <span style="color: #f06a3f;">"name"</span>: s_name,
+          <span style="color: #f06a3f;">"gpa"</span>: gpa} <span style="color: #c48702;">for</span> s_id, s_name, gpa <span style="color: #c48702;">in</span> c]
+</pre>
+</div>
+
+<p>
+and we could use this to generate a JSON object using <code>json.dumps</code>, or let Bottle handle it (Bottle will, surprisingly, not convert list automatically, but we'll anyways wrap the result into another object first – more on that in the text above).
+</p>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>

@@ -1,0 +1,1519 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>EDAF75 - notebook for lecture 1</title>
+<meta name="keywords" content="keywords" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">EDAF75 - notebook for lecture 1</h1>
+<div id="outline-container-orgc93a59f" class="outline-2">
+<h2 id="orgc93a59f">Week 1: Introduction, relational databases, and SQL</h2>
+<div class="outline-text-2" id="text-orgc93a59f">
+<p>
+In the text below there are two kinds of problems:
+</p>
+
+<p>
+Problems marked <b>Problem</b>, which I intend to solve during the lecture. Depending on how fast we progress, I may or may not have time to solve them all &#x2013; those of the problems we have to skip during the lectures are left as exercises (see below), but we can discuss them during QA sessions.
+</p>
+
+<p>
+Problems marked <b>Exercise</b>, which I suggest you solve yourselves (we can also work on them during the QA sessions).
+</p>
+
+<p>
+This is a <i>Jupyter notebook</i>, and they have built in support for Julia, Python, and R (hence Ju-Pyt-R), here's some Python code:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">def hello(name):
+    print(f"hello, {name}!")
+
+def main():
+    name = input("What's your name: ")
+    hello(name)
+
+main()
+</pre>
+</div>
+
+<p>
+You can run the code snippet above by clicking somewhere in the box, and press Shift-Enter.
+</p>
+
+<p>
+We're primarily going to run SQL code (see below) in our notebooks, but I'll also show you some Python code later on in the course (you don't have to learn Python to take the course, though).
+</p>
+</div>
+<div id="outline-container-orgfb1c54a" class="outline-3">
+<h3 id="orgfb1c54a">Using tables to store data</h3>
+<div class="outline-text-3" id="text-orgfb1c54a">
+<p>
+If we were to keep track of all Nobel laureates in a Python or Java program, and didn't know about relational databases, we would probably define classes for the laureates, and put them in lists.
+We could also define classes for the categories, and have one list for each category, or have lists with one element per year, and somehow track all laureates in that year, or use dictionaries/maps.
+However we chose to keep track of the data, some searches, insertions and deletions would be easy to implement, and some would be cumbersome.
+We'd also have to be careful to keep our data consistent.
+</p>
+
+<p>
+In this course, we'll use a technique which may at first seem too simple to be useful, but which turns out to be incredibly powerful.
+We're going to use relational databases, and we'll store the data in 'simple' tables.
+Each table looks like a simple spreadsheet &#x2013; here is a table with some Nobel laureates:
+</p>
+
+<p>
+&lt;div&gt;
+&lt;table rules="all"&gt;
+&lt;tr&gt;
+  &lt;th&gt;Year&lt;/th&gt;
+  &lt;th&gt;Category&lt;/th&gt;
+  &lt;th&gt;Name&lt;/th&gt;
+  &lt;th&gt;Motivation&lt;/th&gt;
+&lt;/tr&gt;
+&lt;TR&gt;&lt;TD&gt;1901&lt;/TD&gt;
+&lt;TD&gt;chemistry&lt;/TD&gt;
+&lt;TD&gt;Jacobus Henricus van &amp;#39;t Hoff&lt;/TD&gt;
+&lt;TD&gt;in recognition of the extraordinary services he has rendered by the discovery of the laws of chemical dynamics and osmotic pressure in solutions&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;1901&lt;/TD&gt;
+&lt;TD&gt;literature&lt;/TD&gt;
+&lt;TD&gt;Sully Prudhomme&lt;/TD&gt;
+&lt;TD&gt;in special recognition of his poetic composition, which gives evidence of lofty idealism, artistic perfection and a rare combination of the qualities of both heart and intellect&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;1901&lt;/TD&gt;
+&lt;TD&gt;medicine&lt;/TD&gt;
+&lt;TD&gt;Emil Adolf von Behring&lt;/TD&gt;
+&lt;TD&gt;for his work on serum therapy, especially its application against diphtheria, by which he has opened a new road in the domain of medical science and thereby placed in the hands of the physician a victorious weapon against illness and deaths&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;1901&lt;/TD&gt;
+&lt;TD&gt;physics&lt;/TD&gt;
+&lt;TD&gt;Wilhelm Conrad Röntgen&lt;/TD&gt;
+&lt;TD&gt;in recognition of the extraordinary services he has rendered by the discovery of the remarkable rays subsequently named after him&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;1902&lt;/TD&gt;
+&lt;TD&gt;chemistry&lt;/TD&gt;
+&lt;TD&gt;Hermann Emil Fischer&lt;/TD&gt;
+&lt;TD&gt;in recognition of the extraordinary services he has rendered by his work on sugar and purine syntheses&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;1902&lt;/TD&gt;
+&lt;TD&gt;literature&lt;/TD&gt;
+&lt;TD&gt;Christian Matthias Theodor Mommsen&lt;/TD&gt;
+&lt;TD&gt;the greatest living master of the art of historical writing, with special reference to his monumental work, A history of Rome&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;1902&lt;/TD&gt;
+&lt;TD&gt;medicine&lt;/TD&gt;
+&lt;TD&gt;Ronald Ross&lt;/TD&gt;
+&lt;TD&gt;for his work on malaria, by which he has shown how it enters the organism and thereby has laid the foundation for successful research on this disease and methods of combating it&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;1902&lt;/TD&gt;
+&lt;TD&gt;physics&lt;/TD&gt;
+&lt;TD&gt;Hendrik Antoon Lorentz&lt;/TD&gt;
+&lt;TD&gt;in recognition of the extraordinary service they rendered by their researches into the influence of magnetism upon radiation phenomena&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;1902&lt;/TD&gt;
+&lt;TD&gt;physics&lt;/TD&gt;
+&lt;TD&gt;Pieter Zeeman&lt;/TD&gt;
+&lt;TD&gt;in recognition of the extraordinary service they rendered by their researches into the influence of magnetism upon radiation phenomena&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;&#x2026;&lt;/TD&gt;
+&lt;TD&gt;&#x2026;&lt;/TD&gt;
+&lt;TD&gt;&#x2026;&lt;/TD&gt;
+&lt;TD&gt;&#x2026;&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+</p>
+
+<p>
+A row represents an item, and a column represents a property of the items &#x2013;
+in the example above, each row describes a Nobel prize someone has been awarded, and for each such prize, we have columns showing what year the prize was awarded, in what category, the name of the laureate, and the motivation.
+</p>
+
+<p>
+One basic idea of relational databases is that all 'cells' in the table should be simple values (no lists or objects), and that we can use simple operations from relational algebra to get information from it (cells are <i>sometimes</i> allowed to have the value <code>NULL</code>, when a value is missing, we'll return to that below).
+To work with our tables we use a programming language which is highly specialized for manipulating and extracting information, it is called SQL, which is short hand for Structured Query Language, and it's a <a href="https://en.wikipedia.org/wiki/Domain-specific_language"><i>Domain Specific Language</i></a> (DSL) for finding information in tables.
+SQL can be pronounced as either "S-Q-L", or "sequel".
+</p>
+</div>
+</div>
+<div id="outline-container-org41d2481" class="outline-3">
+<h3 id="org41d2481">Setting up this notebook</h3>
+<div class="outline-text-3" id="text-org41d2481">
+<p>
+There are many different Relational Database Management Systems (RDMBS:es) which implements SQL, some of the most prominent are:
+</p>
+
+<ul class="org-ul">
+<li><a href="https://en.wikipedia.org/wiki/PostgreSQL">PostgreSQL</a></li>
+<li><a href="https://en.wikipedia.org/wiki/MariaDB">MariaDB</a></li>
+<li><a href="https://en.wikipedia.org/wiki/MySQL">MySQL</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Oracle_Database">Oracle</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Microsoft_SQL_Server">Microsoft SQL Server</a></li>
+<li><a href="https://en.wikipedia.org/wiki/IBM_Db2_Family">IBM DD2</a></li>
+<li><a href="https://en.wikipedia.org/wiki/SQLite">SQLite</a></li>
+</ul>
+
+<p>
+Most of these systems are client-server-systems, i.e., they have one program, a SQL server, which handles the data, and clients who communicate with the server in various ways. There are several different kinds of clients:
+</p>
+
+<ul class="org-ul">
+<li>We can run an IDE, which allows us to see our tables in a GUI.</li>
+
+<li>We can run command line clients (CLI) &#x2013; they are text based programs who work like typical REPLs, output will just be text in a terminal window.</li>
+
+<li>We can write scripts which we send to the server, often through a CLI.</li>
+
+<li>We can run a notebook (such as this one), and have it communicate with our database.</li>
+
+<li>We can write code in a general purpose language, and have it communicate with our database.</li>
+</ul>
+
+<p>
+In the course, we'll try all of these methods to access our databases.
+</p>
+
+<p>
+The RDMBS we'll use in the course is SQLite, which is a lightweight but still very powerful system &#x2013; it is <i>by far</i> the most used RDBMS, and it's probably already running on all of your phones and computers (just as an example, if you use Chrome for browsing, your browsing history is typically saved in a SQL-database file <code>.config/google-chrome/Default/History</code>, and Mozilla use it for storing meta-data in Firefox and Thunderbird).
+It's actually not a client/server system (instead it is a library which keeps our databases in files on our computer) &#x2013; but in the course, we'll think of SQLite as if it were a traditional client/server system, because in many ways, it behaves as one.
+</p>
+
+<p>
+In order to run SQL in this notebook, we need to load the SQL extension:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%load_ext sql
+</pre>
+</div>
+
+<p>
+&#x2026; and then we want some database to work on (I've put all the databases used for this lecture in a file called <code>lect01.sqlite</code>):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%sql sqlite:///lect01.sqlite
+</pre>
+</div>
+
+<p>
+Now we're good to go, we just have to prefix our SQL queries with <code>%sql</code> (one line of SQL) or <code>%%sql</code> (several lines of SQL, this is the form we will use in most cases).
+</p>
+</div>
+</div>
+<div id="outline-container-orgd69df7f" class="outline-3">
+<h3 id="orgd69df7f">Using SQL to find information in a table (<code>SELECT</code>)</h3>
+<div class="outline-text-3" id="text-orgd69df7f">
+<p>
+If we were to find out who were the Nobel laureates in 1910, we could just look through the lines of our table above, and <i>if the rows in the table were ordered by year</i>, it would be easy (that's essentially how mankind has used encyclopedias since they were invented about 2000 years ago).
+</p>
+
+<p>
+To search for values in SQL, we use the <code>SELECT</code> statement:
+</p>
+
+<p>
+&lt;center&gt;
+&lt;img src="./select-core-01-SFW.svg"&gt;
+&lt;/center&gt;
+</p>
+
+<p>
+(the diagram above is taken from SQLite's fabulous web site, you can find out more about the <code>SELECT</code> statement <a href="https://sqlite.org/lang_select.html">here</a>).
+</p>
+
+<p>
+If we follow the lines in the diagram above, we could puzzle together the query:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT   category, name
+FROM     nobel_prizes
+WHERE    year = 1910
+</pre>
+</div>
+
+<p>
+This will return a new table, looking like:
+</p>
+
+<p>
+&lt;div&gt;
+&lt;table rules="all"&gt;
+&lt;tr&gt;
+&lt;th&gt;Category&lt;/th&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;/tr&gt;
+&lt;TR&gt;&lt;TD&gt;chemistry&lt;/TD&gt;
+&lt;TD&gt;Otto Wallach&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;literature&lt;/TD&gt;
+&lt;TD&gt;Paul Johann Ludwig Heyse&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;medicine&lt;/TD&gt;
+&lt;TD&gt;Albrecht Kossel&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;physics&lt;/TD&gt;
+&lt;TD&gt;Johannes Diderik van der Waals&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+</p>
+
+<p>
+The Nobel prize was first awarded in 1901, so if we look for winners of the 1900 Nobel prizes, we would get an empty table back:
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT   category, name
+FROM     nobel_prizes
+WHERE    year = 1900
+</pre>
+</div>
+
+<p>
+SQL has a <code>NULL</code> value which is sometimes useful (we can use it to signal that one column in a row lacks a value), but observe that there is a <i>huge</i> difference between the empty table returned above, and <code>NULL</code> (if we had a list of strings in Python or Java, and wrote a function which returned all of the strings containing a specific substring, the function would return an empty list, not <code>None</code> or <code>NULL</code>).
+</p>
+
+<p>
+<code>NULL</code> values are only used for individual columns, and we could potentially have used it in our Nobel prize database if we had an award for which there was no motivation.
+Let's say the fictional poet Oddput Clementin was awarded the Nobel prize in literature in 2024 &#x2013; since there is no way to explain why he got it it, we could set <code>motivation</code> to <code>NULL</code> in that case (we'll return to how we insert data into our tables later).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+<p>
+The value <code>NULL</code> itself is weird, in SQL the test <code>NULL = NULL</code> doesn't return <code>TRUE</code> or <code>FALSE</code>, it's <code>NULL</code> (but Jupyter writes that as <code>None</code>).
+</p>
+
+<p>
+So the query:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT    year, category, name
+FROM      nobel_prizes
+WHERE     motivation = NULL
+</pre>
+</div>
+
+<p>
+would always return an empty result.
+</p>
+
+<p>
+To see if a value is <code>NULL</code>, we have to use the <code>IS</code> comparison:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT    year, category, name
+FROM      nobel_prizes
+WHERE     motivation IS NULL
+</pre>
+</div>
+
+<p>
+Despite it's weirdness, <code>NULL</code> can actually be useful in SQL, we'll return to this later.
+</p>
+
+<p>
+The fact that we get tables back from our queries is very useful &#x2013; we'll return to that too in a little while.
+</p>
+
+<p>
+If we wanted to see only laureates in physics in 1910, we'd just refine our condition:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT   name
+FROM     nobel_prizes
+WHERE    year = 1910 and category = 'physics'
+</pre>
+</div>
+
+<p>
+<b>Problem:</b> How do we get all literature laureates in the 1920ies (see the <a href="https://sqlite.org/lang_select.html">docs</a>)?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+<p>
+<b>Problem:</b> How do we order the literature laureates in the 1920ies by name?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+<p>
+How do we get the search result above in reverse order?
+</p>
+
+<p>
+<b>Problem:</b> Show the first 10 Nobel prizes in chemistry.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+<p>
+<b>Problem:</b> Show Nobel prize number 32 to 42 in medicine (in chronological order).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+<p>
+<b>Problem:</b> What year did Albert Einstein get his award?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+<p>
+<b>Problem:</b> What year, and in what category did Churchill get his award?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+<p>
+Most databases have the <code>LIKE</code> predicate, quite a few also have some kind of regular expressions.
+</p>
+</div>
+</div>
+<div id="outline-container-orge184e3a" class="outline-3">
+<h3 id="orge184e3a">Selecting only distinct values</h3>
+<div class="outline-text-3" id="text-orge184e3a">
+<p>
+If we wanted to see which years the Nobel prize was awarded, we could write:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT    year
+FROM      nobel_prizes
+</pre>
+</div>
+
+<p>
+but we would get many repetitions. To see only the <i>distinct</i> values, we can use a <code>SELECT DISTINCT</code> query:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT DISTINCT  year
+FROM             nobel_prizes
+</pre>
+</div>
+
+<p>
+<b>Problem:</b> What categories are in our database?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org11f4db0" class="outline-3">
+<h3 id="org11f4db0">SQL scalar functions</h3>
+<div class="outline-text-3" id="text-org11f4db0">
+<p>
+In the <a href="https://sqlite.org/lang_select.html">docs</a>, we see that the general form of the <code>SELECT</code> statement allows a <code>result-column</code>, and that a <code>result-column</code> can contain an <code>expr</code>.
+This opens up many, many possibilities (some of which we will get back to below), one of them is the use of simple scalar functions.
+We can also use these functions in other places, such as in our <code>WHERE</code> or <code>ORDER BY</code> clauses.
+</p>
+
+<p>
+We can se the standard <i>core functions</i> <a href="https://sqlite.org/lang_corefunc.html">here</a>, try to use them to do the following:
+</p>
+
+<p>
+<b>Problem:</b> Show the initial letter of each of the laureates in the year 2023.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+<p>
+<b>Problem:</b> Show the 10 first winners in the following format (see the <code>format</code>-function &#x2013; unfortunately it will not look great in the notebook&#x2026;):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text">1901: chemistry  Jacobus Henricus van 't Hoff
+1901: literature Sully Prudhomme
+1901: medicine   Emil Adolf von Behring
+1901: physics    Wilhelm Conrad R&#246;ntgen
+1902: chemistry  Hermann Emil Fischer
+1902: literature Christian Matthias Theodor Mommsen
+1902: medicine   Ronald Ross
+1902: physics    Hendrik Antoon Lorentz
+1902: physics    Pieter Zeeman
+1903: chemistry  Svante August Arrhenius
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+<p>
+<b>Problem:</b> List the five laureates with the shortest names.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org53ab954" class="outline-3">
+<h3 id="org53ab954">SQL aggregate functions</h3>
+<div class="outline-text-3" id="text-org53ab954">
+<p>
+The functions above was applied to one or more columns in a row, and they returned results for each row.
+There is another kind of SQL function, called <i>aggregate function</i>.
+An aggregate function collapses a whole table (or part of it, see below) into one row &#x2013; the SQLite docs list some aggregate functions <a href="https://www.sqlite.org/lang_aggfunc.html">here</a>.
+</p>
+
+<p>
+One simple such function is <code>count(X)</code> &#x2013; it counts the number of times a values is not <code>NULL</code> in a column, so to see how many Nobel laureates we have in our database, we can write:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT    count()
+FROM      nobel_prizes;
+</pre>
+</div>
+
+<p>
+This query returns just one row, with the count (what else could it have returned?).
+</p>
+
+<p>
+<b>Problem:</b> How many Nobel prizes were awarded in 2023?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+<p>
+<b>Problem:</b> When was the first Nobel prize awarded?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+<p>
+<b>Exercise:</b> How many Nobel prizes in chemistry have been awarded?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8b79619" class="outline-3">
+<h3 id="org8b79619"><code>GROUP BY</code> and <code>HAVING</code></h3>
+<div class="outline-text-3" id="text-org8b79619">
+<p>
+Using <code>GROUP BY</code> we can handle rows in groups &#x2013; to understand how it works, lets first look at the following query:
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT    year, category, name
+FROM      nobel_prizes
+WHERE     year = 2013
+ORDER BY  category
+</pre>
+</div>
+
+<p>
+Here the rows of each category will end up adjacent to each other, and using <code>GROUP BY</code> we insert an invisible divider between the groups, and perform any aggregate function on the whole 'group':
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT    category, count()
+FROM      nobel_prizes
+WHERE     year = 2013
+GROUP BY  category
+</pre>
+</div>
+
+<p>
+So, if we apply an aggregate function, such as <code>count()</code>, in a table which we have grouped, the function will be applied to each group, not to the whole table.
+Instead of getting one <code>count()</code> for the whole table (it would be a single value), we get one <code>count()</code> for each group (as above).
+</p>
+
+<p>
+If we add <code>name</code> in the first line, we get a somewhat arbitrary result:
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT    category, count(), name
+FROM      nobel_prizes
+WHERE     year = 2013
+GROUP BY  category
+</pre>
+</div>
+
+<p>
+The category and count is correct, but only one name is shown for each category.
+</p>
+
+<p>
+The 'problem' is that we only get one row per group in the output, and that there may be several laureates in each group &#x2013; our query will return one of them in a seemingly haphazard manner.
+To alleviate this problem, SQLite defines an aggregate function <a href="https://www.sqlite.org/lang_aggfunc.html#group_concat"><code>group_concat</code></a>, which concatenates all values in the group (it also has the alias <code>string_agg</code>, to match the corresponding function in PostgreSQL):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT    category, count(), group_concat(name, ", ") AS "names"
+FROM      nobel_prizes
+WHERE     year = 2013
+GROUP BY  category
+</pre>
+</div>
+
+<p>
+In recent versions of SQLite it's also possible to order the values in an aggregate function such as <code>group_concat</code> by using <code>ORDER BY</code> inside the function call (see the <a href="https://www.sqlite.org/lang_aggfunc.html">docs</a>).
+</p>
+
+<p>
+Observe that there is no problem displaying <code>category</code> in the SELECT-statement above, we get a value which we know will be the same for each row in the group (this is by definition, since that's what we grouped by).
+</p>
+
+<p>
+If we're only interested in those categories with less than three laureates, we use <code>HAVING</code> to select only groups with a given property:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT    category, count(), group_concat(name, ", ") AS "names"
+FROM      nobel_prizes
+WHERE     year = 2013
+GROUP BY  category
+HAVING    count() &lt; 3
+</pre>
+</div>
+
+<p>
+This corresponds to a <code>WHERE</code> statement, <i>but it applies to groups</i>, not to individual rows (as <code>WHERE</code> does) &#x2013; so <code>WHERE</code> and <code>HAVING</code> have similar effects (they somehow narrow a search), <i>but they're absolutely not interchangable!</i>
+</p>
+
+<p>
+Important (and often misunderstood): In the query above we first have a <code>WHERE</code> statement to select some rows from the whole table, and then group the resulting selection &#x2013; this can be seen in this diagram:
+</p>
+
+<p>
+&lt;center&gt;
+&lt;img src="./select-00-overview.svg"&gt;
+&lt;/center&gt;
+</p>
+
+<p>
+Every time we have both a <code>WHERE</code> and a <code>HAVING</code> in the same query, we must first use <code>WHERE</code> to select rows we can group, and then use <code>HAVING</code> to select groups.
+We can use <code>WITH</code> statements or subqueries (see below) if we want to have it the other way around.
+</p>
+
+
+<p>
+<b>Problem:</b> Has anyone won more than one Nobel prize? We can assume the names of the laureates are unique (so far they are!).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+
+<p>
+<b>Problem:</b> How many laureates are there in each category?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+
+<p>
+<b>Problem:</b> Which categories have had more than 200 laureates?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+
+<p>
+<b>Exercise:</b> How many laureates were there each year between 1920 and 1930?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+
+<p>
+<b>Exercise:</b> Which years saw more than 9 laureates?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+<p>
+<b>Exercise:</b> Which have been the 20 years with most laureates? (We don't need to be precise in case of ties.)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+</div>
+<div id="outline-container-org54cfaaa" class="outline-4">
+<h4 id="org54cfaaa">Using <code>CASE WHEN</code></h4>
+<div class="outline-text-4" id="text-org54cfaaa">
+<p>
+When we group values, we can make use of the <code>CASE WHEN</code> construct (see the penultimate track in the diagram below):
+</p>
+
+<p>
+&lt;center&gt;
+&lt;img src="./select-expr.svg"&gt;
+&lt;/center&gt;
+</p>
+
+<p>
+For instance, we can use it to categorize the era for each of the physics laureates having a name beginning with 'A':
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT   year, name,
+         CASE
+             WHEN year &lt; 1970 THEN 'ancient era'
+             WHEN year &lt;= 2000 THEN 'a long time ago'
+             ELSE 'quite recently'
+         END AS era
+FROM     nobel_prizes
+WHERE    category = 'physics' AND name LIKE 'A%'
+</pre>
+</div>
+
+<p>
+<b>Problem:</b> Use the <code>CASE WHEN</code> construct and <code>GROUP BY</code> to count the number of physics laureates beginning with 'A' in each era.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc09a4c7" class="outline-3">
+<h3 id="orgc09a4c7">A short intro to window functions</h3>
+<div class="outline-text-3" id="text-orgc09a4c7">
+<p>
+As we saw above, we can treat partitions of our rows as 'groups', by using <code>GROUP BY</code>.
+</p>
+
+<p>
+We also saw than when we use an aggregate function on a group, we collapse whole groups into one row in the output (and when we apply it to a table without groups, the whole table collapses) &#x2013; but sometimes we want to apply aggregate functions within a group of values, and keep each row in the output.
+</p>
+
+<p>
+Above we listed all laureates in 2013, now we want to add one column to the output: for each laureate, we want to show how many laureates shared the prize in her or his category.
+</p>
+
+<p>
+If we use <code>GROUP BY</code> and the aggregate function <code>count()</code> on the categories, we would only get one row per category, and using <code>count()</code> without grouping would collapse the whole result into just one row:
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT    year, category, name, count() AS count      -- oh no!
+FROM      nobel_prizes
+WHERE     year = 2013
+ORDER BY  category
+</pre>
+</div>
+
+<p>
+Fortunately, SQL has quite recently introduced a way to apply functions only over 'partitions' of our tables, and keep all rows in the output &#x2013; using the reserved word <code>OVER</code> we can introduce a window of our rows, and apply the function only over this 'window':
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT    year,
+          category,
+          name,
+          count() OVER (PARTITION by category) AS count
+FROM      nobel_prizes
+WHERE     year = 2013
+ORDER BY  category
+</pre>
+</div>
+
+<p>
+We can also give our windows names, using an alias:
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT    year,
+          category,
+          name,
+          count() OVER categories AS count
+FROM      nobel_prizes
+WHERE     year = 2013
+WINDOW    categories AS (PARTITION by category)
+ORDER BY  category
+</pre>
+</div>
+
+<p>
+The aliased window definitions must come after any <code>WHERE</code> and <code>HAVING</code>, and before any <code>ORDER BY</code>.
+</p>
+
+<p>
+So, if we use the reserved word <code>OVER</code> after a function, the function will be applied according to a 'window' (there is more to it than this, but this will suffice for now).
+In the window we can:
+</p>
+
+<ul class="org-ul">
+<li>define a partition, using <code>PARTITION BY</code>,</li>
+
+<li>define an order, using <code>ORDER BY</code>, and</li>
+
+<li>define a range, which we can use to define groups of rows relative to each other (but we won't look at ranges in the course).</li>
+</ul>
+
+<p>
+The function will be applied to each partition, in the same way we applied aggregate functions on groups above, but now we won't collapse the partitions.
+Observe that the partitioning and ordering are based only on the selection we make (i.e., only those rows which are chosen in our <code>WHERE</code> clause).
+</p>
+
+<p>
+We can use our regular aggregate functions as window functions, but there are also a couple of dedicated window functions, such as (there are more, but we won't use them in the course):
+</p>
+
+<ul class="org-ul">
+<li><code>rank()</code>: ranks rows by the order specified in the window, ties can occur,</li>
+
+<li><code>row_number()</code>: as <code>rank()</code>, but now we avoid ties, and rank by row number in the output, and</li>
+
+<li><code>percent_rank()</code>: gives a value between 0.0 and 1.0 (so it's a bit of a misnomer), giving the row's relative rank within its partition.</li>
+</ul>
+
+<p>
+You can find more <a href="https://sqlite.org/windowfunctions.html">here</a>.
+</p>
+
+<p>
+Window functions can be very powerful, but we'll not delve too deeply into them in the course &#x2013; I want you to be aware of them, though!
+</p>
+
+<p>
+<b>Problem:</b> Add one column which 'ranks' the laureates of 2013 in the table above according to the lengths of their names, within the categories &#x2013; shorter names should come before longer names.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+<p>
+<b>Exercise:</b> For each laureate with the initial A, list their category, year, name, and 'freshness' within that category, i.e., the most recent laureate in a category is ranked 1, the second most recent laureate is ranked 2, etc. The ranks should be confined to laureates with the initial A.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf5f857e" class="outline-3">
+<h3 id="orgf5f857e">Some exercises</h3>
+<div class="outline-text-3" id="text-orgf5f857e">
+<p>
+To spice things up a bit, I've included a table with all olympic games since 1896 &#x2013; the table <code>olympics</code> contains the columns:
+</p>
+
+<ul class="org-ul">
+<li><code>year</code></li>
+<li><code>city</code></li>
+<li><code>country</code></li>
+<li><code>continent</code></li>
+<li><code>season</code></li>
+<li><code>ordinal_number</code></li>
+</ul>
+
+<p>
+If we look carefully at this table, we can find some unnecessary repetition (try to find it!) &#x2013; we will address this problem during lecture 2, but for now, we'll let it pass.
+</p>
+
+
+<p>
+<b>Exercise:</b> How many olympic games have each continent hosted?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+
+<p>
+<b>Exercise:</b> When was the first olympic games in each continent?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+
+<p>
+<b>Exercise:</b> Which countries have hosted the summer olympics more than once?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+
+<p>
+<b>Exercise:</b> List the continents in descending order by the number of times they've hosted the summer olympics
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+
+<p>
+<b>Exercise:</b> Show a 'histogram' (no actual diagram, just the counts) over the the initial letter of the names of all Nobel laureates (see how big your chance is&#x2026;).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+
+<p>
+<b>Exercise:</b> Show a 'histogram' over the the initial letter of the names of all Nobel laureates, <i>for each category</i>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+
+<p>
+<b>Exercise:</b> Has anyone won more than one Nobel prize in the same category?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+
+<p>
+<b>Exercise:</b> Has anyone won Nobel prizes in different categories?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+
+<p>
+<b>Exercise:</b> For each olympic game, show how many olympic games had come before it in its continent. (Requires window functions)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7d539b4" class="outline-3">
+<h3 id="org7d539b4">Subqueries, Views and Common Table Expressions (CTEs)</h3>
+<div class="outline-text-3" id="text-org7d539b4">
+<p>
+As we noted above, the result of a <code>SELECT</code> statement is itself a (kind of) table, and we can use such a table inside other <a href="https://sqlite.org/lang_select.html"><code>SELECT</code> statements</a>.
+</p>
+
+<p>
+One useful pattern is:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #c48702; font-weight: bold;">SELECT</span> ...
+<span style="color: #c48702; font-weight: bold;">FROM</span>   ...
+<span style="color: #c48702; font-weight: bold;">WHERE</span>  ... <span style="color: #c48702; font-weight: bold;">IN</span>
+       (<span style="color: #c48702; font-weight: bold;">SELECT</span> ...
+        <span style="color: #c48702; font-weight: bold;">FROM</span> ...
+        <span style="color: #c48702; font-weight: bold;">WHERE</span> ...)
+</pre>
+</div>
+
+<p>
+The second, nested query is called a <i>subquery</i>.
+</p>
+
+<p>
+We'll use a subquery to find all literature laureates who split their prizes &#x2013; to do it we begin with a regular query, to find which years the Nobel prize for literature were split?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+<p>
+&#x2026; and now we use the result of that query to find out what we're really looking for:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+<p>
+This can be simplified by using either of two ways to define 'temporary tables':
+</p>
+
+<ul class="org-ul">
+<li><i>views</i></li>
+<li><i>Common Tabale Expressions</i>.</li>
+</ul>
+
+<p>
+A <i>view</i> can be seen as a new table, containing the result of a query &#x2013; to create a view with the years where the literature prize was shared, we can write:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+CREATE VIEW shared_literature_prize(year) AS
+  SELECT ... -- just as above...
+</pre>
+</div>
+
+<p>
+We can now use our view in a query:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT    year, name
+FROM      nobel_prizes
+WHERE     category = 'literature'
+          AND year IN (
+            SELECT    year
+            FROM      shared_literature_prize
+          )
+</pre>
+</div>
+
+<p>
+Since there is only one attribute in our <code>shared_literature_table</code>, we can simplify this expression:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT    year, name
+FROM      nobel_prizes
+WHERE     category = 'literature'
+          AND year IN shared_literature_prize
+</pre>
+</div>
+
+<p>
+The view will be around until we decide to remove it with:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+DROP VIEW shared_literature_prize
+</pre>
+</div>
+
+<p>
+A <i>Common Table Expression</i> (or <i>CTE</i>) is like a view, but only defined in one query, so we'd write it like:
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+WITH
+  shared_literature_prize(year) AS (
+    SELECT ... -- as above...
+  )
+SELECT    year, name
+FROM      nobel_prizes
+WHERE     category = 'literature'
+          AND year IN shared_literature_prize
+</pre>
+</div>
+
+<p>
+There are some things which makes CTEs very nice:
+</p>
+
+<ul class="org-ul">
+<li>they're defined as part of a <code>SELECT</code> statement (so there is nothing to drop afterwards),</li>
+<li>since they're part of a <code>SELECT</code> statement, we only need one statement (which will become useful when we call our database remotely, we'll return to that later in the course), and</li>
+<li>they can be defined recursively (we'll return to that later in the course).</li>
+</ul>
+
+<p>
+<b>Problem:</b> Show the years and categories for recurring laureates (i.e., laureates who has won more than once) &#x2013; use a CTE to do it.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+<p>
+<b>Exercise:</b> Who has won the literature prize in a year when at least one chemistry laureate had a name beginning with 'L'? First try to solve this with a regular subquery, and then rewrite it using a CTE.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+<p>
+We saw above that we can't have another <code>WHERE</code> after the <code>HAVING</code> clause:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT    category, count() AS count
+FROM      nobel_prizes
+WHERE     year = 2013
+GROUP BY  category
+HAVING    count() &lt; 3
+WHERE     count &gt; 1        --   &lt;-- not allowed!
+</pre>
+</div>
+
+<p>
+but we can make our 'grouping query' into a subquery, and have another <code>WHERE</code> in the outer query:
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT category, count
+FROM (
+    SELECT    category, count() AS count
+    FROM      nobel_prizes
+    WHERE     year = 2013
+    GROUP BY  category
+    HAVING    count() &lt; 3)
+WHERE  count &gt; 1
+</pre>
+</div>
+
+<p>
+A somewhat tidier way of expressing this is to use a WITH-statement (CTE):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+WITH category_count(category, count) AS (
+    SELECT    category, count()
+    FROM      nobel_prizes
+    WHERE     year = 2013
+    GROUP BY  category
+    HAVING    count() &lt; 3
+)
+SELECT category, count
+FROM   category_count
+WHERE  count &gt; 1
+</pre>
+</div>
+
+
+<p>
+<b>Problem:</b> Show which years there were prices in some category, but not in medicine (you can do it either with or without CTEs, but use a subquery).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+
+<p>
+<b>Problem:</b> There is a 'funny' function which returns series of values &#x2013; it's called <a href="https://www.sqlite.org/series.html"><code>generate_series</code></a>, and you can try to use it to see which year no nobel price at all was awarded.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+</div>
+<div id="outline-container-orgb1f4116" class="outline-4">
+<h4 id="orgb1f4116">Correlated subqueries</h4>
+<div class="outline-text-4" id="text-orgb1f4116">
+<p>
+Another form of subquery is:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #c48702; font-weight: bold;">SELECT</span> ...,
+       (<span style="color: #c48702; font-weight: bold;">SELECT</span> ...
+        <span style="color: #c48702; font-weight: bold;">FROM</span> ...
+        <span style="color: #c48702; font-weight: bold;">WHERE</span> ...)
+<span style="color: #c48702; font-weight: bold;">FROM</span>   ...
+</pre>
+</div>
+
+<p>
+This works if the subquery produces one result, such as when we use an aggregate function. As an example, solve the following problem:
+</p>
+
+<p>
+<b>Problem:</b> List the names of all laureates who has the longest name of all laureates in their category (in case of ties, all should be listed) &#x2013; order by category.
+</p>
+
+<p>
+Here we can use a subquery which is 'run' for each row in our main query:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT  category, year, name
+FROM    nobel AS outer_nobel
+WHERE   length(name) = (
+            SELECT max(length(name))
+            FROM   nobel
+            WHERE  category = outer_nobel.category)
+ORDER BY category
+</pre>
+</div>
+
+<p>
+This is called a correlated subquery (since we refer to the enclosing query inside it). We use an alias to distinguish between the nobel table in the outer query and the nobel table in the subquery (it's the same table, but we 'iterate' through it separately).
+</p>
+
+<p>
+BTW, we could have skipped the <code>AS</code> in
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql">...
+<span style="color: #c48702; font-weight: bold;">FROM</span>    nobel <span style="color: #c48702; font-weight: bold;">AS</span> outer_nobel
+...
+</pre>
+</div>
+
+<p>
+and just written:
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-sql">...
+<span style="color: #c48702; font-weight: bold;">FROM</span>    nobel outer_nobel
+...
+</pre>
+</div>
+
+<p>
+The general opinion is that we should use <code>AS</code>, as it makes it more obvious that we're defining an alias.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

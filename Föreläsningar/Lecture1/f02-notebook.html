@@ -1,0 +1,1500 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>EDAF75 - notebook for lecture 2</title>
+<meta name="keywords" content="keywords" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">EDAF75 - notebook for lecture 2</h1>
+<div id="outline-container-orgb2c698a" class="outline-2">
+<h2 id="orgb2c698a">Week 1: Introduction, relational databases, and SQL</h2>
+<div class="outline-text-2" id="text-orgb2c698a">
+<p>
+In order to run SQL in this notebook, we need to load the SQL extension:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%load_ext sql
+</pre>
+</div>
+
+<p>
+&#x2026; and then we want some database to work on (I've put all the databases used for this lecture in a file called <code>lect01.sqlite</code>):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%sql sqlite:///lect01.sqlite
+</pre>
+</div>
+
+<p>
+Now we're good to go, we just have to prefix our SQL queries with <code>%sql</code> (one line of SQL) or <code>%%sql</code> (several lines of SQL, this is the form we will use in most cases).
+</p>
+</div>
+<div id="outline-container-org4d500b7" class="outline-3">
+<h3 id="org4d500b7"><code>GROUP BY</code> and <code>HAVING</code></h3>
+<div class="outline-text-3" id="text-org4d500b7">
+<p>
+We talked about <code>GROUP BY</code> and <code>HAVING</code> last time, but I skipped the following section.
+</p>
+</div>
+<div id="outline-container-org0ba17af" class="outline-4">
+<h4 id="org0ba17af">Using <code>CASE WHEN</code></h4>
+<div class="outline-text-4" id="text-org0ba17af">
+<p>
+When we group values, we can make use of the <code>CASE WHEN</code> construct (see the penultimate track in the diagram below):
+</p>
+
+<p>
+&lt;center&gt;
+&lt;img src="./select-expr.svg"&gt;
+&lt;/center&gt;
+</p>
+
+<p>
+For instance, we can use it to categorize the era for each of the physics laureates having a name beginning with 'A':
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT   year, name,
+         CASE
+             WHEN year &lt; 1970 THEN 'ancient time'
+             WHEN year &lt;= 2000 THEN 'a long time ago'
+             ELSE 'quite recently'
+         END AS era
+FROM     nobel_prizes
+WHERE    category = 'physics' AND name LIKE 'A%'
+</pre>
+</div>
+
+<p>
+<b>Problem:</b> Use the <code>CASE WHEN</code> construct and <code>GROUP BY</code> to count the number of physics laureates beginning with 'A' in each era. Since we've now seen CTEs, we can try using one here.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org0a6a3c4" class="outline-3">
+<h3 id="org0a6a3c4">A short intro to window functions</h3>
+<div class="outline-text-3" id="text-org0a6a3c4">
+<p>
+As we saw above, we can treat partitions of our rows as 'groups', by using <code>GROUP BY</code>.
+</p>
+
+<p>
+We also saw than when we use an aggregate function on a group, we collapse whole groups into one row in the output (and when we apply it to a table without groups, the whole table collapses) &#x2013; but sometimes we want to apply (aggregate) functions within a group of values, and keep each row in the output.
+</p>
+
+<p>
+Above we listed all laureates in 2013, now we want to add one column to the output: for each laureate, we want to show how many laureates shared the prize in her or his category.
+</p>
+
+<p>
+If we use <code>GROUP BY</code> and the aggregate function <code>count()</code> on the categories, we would only get one row per category, and using <code>count()</code> without grouping would collapse the whole result into just one row:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT    year, category, name, count() AS count      -- oh no!
+FROM      nobel_prizes
+WHERE     year = 2013
+ORDER BY  category
+</pre>
+</div>
+
+<p>
+Fortunately, SQL has quite recently introduced a way to apply functions only over 'partitions' of our tables, and keep all rows in the output &#x2013; using the reserved word <code>OVER</code> we can introduce a <i>window</i> of our rows, and apply the function only over this 'window':
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT    year,
+          category,
+          name,
+          count() OVER (PARTITION by category) AS count
+FROM      nobel_prizes
+WHERE     year = 2013
+ORDER BY  category
+</pre>
+</div>
+
+<p>
+We can also give our windows names, using an alias:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT    year,
+          category,
+          name,
+          count() OVER categories AS count
+FROM      nobel_prizes
+WHERE     year = 2013
+WINDOW    categories AS (PARTITION by category)
+ORDER BY  category
+</pre>
+</div>
+
+<p>
+The aliased window definitions must come after any <code>WHERE</code> and <code>HAVING</code>, and before any <code>ORDER BY</code>.
+</p>
+
+<p>
+So, if we use the reserved word <code>OVER</code> after a function, the function will be applied according to a 'window' (there is more to it than this, but this will suffice for now).
+In the window we can:
+</p>
+
+<ul class="org-ul">
+<li>define a partition, using <code>PARTITION BY</code>,</li>
+
+<li>define an order, using <code>ORDER BY</code>, and</li>
+
+<li>define a range, which we can use to define groups of rows relative to each other (but we won't look at ranges in the course).</li>
+</ul>
+
+<p>
+The function will be applied to each partition, in the same way we applied aggregate functions on groups above, but now we won't collapse the partitions.
+Observe that the partitioning and ordering are based only on the selection we make (i.e., only those rows which are chosen in our <code>WHERE</code> clause).
+</p>
+
+<p>
+We can use our regular aggregate functions as window functions, but there are also a couple of dedicated window functions, such as (there are more, but we won't use them in the course):
+</p>
+
+<ul class="org-ul">
+<li><code>rank()</code>: ranks rows by the order specified in the window, ties can occur,</li>
+
+<li><code>row_number()</code>: as <code>rank()</code>, but now we avoid ties, and rank by row number in the output, and</li>
+
+<li><code>percent_rank()</code>: gives a value between 0.0 and 1.0 (so it's a bit of a misnomer), giving the row's relative rank within its partition.</li>
+</ul>
+
+<p>
+You can find more <a href="https://sqlite.org/windowfunctions.html">here</a>.
+</p>
+
+<p>
+Window functions can be very powerful, but we'll not delve too deeply into them in the course &#x2013; I want you to be aware of them, though!
+</p>
+
+<p>
+<b>Problem:</b> Add one column which 'ranks' the laureates of 2013 in the table above according to the lengths of their names, within the categories &#x2013; shorter names should come before longer names.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+<p>
+<b>Exercise:</b> For each laureate with the initial A, list their category, year, name, and 'freshness' within that category, i.e., the most recent laureate in a category is ranked 1, the second most recent laureate is ranked 2, etc. The ranks should be confined to laureates with the initial A.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org3dc7b49" class="outline-3">
+<h3 id="org3dc7b49">Subqueries, Views and Common Table Expressions (CTEs)</h3>
+<div class="outline-text-3" id="text-org3dc7b49">
+<p>
+We talked about subqueries the last time, here's just one 'refresher':
+</p>
+
+<p>
+<b>Problem:</b> Show in which years there were prices in some category, but not in medicine.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+</div>
+<div id="outline-container-org0febbbb" class="outline-4">
+<h4 id="org0febbbb">Correlated subqueries</h4>
+<div class="outline-text-4" id="text-org0febbbb">
+<p>
+Sometimes (but honestly not that often&#x2026;) it's useful to have a subquery which is somehow dependent on the surrounding query (the superquery?).
+As an example, solve the following problem:
+</p>
+
+<p>
+<b>Problem:</b> List the names of all laureates who has the longest name of all laureates in their category (in case of ties, all should be listed) &#x2013; order by category.
+</p>
+
+<p>
+Here we can use a subquery which is 'run' for each row in our main query:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT  category, year, name
+FROM    nobel_prizes AS outer_nobel_prizes
+WHERE   length(name) = (
+            SELECT max(length(name))
+            FROM   nobel_prizes
+            WHERE  category = outer_nobel_prizes.category)
+ORDER BY category
+</pre>
+</div>
+
+<p>
+This is called a <i>correlated subquery</i> (since we refer to the enclosing query inside it).
+We use an alias to distinguish between the <code>nobel_prize</code> table in the outer query and the <code>nobel_prize</code> table in the subquery (it's the same table, but we 'iterate' through it separately).
+</p>
+
+<p>
+BTW, we could have skipped the <code>AS</code> in
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql">...
+<span style="color: #c48702;">FROM</span>    nobel <span style="color: #c48702;">AS</span> outer_nobel
+...
+</pre>
+</div>
+
+<p>
+and just written:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql">...
+<span style="color: #c48702;">FROM</span>    nobel outer_nobel
+...
+</pre>
+</div>
+
+<p>
+The general opinion is that we should use <code>AS</code>, as it makes it more obvious that we're defining an alias.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org06c7d14" class="outline-3">
+<h3 id="org06c7d14">When one table is not enough</h3>
+<div class="outline-text-3" id="text-org06c7d14">
+<p>
+In the preparation notes for this lecture, you were asked to think through the problem below.
+</p>
+<hr />
+<p>
+<b>Problem:</b> We've been asked to write code to handle students and their college applications. Each student has a name, a student id (stil), and an average grade. The students apply for various majors at colleges, where each college has a name, is situated in a given state, and has a given enrollment. Each application is for a specific major at a specific college, and it can be accepted, rejected, or pending.
+</p>
+
+<ol class="org-ol">
+<li>What classes and/or data structures would you use to keep track of this data in Python or Java?</li>
+<li>How do you list all applications for a given student?</li>
+<li>How do you list all applications for a given major at a given college?</li>
+<li>Approximately how many lines of Python/Java code do you need to list the three programs (major@college) with the highest grade average for the 'last' accepted student (assuming the students are accepted in order of decreasing grade averages)?</li>
+<li>How would you persist your data, so it doesn't get lost if we have to restart the program?</li>
+<li>Can you come up with a way to let several programs access the data simultaneously?</li>
+<li>If you solve the previous problem, and want to allow several programs update the data simultaneously, how do you make sure the data isn't corrupted?</li>
+</ol>
+<hr />
+
+<p>
+If we wanted to keep all the information above in one table, we'd need the following columns (below I use some column names which are in a style I don't normally use, but I think it could be good for you to be exposed to different styles):
+</p>
+
+<ul class="org-ul">
+<li>student id (<code>s_id</code>)</li>
+<li>student name (<code>s_name</code>)</li>
+<li>average grade (<code>gpa</code>)</li>
+<li>college (<code>c_name</code>)</li>
+<li>state (<code>state</code>)</li>
+<li>enrollment (<code>enrollment</code>)</li>
+<li>major (<code>major</code>)</li>
+<li>decision (<code>decision</code>)</li>
+</ul>
+
+<p>
+Here is a (very small) example:
+</p>
+
+<p>
+&lt;div&gt;
+&lt;table rules="all"&gt;
+&lt;tr&gt;
+  &lt;th&gt;&lt;code&gt;s&amp;lowbar;id&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;s&amp;lowbar;name&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;gpa&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;c&amp;lowbar;name&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;state&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;enrollment&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;major&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;decision&lt;/code&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;TR&gt;
+  &lt;TD&gt;123&lt;/TD&gt;&lt;TD&gt;Amy&lt;/TD&gt;&lt;TD&gt;3.9&lt;/TD&gt;
+  &lt;TD&gt;Stanford&lt;/TD&gt;&lt;TD&gt;CA&lt;/TD&gt;&lt;TD&gt;15000&lt;/TD&gt;
+  &lt;TD&gt;CS&lt;/TD&gt;&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;123&lt;/TD&gt;&lt;TD&gt;Amy&lt;/TD&gt;&lt;TD&gt;3.9&lt;/TD&gt;
+  &lt;TD&gt;Stanford&lt;/TD&gt;&lt;TD&gt;CA&lt;/TD&gt;&lt;TD&gt;15000&lt;/TD&gt;
+  &lt;TD&gt;EE&lt;/TD&gt;&lt;TD&gt;N&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;123&lt;/TD&gt;&lt;TD&gt;Amy&lt;/TD&gt;&lt;TD&gt;3.9&lt;/TD&gt;
+  &lt;TD&gt;Berkeley&lt;/TD&gt;&lt;TD&gt;CA&lt;/TD&gt;&lt;TD&gt;36000&lt;/TD&gt;
+  &lt;TD&gt;CS&lt;/TD&gt;&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;123&lt;/TD&gt;&lt;TD&gt;Amy&lt;/TD&gt;&lt;TD&gt;3.9&lt;/TD&gt;
+  &lt;TD&gt;Cornell&lt;/TD&gt;&lt;TD&gt;NY&lt;/TD&gt;&lt;TD&gt;21000&lt;/TD&gt;
+  &lt;TD&gt;EE&lt;/TD&gt;&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;234&lt;/TD&gt;&lt;TD&gt;Bob&lt;/TD&gt;&lt;TD&gt;3.6&lt;/TD&gt;
+  &lt;TD&gt;Berkeley&lt;/TD&gt;&lt;TD&gt;CA&lt;/TD&gt;&lt;TD&gt;36000&lt;/TD&gt;
+  &lt;TD&gt;biology&lt;/TD&gt;&lt;TD&gt;N&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;345&lt;/TD&gt;&lt;TD&gt;Craig&lt;/TD&gt;&lt;TD&gt;3.5&lt;/TD&gt;
+  &lt;TD&gt;MIT&lt;/TD&gt;&lt;TD&gt;MA&lt;/TD&gt;&lt;TD&gt;10000&lt;/TD&gt;
+  &lt;TD&gt;bioengineering&lt;/TD&gt;&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;345&lt;/TD&gt;&lt;TD&gt;Craig&lt;/TD&gt;&lt;TD&gt;3.5&lt;/TD&gt;
+  &lt;TD&gt;Cornell&lt;/TD&gt;&lt;TD&gt;NY&lt;/TD&gt;&lt;TD&gt;21000&lt;/TD&gt;
+  &lt;TD&gt;bioengineering&lt;/TD&gt;&lt;TD&gt;N&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;345&lt;/TD&gt;&lt;TD&gt;Craig&lt;/TD&gt;&lt;TD&gt;3.5&lt;/TD&gt;
+  &lt;TD&gt;Cornell&lt;/TD&gt;&lt;TD&gt;NY&lt;/TD&gt;&lt;TD&gt;21000&lt;/TD&gt;
+  &lt;TD&gt;CS&lt;/TD&gt;&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;345&lt;/TD&gt;&lt;TD&gt;Craig&lt;/TD&gt;&lt;TD&gt;3.5&lt;/TD&gt;
+  &lt;TD&gt;Cornell&lt;/TD&gt;&lt;TD&gt;NY&lt;/TD&gt;&lt;TD&gt;21000&lt;/TD&gt;
+  &lt;TD&gt;EE&lt;/TD&gt;&lt;TD&gt;N&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;678&lt;/TD&gt;&lt;TD&gt;Fay&lt;/TD&gt;&lt;TD&gt;3.8&lt;/TD&gt;
+  &lt;TD&gt;Stanford&lt;/TD&gt;&lt;TD&gt;CA&lt;/TD&gt;&lt;TD&gt;15000&lt;/TD&gt;
+  &lt;TD&gt;history&lt;/TD&gt;&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;987&lt;/TD&gt;&lt;TD&gt;Helen&lt;/TD&gt;&lt;TD&gt;3.7&lt;/TD&gt;
+  &lt;TD&gt;Stanford&lt;/TD&gt;&lt;TD&gt;CA&lt;/TD&gt;&lt;TD&gt;15000&lt;/TD&gt;
+  &lt;TD&gt;CS&lt;/TD&gt;&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;987&lt;/TD&gt;&lt;TD&gt;Helen&lt;/TD&gt;&lt;TD&gt;3.7&lt;/TD&gt;
+  &lt;TD&gt;Berkeley&lt;/TD&gt;&lt;TD&gt;CA&lt;/TD&gt;&lt;TD&gt;36000&lt;/TD&gt;
+  &lt;TD&gt;CS&lt;/TD&gt;&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;876&lt;/TD&gt;&lt;TD&gt;Irene&lt;/TD&gt;&lt;TD&gt;3.9&lt;/TD&gt;
+  &lt;TD&gt;Stanford&lt;/TD&gt;&lt;TD&gt;CA&lt;/TD&gt;&lt;TD&gt;15000&lt;/TD&gt;
+  &lt;TD&gt;CS&lt;/TD&gt;&lt;TD&gt;N&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;876&lt;/TD&gt;&lt;TD&gt;Irene&lt;/TD&gt;&lt;TD&gt;3.9&lt;/TD&gt;
+  &lt;TD&gt;MIT&lt;/TD&gt;&lt;TD&gt;MA&lt;/TD&gt;&lt;TD&gt;10000&lt;/TD&gt;
+  &lt;TD&gt;biology&lt;/TD&gt;&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;876&lt;/TD&gt;&lt;TD&gt;Irene&lt;/TD&gt;&lt;TD&gt;3.9&lt;/TD&gt;
+  &lt;TD&gt;MIT&lt;/TD&gt;&lt;TD&gt;MA&lt;/TD&gt;&lt;TD&gt;10000&lt;/TD&gt;
+  &lt;TD&gt;marine biology&lt;/TD&gt;&lt;TD&gt;N&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;765&lt;/TD&gt;&lt;TD&gt;Jay&lt;/TD&gt;&lt;TD&gt;2.9&lt;/TD&gt;
+  &lt;TD&gt;Stanford&lt;/TD&gt;&lt;TD&gt;CA&lt;/TD&gt;&lt;TD&gt;15000&lt;/TD&gt;
+  &lt;TD&gt;history&lt;/TD&gt;&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;765&lt;/TD&gt;&lt;TD&gt;Jay&lt;/TD&gt;&lt;TD&gt;2.9&lt;/TD&gt;
+  &lt;TD&gt;Cornell&lt;/TD&gt;&lt;TD&gt;NY&lt;/TD&gt;&lt;TD&gt;21000&lt;/TD&gt;
+  &lt;TD&gt;history&lt;/TD&gt;&lt;TD&gt;N&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;765&lt;/TD&gt;&lt;TD&gt;Jay&lt;/TD&gt;&lt;TD&gt;2.9&lt;/TD&gt;
+  &lt;TD&gt;Cornell&lt;/TD&gt;&lt;TD&gt;NY&lt;/TD&gt;&lt;TD&gt;21000&lt;/TD&gt;
+  &lt;TD&gt;psychology&lt;/TD&gt;&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;543&lt;/TD&gt;&lt;TD&gt;Craig&lt;/TD&gt;&lt;TD&gt;3.4&lt;/TD&gt;
+  &lt;TD&gt;MIT&lt;/TD&gt;&lt;TD&gt;MA&lt;/TD&gt;&lt;TD&gt;10000&lt;/TD&gt;
+  &lt;TD&gt;CS&lt;/TD&gt;&lt;TD&gt;N&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;/table&gt;&lt;/div&gt;
+</p>
+
+<p>
+but this table comes with some problems:
+</p>
+
+<ul class="org-ul">
+<li>some of the information is repeated in many places (which is wasteful and confusing)</li>
+
+<li>if we want to change Amy's gpa, we'd have to change it in several places (once per application she's made)</li>
+
+<li>if a student withdraws her last application, we'd loose all information about that student (this has actually happened here already, as you'll see below)</li>
+</ul>
+
+<p>
+In week 4 we'll discuss the theory behind these problems (functional dependencies), and see a technique we can use to find well behaved tables (normalization), but I hope that you intuitively can see that everything would be easier if we had the following three tables instead of the big table above:
+</p>
+
+<ul class="org-ul">
+<li>one table, <code>students</code>, with information about the students (id, name and gpa)</li>
+</ul>
+
+
+<p>
+&lt;div&gt;
+&lt;table rules="all"&gt;
+&lt;tr&gt;
+  &lt;th&gt;&lt;code&gt;s&amp;lowbar;id&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;s&amp;lowbar;name&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;gpa&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;c&amp;lowbar;name&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;state&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;enrollment&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;major&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;decision&lt;/code&gt;&lt;/th&gt;
+&lt;/tr&gt;
+</p>
+
+<p>
+&lt;TR&gt;&lt;TD&gt;123&lt;/TD&gt;
+&lt;TD&gt;Amy&lt;/TD&gt;
+&lt;TD&gt;3.9&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;234&lt;/TD&gt;
+&lt;TD&gt;Bob&lt;/TD&gt;
+&lt;TD&gt;3.6&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;345&lt;/TD&gt;
+&lt;TD&gt;Craig&lt;/TD&gt;
+&lt;TD&gt;3.5&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;456&lt;/TD&gt;
+&lt;TD&gt;Doris&lt;/TD&gt;
+&lt;TD&gt;3.9&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;543&lt;/TD&gt;
+&lt;TD&gt;Craig&lt;/TD&gt;
+&lt;TD&gt;3.4&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;567&lt;/TD&gt;
+&lt;TD&gt;Edward&lt;/TD&gt;
+&lt;TD&gt;2.9&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;654&lt;/TD&gt;
+&lt;TD&gt;Amy&lt;/TD&gt;
+&lt;TD&gt;3.9&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;678&lt;/TD&gt;
+&lt;TD&gt;Fay&lt;/TD&gt;
+&lt;TD&gt;3.8&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;765&lt;/TD&gt;
+&lt;TD&gt;Jay&lt;/TD&gt;
+&lt;TD&gt;2.9&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;789&lt;/TD&gt;
+&lt;TD&gt;Gary&lt;/TD&gt;
+&lt;TD&gt;3.4&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;876&lt;/TD&gt;
+&lt;TD&gt;Irene&lt;/TD&gt;
+&lt;TD&gt;3.9&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;987&lt;/TD&gt;
+&lt;TD&gt;Helen&lt;/TD&gt;
+&lt;TD&gt;3.7&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;/table&gt;&lt;/div&gt;
+</p>
+
+<p>
+&#x2026;
+</p>
+
+
+<ul class="org-ul">
+<li>one table, <code>colleges</code>, with college information (name and state)</li>
+</ul>
+
+<p>
+&lt;div&gt;
+&lt;table rules="all"&gt;
+&lt;tr&gt;
+  &lt;th&gt;&lt;code&gt;s&amp;lowbar;id&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;s&amp;lowbar;name&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;gpa&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;c&amp;lowbar;name&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;state&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;enrollment&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;major&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;decision&lt;/code&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;TR&gt;&lt;TD&gt;Stanford&lt;/TD&gt;
+&lt;TD&gt;CA&lt;/TD&gt;
+&lt;TD&gt;15000&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;Berkeley&lt;/TD&gt;
+&lt;TD&gt;CA&lt;/TD&gt;
+&lt;TD&gt;36000&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;MIT&lt;/TD&gt;
+&lt;TD&gt;MA&lt;/TD&gt;
+&lt;TD&gt;10000&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;Cornell&lt;/TD&gt;
+&lt;TD&gt;NY&lt;/TD&gt;
+&lt;TD&gt;21000&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;/table&gt;&lt;/div&gt;
+</p>
+
+
+<ul class="org-ul">
+<li>one table, <code>applications</code>, with applications (student id, college name, major, and decision)</li>
+</ul>
+
+<p>
+&lt;div&gt;
+&lt;table rules="all"&gt;
+&lt;tr&gt;
+  &lt;th&gt;&lt;code&gt;s&amp;lowbar;id&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;s&amp;lowbar;name&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;gpa&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;c&amp;lowbar;name&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;state&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;enrollment&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;major&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;decision&lt;/code&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;TR&gt;&lt;TD&gt;123&lt;/TD&gt;
+&lt;TD&gt;Stanford&lt;/TD&gt;
+&lt;TD&gt;CS&lt;/TD&gt;
+&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;123&lt;/TD&gt;
+&lt;TD&gt;Stanford&lt;/TD&gt;
+&lt;TD&gt;EE&lt;/TD&gt;
+&lt;TD&gt;N&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;123&lt;/TD&gt;
+&lt;TD&gt;Berkeley&lt;/TD&gt;
+&lt;TD&gt;CS&lt;/TD&gt;
+&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;123&lt;/TD&gt;
+&lt;TD&gt;Cornell&lt;/TD&gt;
+&lt;TD&gt;EE&lt;/TD&gt;
+&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;234&lt;/TD&gt;
+&lt;TD&gt;Berkeley&lt;/TD&gt;
+&lt;TD&gt;biology&lt;/TD&gt;
+&lt;TD&gt;N&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;345&lt;/TD&gt;
+&lt;TD&gt;MIT&lt;/TD&gt;
+&lt;TD&gt;bioengineering&lt;/TD&gt;
+&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;345&lt;/TD&gt;
+&lt;TD&gt;Cornell&lt;/TD&gt;
+&lt;TD&gt;bioengineering&lt;/TD&gt;
+&lt;TD&gt;N&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;345&lt;/TD&gt;
+&lt;TD&gt;Cornell&lt;/TD&gt;
+&lt;TD&gt;CS&lt;/TD&gt;
+&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;345&lt;/TD&gt;
+&lt;TD&gt;Cornell&lt;/TD&gt;
+&lt;TD&gt;EE&lt;/TD&gt;
+&lt;TD&gt;N&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;678&lt;/TD&gt;
+&lt;TD&gt;Stanford&lt;/TD&gt;
+&lt;TD&gt;history&lt;/TD&gt;
+&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;987&lt;/TD&gt;
+&lt;TD&gt;Stanford&lt;/TD&gt;
+&lt;TD&gt;CS&lt;/TD&gt;
+&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;987&lt;/TD&gt;
+&lt;TD&gt;Berkeley&lt;/TD&gt;
+&lt;TD&gt;CS&lt;/TD&gt;
+&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;876&lt;/TD&gt;
+&lt;TD&gt;Stanford&lt;/TD&gt;
+&lt;TD&gt;CS&lt;/TD&gt;
+&lt;TD&gt;N&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;876&lt;/TD&gt;
+&lt;TD&gt;MIT&lt;/TD&gt;
+&lt;TD&gt;biology&lt;/TD&gt;
+&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;876&lt;/TD&gt;
+&lt;TD&gt;MIT&lt;/TD&gt;
+&lt;TD&gt;marine biology&lt;/TD&gt;
+&lt;TD&gt;N&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;765&lt;/TD&gt;
+&lt;TD&gt;Stanford&lt;/TD&gt;
+&lt;TD&gt;history&lt;/TD&gt;
+&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;765&lt;/TD&gt;
+&lt;TD&gt;Cornell&lt;/TD&gt;
+&lt;TD&gt;history&lt;/TD&gt;
+&lt;TD&gt;N&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;765&lt;/TD&gt;
+&lt;TD&gt;Cornell&lt;/TD&gt;
+&lt;TD&gt;psychology&lt;/TD&gt;
+&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD&gt;543&lt;/TD&gt;
+&lt;TD&gt;MIT&lt;/TD&gt;
+&lt;TD&gt;CS&lt;/TD&gt;
+&lt;TD&gt;N&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;/table&gt;&lt;/div&gt;
+</p>
+
+<p>
+Using these tables, the issues we saw above goes away (we'll talk more about this in week 4), but we now need a way to combine information from several tables at once.
+</p>
+
+<p>
+Let's say we want to show the names and gpa of all students who has applied for CS at Stanford &#x2013; none of our three tables above contain all information we need, but if we start by looking in the applications table, we can get &#x2026;
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT    s_id
+FROM      applications
+WHERE     c_name = 'Stanford' AND major = 'CS'
+</pre>
+</div>
+
+<p>
+The best we can get here is the id of all relevant students, but given the id we can look in the <code>students</code> table for the name and gpa.
+</p>
+
+<p>
+In regular programming languages, such as Python or Java, we could do that with functions such as <code>find_name(s_id)</code> and <code>find_gpa(s_id)</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #c48702;">SELECT</span>    find_name(s_id), find_gpa(s_id)     <span style="color: #7f7f7f; font-style: italic;">-- </span><span style="color: #cf9f7f; font-style: italic;">not in SQL!</span>
+<span style="color: #c48702;">FROM</span>      applications
+<span style="color: #c48702;">WHERE</span>     c_name = <span style="color: #f06a3f;">'Stanford'</span> <span style="color: #c48702;">AND</span> major = <span style="color: #f06a3f;">'CS'</span>
+</pre>
+</div>
+
+<p>
+But SQL is no regular language, it's based on relational algebra, and there we have another, really cool way of solving this problem: <i>joins</i>.
+</p>
+</div>
+<div id="outline-container-org3cf612e" class="outline-4">
+<h4 id="org3cf612e">Inner joins</h4>
+<div class="outline-text-4" id="text-org3cf612e">
+<p>
+We solve the problem above by combining (<i>joining</i>) the <code>applications</code> table with the <code>students</code> table. There are several kinds of joins in SQL (and relational algebra), but the most straightforward kind is what's called an <i>inner join</i>.
+</p>
+
+<p>
+The inner join of two tables is a new table, where rows from each table are joined together if the attributes of the rows matches a <i>join predicate</i> &#x2013; in our case we want to add student data to the application data where the student id in the applications table matches the student id in the students table.
+</p>
+
+<p>
+This can be expressed as:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT *
+FROM   applications
+       INNER JOIN students ON applications.s_id = students.s_id
+</pre>
+</div>
+
+<p>
+and we would get the joined table:
+</p>
+
+<p>
+&lt;div&gt;
+&lt;table rules="all"&gt;
+&lt;tr&gt;
+  &lt;th&gt;&lt;code&gt;s&amp;lowbar;id&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;c&amp;lowbar;name&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;major&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;decision&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;s&amp;lowbar;id'&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;s&amp;lowbar;name&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;gpa&lt;/code&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;TR&gt;
+  &lt;TD&gt;123&lt;/TD&gt;&lt;TD&gt;Stanford&lt;/TD&gt;&lt;TD&gt;CS&lt;/TD&gt;
+  &lt;TD&gt;Y&lt;/TD&gt;&lt;TD&gt;123&lt;/TD&gt;&lt;TD&gt;Amy&lt;/TD&gt;&lt;TD&gt;3.9&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;123&lt;/TD&gt;&lt;TD&gt;Stanford&lt;/TD&gt;&lt;TD&gt;EE&lt;/TD&gt;
+  &lt;TD&gt;N&lt;/TD&gt;&lt;TD&gt;123&lt;/TD&gt;&lt;TD&gt;Amy&lt;/TD&gt;&lt;TD&gt;3.9&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;123&lt;/TD&gt;&lt;TD&gt;Berkeley&lt;/TD&gt;&lt;TD&gt;CS&lt;/TD&gt;
+  &lt;TD&gt;Y&lt;/TD&gt;&lt;TD&gt;123&lt;/TD&gt;&lt;TD&gt;Amy&lt;/TD&gt;&lt;TD&gt;3.9&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;123&lt;/TD&gt;&lt;TD&gt;Cornell&lt;/TD&gt;&lt;TD&gt;EE&lt;/TD&gt;
+  &lt;TD&gt;Y&lt;/TD&gt;&lt;TD&gt;123&lt;/TD&gt;&lt;TD&gt;Amy&lt;/TD&gt;&lt;TD&gt;3.9&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;234&lt;/TD&gt;&lt;TD&gt;Berkeley&lt;/TD&gt;&lt;TD&gt;biology&lt;/TD&gt;
+  &lt;TD&gt;N&lt;/TD&gt;&lt;TD&gt;234&lt;/TD&gt;&lt;TD&gt;Bob&lt;/TD&gt;&lt;TD&gt;3.6&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;345&lt;/TD&gt;&lt;TD&gt;MIT&lt;/TD&gt;&lt;TD&gt;bioengineering&lt;/TD&gt;
+  &lt;TD&gt;Y&lt;/TD&gt;&lt;TD&gt;345&lt;/TD&gt;&lt;TD&gt;Craig&lt;/TD&gt;&lt;TD&gt;3.5&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;345&lt;/TD&gt;&lt;TD&gt;Cornell&lt;/TD&gt;&lt;TD&gt;bioengineering&lt;/TD&gt;
+  &lt;TD&gt;N&lt;/TD&gt;&lt;TD&gt;345&lt;/TD&gt;&lt;TD&gt;Craig&lt;/TD&gt;&lt;TD&gt;3.5&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;345&lt;/TD&gt;&lt;TD&gt;Cornell&lt;/TD&gt;&lt;TD&gt;CS&lt;/TD&gt;
+  &lt;TD&gt;Y&lt;/TD&gt;&lt;TD&gt;345&lt;/TD&gt;&lt;TD&gt;Craig&lt;/TD&gt;&lt;TD&gt;3.5&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;345&lt;/TD&gt;&lt;TD&gt;Cornell&lt;/TD&gt;&lt;TD&gt;EE&lt;/TD&gt;
+  &lt;TD&gt;N&lt;/TD&gt;&lt;TD&gt;345&lt;/TD&gt;&lt;TD&gt;Craig&lt;/TD&gt;&lt;TD&gt;3.5&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;678&lt;/TD&gt;&lt;TD&gt;Stanford&lt;/TD&gt;&lt;TD&gt;history&lt;/TD&gt;
+  &lt;TD&gt;Y&lt;/TD&gt;&lt;TD&gt;678&lt;/TD&gt;&lt;TD&gt;Fay&lt;/TD&gt;&lt;TD&gt;3.8&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;987&lt;/TD&gt;&lt;TD&gt;Stanford&lt;/TD&gt;&lt;TD&gt;CS&lt;/TD&gt;
+  &lt;TD&gt;Y&lt;/TD&gt;&lt;TD&gt;987&lt;/TD&gt;&lt;TD&gt;Helen&lt;/TD&gt;&lt;TD&gt;3.7&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;987&lt;/TD&gt;&lt;TD&gt;Berkeley&lt;/TD&gt;&lt;TD&gt;CS&lt;/TD&gt;
+  &lt;TD&gt;Y&lt;/TD&gt;&lt;TD&gt;987&lt;/TD&gt;&lt;TD&gt;Helen&lt;/TD&gt;&lt;TD&gt;3.7&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;876&lt;/TD&gt;&lt;TD&gt;Stanford&lt;/TD&gt;&lt;TD&gt;CS&lt;/TD&gt;
+  &lt;TD&gt;N&lt;/TD&gt;&lt;TD&gt;876&lt;/TD&gt;&lt;TD&gt;Irene&lt;/TD&gt;&lt;TD&gt;3.9&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;876&lt;/TD&gt;&lt;TD&gt;MIT&lt;/TD&gt;&lt;TD&gt;biology&lt;/TD&gt;
+  &lt;TD&gt;Y&lt;/TD&gt;&lt;TD&gt;876&lt;/TD&gt;&lt;TD&gt;Irene&lt;/TD&gt;&lt;TD&gt;3.9&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;876&lt;/TD&gt;&lt;TD&gt;MIT&lt;/TD&gt;&lt;TD&gt;marine biology&lt;/TD&gt;
+  &lt;TD&gt;N&lt;/TD&gt;&lt;TD&gt;876&lt;/TD&gt;&lt;TD&gt;Irene&lt;/TD&gt;&lt;TD&gt;3.9&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;765&lt;/TD&gt;&lt;TD&gt;Stanford&lt;/TD&gt;&lt;TD&gt;history&lt;/TD&gt;
+  &lt;TD&gt;Y&lt;/TD&gt;&lt;TD&gt;765&lt;/TD&gt;&lt;TD&gt;Jay&lt;/TD&gt;&lt;TD&gt;2.9&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;765&lt;/TD&gt;&lt;TD&gt;Cornell&lt;/TD&gt;&lt;TD&gt;history&lt;/TD&gt;
+  &lt;TD&gt;N&lt;/TD&gt;&lt;TD&gt;765&lt;/TD&gt;&lt;TD&gt;Jay&lt;/TD&gt;&lt;TD&gt;2.9&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;765&lt;/TD&gt;&lt;TD&gt;Cornell&lt;/TD&gt;&lt;TD&gt;psychology&lt;/TD&gt;
+  &lt;TD&gt;Y&lt;/TD&gt;&lt;TD&gt;765&lt;/TD&gt;&lt;TD&gt;Jay&lt;/TD&gt;&lt;TD&gt;2.9&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;543&lt;/TD&gt;&lt;TD&gt;MIT&lt;/TD&gt;&lt;TD&gt;CS&lt;/TD&gt;
+  &lt;TD&gt;N&lt;/TD&gt;&lt;TD&gt;543&lt;/TD&gt;&lt;TD&gt;Craig&lt;/TD&gt;&lt;TD&gt;3.4&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;/table&gt;&lt;/div&gt;
+</p>
+
+<p>
+which contains all information we need.
+</p>
+
+<p>
+We'll soon see that there are several kinds of joins, but inner joins are the 'default', and so we can skip <code>INNER</code>, and just write:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT *
+FROM   applications
+       JOIN students ON applications.s_id = students.s_id
+</pre>
+</div>
+
+<p>
+Since the join predicate is just a test of equality of one attribute from each table (it's called an <i>equijoin</i>), and the attribute has the same name in both tables, we can use the simpler form:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT *
+FROM   applications
+       JOIN students USING (s_id)
+</pre>
+</div>
+
+<p>
+which gives (observe that we now only have one &lt;code&gt;s&amp;lowbar;id&lt;code&gt; column):
+</p>
+
+<p>
+&lt;div&gt;
+&lt;table rules="all"&gt;
+&lt;tr&gt;
+  &lt;th&gt;&lt;code&gt;s&amp;lowbar;id&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;c&amp;lowbar;name&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;major&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;decision&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;s&amp;lowbar;name&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;gpa&lt;/code&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;TR&gt;
+  &lt;TD&gt;123&lt;/TD&gt;&lt;TD&gt;Stanford&lt;/TD&gt;&lt;TD&gt;CS&lt;/TD&gt;
+  &lt;TD&gt;Y&lt;/TD&gt;&lt;TD&gt;Amy&lt;/TD&gt;&lt;TD&gt;3.9&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;123&lt;/TD&gt;&lt;TD&gt;Stanford&lt;/TD&gt;&lt;TD&gt;EE&lt;/TD&gt;
+  &lt;TD&gt;N&lt;/TD&gt;&lt;TD&gt;Amy&lt;/TD&gt;&lt;TD&gt;3.9&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;123&lt;/TD&gt;&lt;TD&gt;Berkeley&lt;/TD&gt;&lt;TD&gt;CS&lt;/TD&gt;
+  &lt;TD&gt;Y&lt;/TD&gt;&lt;TD&gt;Amy&lt;/TD&gt;&lt;TD&gt;3.9&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;123&lt;/TD&gt;&lt;TD&gt;Cornell&lt;/TD&gt;&lt;TD&gt;EE&lt;/TD&gt;
+  &lt;TD&gt;Y&lt;/TD&gt;&lt;TD&gt;Amy&lt;/TD&gt;&lt;TD&gt;3.9&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;234&lt;/TD&gt;&lt;TD&gt;Berkeley&lt;/TD&gt;&lt;TD&gt;biology&lt;/TD&gt;
+  &lt;TD&gt;N&lt;/TD&gt;&lt;TD&gt;Bob&lt;/TD&gt;&lt;TD&gt;3.6&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;345&lt;/TD&gt;&lt;TD&gt;MIT&lt;/TD&gt;&lt;TD&gt;bioengineering&lt;/TD&gt;
+  &lt;TD&gt;Y&lt;/TD&gt;&lt;TD&gt;Craig&lt;/TD&gt;&lt;TD&gt;3.5&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;345&lt;/TD&gt;&lt;TD&gt;Cornell&lt;/TD&gt;&lt;TD&gt;bioengineering&lt;/TD&gt;
+  &lt;TD&gt;N&lt;/TD&gt;&lt;TD&gt;Craig&lt;/TD&gt;&lt;TD&gt;3.5&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;345&lt;/TD&gt;&lt;TD&gt;Cornell&lt;/TD&gt;&lt;TD&gt;CS&lt;/TD&gt;
+  &lt;TD&gt;Y&lt;/TD&gt;&lt;TD&gt;Craig&lt;/TD&gt;&lt;TD&gt;3.5&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;345&lt;/TD&gt;&lt;TD&gt;Cornell&lt;/TD&gt;&lt;TD&gt;EE&lt;/TD&gt;
+  &lt;TD&gt;N&lt;/TD&gt;&lt;TD&gt;Craig&lt;/TD&gt;&lt;TD&gt;3.5&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;678&lt;/TD&gt;&lt;TD&gt;Stanford&lt;/TD&gt;&lt;TD&gt;history&lt;/TD&gt;
+  &lt;TD&gt;Y&lt;/TD&gt;&lt;TD&gt;Fay&lt;/TD&gt;&lt;TD&gt;3.8&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;987&lt;/TD&gt;&lt;TD&gt;Stanford&lt;/TD&gt;&lt;TD&gt;CS&lt;/TD&gt;
+  &lt;TD&gt;Y&lt;/TD&gt;&lt;TD&gt;Helen&lt;/TD&gt;&lt;TD&gt;3.7&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;987&lt;/TD&gt;&lt;TD&gt;Berkeley&lt;/TD&gt;&lt;TD&gt;CS&lt;/TD&gt;
+  &lt;TD&gt;Y&lt;/TD&gt;&lt;TD&gt;Helen&lt;/TD&gt;&lt;TD&gt;3.7&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;876&lt;/TD&gt;&lt;TD&gt;Stanford&lt;/TD&gt;&lt;TD&gt;CS&lt;/TD&gt;
+  &lt;TD&gt;N&lt;/TD&gt;&lt;TD&gt;Irene&lt;/TD&gt;&lt;TD&gt;3.9&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;876&lt;/TD&gt;&lt;TD&gt;MIT&lt;/TD&gt;&lt;TD&gt;biology&lt;/TD&gt;
+  &lt;TD&gt;Y&lt;/TD&gt;&lt;TD&gt;Irene&lt;/TD&gt;&lt;TD&gt;3.9&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;876&lt;/TD&gt;&lt;TD&gt;MIT&lt;/TD&gt;&lt;TD&gt;marine biology&lt;/TD&gt;
+  &lt;TD&gt;N&lt;/TD&gt;&lt;TD&gt;Irene&lt;/TD&gt;&lt;TD&gt;3.9&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;765&lt;/TD&gt;&lt;TD&gt;Stanford&lt;/TD&gt;&lt;TD&gt;history&lt;/TD&gt;
+  &lt;TD&gt;Y&lt;/TD&gt;&lt;TD&gt;Jay&lt;/TD&gt;&lt;TD&gt;2.9&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;765&lt;/TD&gt;&lt;TD&gt;Cornell&lt;/TD&gt;&lt;TD&gt;history&lt;/TD&gt;
+  &lt;TD&gt;N&lt;/TD&gt;&lt;TD&gt;Jay&lt;/TD&gt;&lt;TD&gt;2.9&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;765&lt;/TD&gt;&lt;TD&gt;Cornell&lt;/TD&gt;&lt;TD&gt;psychology&lt;/TD&gt;
+  &lt;TD&gt;Y&lt;/TD&gt;&lt;TD&gt;Jay&lt;/TD&gt;&lt;TD&gt;2.9&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;543&lt;/TD&gt;&lt;TD&gt;MIT&lt;/TD&gt;&lt;TD&gt;CS&lt;/TD&gt;
+  &lt;TD&gt;N&lt;/TD&gt;&lt;TD&gt;Craig&lt;/TD&gt;&lt;TD&gt;3.4&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;/table&gt;&lt;/div&gt;
+</p>
+
+<p>
+In general, we can compare sets of attributes in an equijoin.
+</p>
+
+<p>
+In the first join above we got two <code>s_id</code> columns (SQL can't know that <code>s_id</code> describes the same thing in both tables), but with the <code>JOIN</code> <code>USING</code> construct, we tell SQL that they essentially describe the same thing, so the join returns only one column for <code>s_id</code>.
+</p>
+
+<p>
+<i>Observe that a row in one table could match several rows in the other table, and it would therefore generate several rows in the combined table.</i>
+</p>
+
+<p>
+Once we've joined our tables, we can proceed as we did before, with a <code>WHERE</code> clause:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql">%%<span style="color: #c48702;">sql</span>
+<span style="color: #c48702;">SELECT</span>    s_name, gpa
+<span style="color: #c48702;">FROM</span>      applications
+          <span style="color: #c48702;">JOIN</span> students <span style="color: #c48702;">USING</span> (s_id)
+<span style="color: #c48702;">WHERE</span>     c_name = <span style="color: #f06a3f;">'Stanford'</span> <span style="color: #c48702;">AND</span> major = <span style="color: #f06a3f;">'CS'</span>
+</pre>
+</div>
+
+<p>
+If we look at the syntax diagram for the <code>SELECT</code> statement, we see that we join our tables in the <code>FROM</code> clause, and that we can use everything we've learned so far to work on the joined tables (so we can group and use window functions and subqueries just as we've done before).
+</p>
+
+<p>
+The combined, rather clumsy table will probably never be created, database engines are <i>extremely</i> clever when they decide on what data they need to keep around to execute their queries &#x2013; so we normally do not need to worry much about efficiency (we'll talk a little more about this later in the course).
+</p>
+
+<hr />
+<p>
+It could be useful to stop here for a while, and consider how you'd solve this problem using Python or Java (or any other regular programming language).
+In case we let the students keep track of their applications, we'd need to loop through all students, and then all their applications looking for applications to CS@Stanford.
+</p>
+
+<p>
+Deciding on who should keep track of what is a typical example of premature optimization, and using a relational database relieves us of this problem.
+</p>
+<hr />
+
+<p>
+<b>Example:</b> Show the id and name for all students who has applied for CS in California (state code <code>CA</code>).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga5d76ee" class="outline-4">
+<h4 id="orga5d76ee">Cross joins</h4>
+<div class="outline-text-4" id="text-orga5d76ee">
+<p>
+As we saw above, an inner join combines rows in two tables when the rows matches on some join predicate.
+The predicate is typically dependent on column values in both rows (e.g., that the student ids in each table should match), but we can also use a seemingly nonsensical predicate such as <code>true</code> (which is always true):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT   *
+FROM     applications
+         JOIN students ON true
+</pre>
+</div>
+
+<p>
+This would mean that all rows in the applications table would match all rows in the students table, and we would get what's called the <i>cartesian product</i> of the two tables (or sets of rows), i.e., all combinations of rows in the tables.
+</p>
+
+<p>
+This is exactly what a cross join is &#x2013; we can write it as:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT   *
+FROM     applications
+         CROSS JOIN students
+</pre>
+</div>
+
+<p>
+and we typically use a <code>WHERE</code> clause to narrow the generated table into a table where only matching rows remains afterwards.
+</p>
+
+<p>
+So, the query
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT    s_name, gpa
+FROM      applications
+          JOIN students USING (s_id)
+WHERE     c_name = 'Stanford' AND major = 'CS'
+</pre>
+</div>
+
+<p>
+could have been written using a cross join instead:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT    s_name, gpa
+FROM      applications
+          CROSS JOIN students
+WHERE     applications.s_id = students.s_name
+          AND c_name = 'Stanford'
+          AND major = 'CS'
+</pre>
+</div>
+
+<p>
+This may look terrible at first sight, creating a huge table and then throwing away most of the combined rows, but, as said above, database engines are very, very clever, and they might find a way to make even this query fast.
+But I'd still recommend that you use inner queries, since it might help the database to find a faster query plan, and it's conceptually easier to understand for a person looking at your code.
+</p>
+
+<p>
+By the way, there is a shortcut for cross joins, &#x2026;
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT    s_name, gpa
+FROM      applications, students
+WHERE     applications.s_id = students.s_name
+          AND c_name = 'Stanford'
+          AND major = 'CS'
+</pre>
+</div>
+
+<p>
+but, once again, opt for inner joins instead!
+</p>
+</div>
+</div>
+<div id="outline-container-org284dab5" class="outline-4">
+<h4 id="org284dab5">Outer joins</h4>
+<div class="outline-text-4" id="text-org284dab5">
+<p>
+We saw above that a row in one table which matches several rows in the other table would give rise to several rows in the combined table.
+But it also goes the other way &#x2013; when we do an inner join on two tables, rows for which the join predicate doesn't match any row in the other table will 'disappear' in the combined table.
+</p>
+
+<p>
+So if we wanted to list all students and their applications, and wrote:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT    *
+FROM      students
+          JOIN applications USING (s_id)
+ORDER BY  s_name
+</pre>
+</div>
+
+<p>
+we would get all applications, but those students who hadn't applied for any major would be left out.
+</p>
+
+<p>
+If we want to make sure that all rows in the first ('left') table survives the join, we can use a <i>left outer join</i>.
+On outer join is a join in which we guarantee that all rows in one or both our tables will be present in the result.
+But that leads to an important question: how do we combine an 'uncombinable' row?
+The answer is that we combine it with a row full of <code>NULL</code> values in the other table &#x2013; if we try a left outer join, and puts the <code>students</code> table first (on the left), we get:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+SELECT    *
+FROM      students
+          LEFT OUTER JOIN applications USING (s_id)
+ORDER BY  s_name
+</pre>
+</div>
+
+<p>
+&lt;div&gt;
+&lt;table rules="all"&gt;
+&lt;tr&gt;
+  &lt;th&gt;&lt;code&gt;s&amp;lowbar;id&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;c&amp;lowbar;name&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;major&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;decision&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;s&amp;lowbar;name&lt;/code&gt;&lt;/th&gt;
+  &lt;th&gt;&lt;code&gt;gpa&lt;/code&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;TR&gt;
+  &lt;TD&gt;123&lt;/TD&gt;&lt;TD&gt;Amy&lt;/TD&gt;&lt;TD&gt;3.9&lt;/TD&gt;
+  &lt;TD&gt;Berkeley&lt;/TD&gt;&lt;TD&gt;CS&lt;/TD&gt;&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;123&lt;/TD&gt;&lt;TD&gt;Amy&lt;/TD&gt;&lt;TD&gt;3.9&lt;/TD&gt;
+  &lt;TD&gt;Cornell&lt;/TD&gt;&lt;TD&gt;EE&lt;/TD&gt;&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;123&lt;/TD&gt;&lt;TD&gt;Amy&lt;/TD&gt;&lt;TD&gt;3.9&lt;/TD&gt;
+  &lt;TD&gt;Stanford&lt;/TD&gt;&lt;TD&gt;CS&lt;/TD&gt;&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;123&lt;/TD&gt;&lt;TD&gt;Amy&lt;/TD&gt;&lt;TD&gt;3.9&lt;/TD&gt;
+  &lt;TD&gt;Stanford&lt;/TD&gt;&lt;TD&gt;EE&lt;/TD&gt;&lt;TD&gt;N&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;654&lt;/TD&gt;&lt;TD&gt;Amy&lt;/TD&gt;&lt;TD&gt;3.9&lt;/TD&gt;
+  &lt;TD&gt;&lt;code&gt;NULL&lt;/code&gt;&lt;/TD&gt;
+  &lt;TD&gt;&lt;code&gt;NULL&lt;/code&gt;&lt;/TD&gt;
+  &lt;TD&gt;&lt;code&gt;NULL&lt;/code&gt;&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;234&lt;/TD&gt;&lt;TD&gt;Bob&lt;/TD&gt;&lt;TD&gt;3.6&lt;/TD&gt;
+  &lt;TD&gt;Berkeley&lt;/TD&gt;&lt;TD&gt;biology&lt;/TD&gt;&lt;TD&gt;N&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;345&lt;/TD&gt;&lt;TD&gt;Craig&lt;/TD&gt;&lt;TD&gt;3.5&lt;/TD&gt;
+  &lt;TD&gt;Cornell&lt;/TD&gt;&lt;TD&gt;CS&lt;/TD&gt;&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;345&lt;/TD&gt;&lt;TD&gt;Craig&lt;/TD&gt;&lt;TD&gt;3.5&lt;/TD&gt;
+  &lt;TD&gt;Cornell&lt;/TD&gt;&lt;TD&gt;EE&lt;/TD&gt;&lt;TD&gt;N&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;345&lt;/TD&gt;&lt;TD&gt;Craig&lt;/TD&gt;&lt;TD&gt;3.5&lt;/TD&gt;
+  &lt;TD&gt;Cornell&lt;/TD&gt;&lt;TD&gt;bioengineering&lt;/TD&gt;&lt;TD&gt;N&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;345&lt;/TD&gt;&lt;TD&gt;Craig&lt;/TD&gt;&lt;TD&gt;3.5&lt;/TD&gt;
+  &lt;TD&gt;MIT&lt;/TD&gt;&lt;TD&gt;bioengineering&lt;/TD&gt;&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;543&lt;/TD&gt;&lt;TD&gt;Craig&lt;/TD&gt;&lt;TD&gt;3.4&lt;/TD&gt;
+  &lt;TD&gt;MIT&lt;/TD&gt;&lt;TD&gt;CS&lt;/TD&gt;&lt;TD&gt;N&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;456&lt;/TD&gt;&lt;TD&gt;Doris&lt;/TD&gt;&lt;TD&gt;3.9&lt;/TD&gt;
+  &lt;TD&gt;&lt;code&gt;NULL&lt;/code&gt;&lt;/TD&gt;
+  &lt;TD&gt;&lt;code&gt;NULL&lt;/code&gt;&lt;/TD&gt;
+  &lt;TD&gt;&lt;code&gt;NULL&lt;/code&gt;&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;567&lt;/TD&gt;&lt;TD&gt;Edward&lt;/TD&gt;&lt;TD&gt;2.9&lt;/TD&gt;
+  &lt;TD&gt;&lt;code&gt;NULL&lt;/code&gt;&lt;/TD&gt;
+  &lt;TD&gt;&lt;code&gt;NULL&lt;/code&gt;&lt;/TD&gt;
+  &lt;TD&gt;&lt;code&gt;NULL&lt;/code&gt;&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;678&lt;/TD&gt;&lt;TD&gt;Fay&lt;/TD&gt;&lt;TD&gt;3.8&lt;/TD&gt;
+  &lt;TD&gt;Stanford&lt;/TD&gt;&lt;TD&gt;history&lt;/TD&gt;&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;789&lt;/TD&gt;&lt;TD&gt;Gary&lt;/TD&gt;&lt;TD&gt;3.4&lt;/TD&gt;
+  &lt;TD&gt;&lt;code&gt;NULL&lt;/code&gt;&lt;/TD&gt;
+  &lt;TD&gt;&lt;code&gt;NULL&lt;/code&gt;&lt;/TD&gt;
+  &lt;TD&gt;&lt;code&gt;NULL&lt;/code&gt;&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;987&lt;/TD&gt;&lt;TD&gt;Helen&lt;/TD&gt;&lt;TD&gt;3.7&lt;/TD&gt;
+  &lt;TD&gt;Berkeley&lt;/TD&gt;&lt;TD&gt;CS&lt;/TD&gt;&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;987&lt;/TD&gt;&lt;TD&gt;Helen&lt;/TD&gt;&lt;TD&gt;3.7&lt;/TD&gt;
+  &lt;TD&gt;Stanford&lt;/TD&gt;&lt;TD&gt;CS&lt;/TD&gt;&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;876&lt;/TD&gt;&lt;TD&gt;Irene&lt;/TD&gt;&lt;TD&gt;3.9&lt;/TD&gt;
+  &lt;TD&gt;MIT&lt;/TD&gt;&lt;TD&gt;biology&lt;/TD&gt;&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;876&lt;/TD&gt;&lt;TD&gt;Irene&lt;/TD&gt;&lt;TD&gt;3.9&lt;/TD&gt;
+  &lt;TD&gt;MIT&lt;/TD&gt;&lt;TD&gt;marine biology&lt;/TD&gt;&lt;TD&gt;N&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;876&lt;/TD&gt;&lt;TD&gt;Irene&lt;/TD&gt;&lt;TD&gt;3.9&lt;/TD&gt;
+  &lt;TD&gt;Stanford&lt;/TD&gt;&lt;TD&gt;CS&lt;/TD&gt;&lt;TD&gt;N&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;765&lt;/TD&gt;&lt;TD&gt;Jay&lt;/TD&gt;&lt;TD&gt;2.9&lt;/TD&gt;
+  &lt;TD&gt;Cornell&lt;/TD&gt;&lt;TD&gt;history&lt;/TD&gt;&lt;TD&gt;N&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;765&lt;/TD&gt;&lt;TD&gt;Jay&lt;/TD&gt;&lt;TD&gt;2.9&lt;/TD&gt;
+  &lt;TD&gt;Cornell&lt;/TD&gt;&lt;TD&gt;psychology&lt;/TD&gt;&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+  &lt;TD&gt;765&lt;/TD&gt;&lt;TD&gt;Jay&lt;/TD&gt;&lt;TD&gt;2.9&lt;/TD&gt;
+  &lt;TD&gt;Stanford&lt;/TD&gt;&lt;TD&gt;history&lt;/TD&gt;&lt;TD&gt;Y&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;/table&gt;&lt;/div&gt;
+</p>
+
+<p>
+Here we see 'the other Amy' (i.e., the one with <code>s_id</code> 654), Doris, Edward and Gary, who apparently haven't applied for anything &#x2013; the columns which would have been taken from the <code>applications</code> table in case of a match are now set to <code>NULL</code>.
+</p>
+
+<p>
+<b>Problem:</b> We want to find all students who hasn't applied for any major &#x2013; do it in two ways:
+</p>
+
+<ul class="org-ul">
+<li>Using a subquery</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Using an outer join</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-ipython">%%sql
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org2653c91" class="outline-3">
+<h3 id="org2653c91">Set operations</h3>
+</div>
+
+
+
+
+
+
+
+<div id="outline-container-org79b057f" class="outline-3">
+<h3 id="org79b057f">INSERT, UPDATE and DELETE</h3>
+</div>
+
+
+
+<div id="outline-container-orgeb3b80c" class="outline-3">
+<h3 id="orgeb3b80c">CREATE TABLE</h3>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+
+@font-face {
+    font-family: 'Noto Sans';
+    font-style: italic;
+    font-weight: 400;
+    font-stretch: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Noto Sans';
+    font-style: italic;
+    font-weight: 700;
+    font-stretch: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-stretch: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-stretch: normal;
+    font-display: swap;
+}
+
+h1,h2,h3,h4 {
+    font-family: 'Noto Sans', sans-serif;
+    color: #a5573e;
+    border-top: 1px solid #aaa;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+h3 {
+    font-family: 'Noto Sans', sans-serif;
+    color: #a5573e;
+    border-top: 1px solid #aaa;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 2%;
+    padding-right: 2%;
+    background: #FFE1C2;
+}
+
+
+body {
+    font-family: 'Noto Sans', sans-serif;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+tt, code, pre, sourceCode {
+    font-family: 'Fira Mono', monospace;
+    font-size: 90%;
+}
+
+pre, .sourceCode {
+    background-color: #F5F2F0;
+}
+
+.week {
+    background: #FFE1C2;
+}
+
+.exercise {
+    background: #F9EFAB;
+}
+
+.note {
+    background-color: #A2C8FC;
+}
+
+.news {
+    background-color: #D5F4E5;
+}
+
+.current {
+    background-color: #D5F4E5;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+.past {
+    background-color: #FFFFEC;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+.future {
+    background-color: #FFFFFF;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+.diversion {
+    background: #FEF8ED;
+}

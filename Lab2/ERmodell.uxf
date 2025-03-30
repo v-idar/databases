@@ -1,25 +1,25 @@
-<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>380</x><y>300</y><w>90</w><h>90</h></coordinates><panel_attributes>TICKET
+<diagram program="umletino" version="15.1"><zoom_level>11</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>528</x><y>111</y><w>99</w><h>99</h></coordinates><panel_attributes>TICKET
 --
-_ticket_id_</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>490</y><w>110</w><h>90</h></coordinates><panel_attributes>THEATER
+_ticket_id_</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>110</x><y>320</y><w>121</w><h>99</h></coordinates><panel_attributes>THEATER
 --
 _theater_name_
-capacity</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>130</x><y>300</y><w>120</w><h>90</h></coordinates><panel_attributes>&lt;&lt;weak&gt;&gt;
+capacity</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>253</x><y>111</y><w>132</w><h>99</h></coordinates><panel_attributes>&lt;&lt;weak&gt;&gt;
 SCREENING
 --
 start_time
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>590</x><y>300</y><w>120</w><h>90</h></coordinates><panel_attributes>CUSTOMER
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>759</x><y>111</y><w>132</w><h>99</h></coordinates><panel_attributes>CUSTOMER
 --
 _user_name_
 full_name
 password
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>100</x><y>530</y><w>190</w><h>50</h></coordinates><panel_attributes>lt=-
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>364</y><w>209</w><h>55</h></coordinates><panel_attributes>lt=-
 m1=*
 m2=*
-</panel_attributes><additional_attributes>10;20;170;20</additional_attributes></element><element><id>Relation</id><coordinates><x>180</x><y>380</y><w>30</w><h>190</h></coordinates><panel_attributes>lt=.
-</panel_attributes><additional_attributes>10;10;10;170</additional_attributes></element><element><id>Relation</id><coordinates><x>240</x><y>330</y><w>160</w><h>50</h></coordinates><panel_attributes>lt=-
+</panel_attributes><additional_attributes>10;20;170;20</additional_attributes></element><element><id>Relation</id><coordinates><x>308</x><y>199</y><w>33</w><h>209</h></coordinates><panel_attributes>lt=.
+</panel_attributes><additional_attributes>10;10;10;170</additional_attributes></element><element><id>Relation</id><coordinates><x>374</x><y>144</y><w>176</w><h>55</h></coordinates><panel_attributes>lt=-
 m1=1
 m2=*
-</panel_attributes><additional_attributes>10;20;140;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>270</x><y>500</y><w>120</w><h>90</h></coordinates><panel_attributes>MOVIE
+</panel_attributes><additional_attributes>10;20;140;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>407</x><y>331</y><w>132</w><h>99</h></coordinates><panel_attributes>MOVIE
 --
 _imdb_key_
 movie_title
@@ -27,7 +27,7 @@ production_year
 running_time
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>460</x><y>330</y><w>150</w><h>50</h></coordinates><panel_attributes>lt=-
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>616</x><y>144</y><w>165</w><h>55</h></coordinates><panel_attributes>lt=-
 m1=*
 m2=1
 </panel_attributes><additional_attributes>10;20;130;20</additional_attributes></element></diagram>
